@@ -83,46 +83,15 @@
             "Sycip": { normal: 82, underweight: 11, stunted: 5, overweight: 2, totalWeighed: 320 }
         };
 
-        const initialStaffDirectory = [
-            { id: "TNJ-OFF-01", name: "Dr. Jose Rizal V. Teves", role: "Officer", title: "City Health Officer", email: "j.teves@tanjay.gov.ph", mobile: "0917-415-3119", status: "Active" },
-            { id: "TNJ-OFF-02", name: "Maria Clara S. Calumpang", role: "Officer", title: "City Nutrition Action Officer", email: "m.calumpang@tanjay.gov.ph", mobile: "0918-320-1144", status: "Active" },
-            { id: "TNJ-OFF-03", name: "Leonora A. Rivera", role: "Officer", title: "Executive Assistant - CNC", email: "l.rivera@tanjay.gov.ph", mobile: "0920-555-0101", status: "Active" },
-            
-            { id: "TNJ-NUT-01", name: "Gabriela Silang-Diaz", role: "Nutritionist", title: "Senior Public Health Nutritionist", email: "g.diaz@tanjay.gov.ph", mobile: "0927-412-1199", status: "Active" },
-            { id: "TNJ-NUT-02", name: "Andres B. Bonifacio, RND", role: "Nutritionist", title: "Clinical Dietitian Specialist", email: "a.bonifacio@tanjay.gov.ph", mobile: "0935-121-8833", status: "Active" },
-            { id: "TNJ-NUT-03", name: "Melchora Q. Aquino", role: "Nutritionist", title: "Community Diet Consultant", email: "m.aquino@tanjay.gov.ph", mobile: "0945-888-2233", status: "Active" },
-
-            { id: "TNJ-BNS-01", name: "Juana de la Cruz", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Poblacion I", email: "j.delacruz@tanjay.gov.ph", mobile: "0995-102-3490", status: "Active" },
-            { id: "TNJ-BNS-02", name: "Corazon C. Aquino", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Poblacion II", email: "c.aquino@tanjay.gov.ph", mobile: "0995-102-3491", status: "Active" },
-            { id: "TNJ-BNS-03", name: "Gloria M. Arroyo", role: "Trained Scholar", barangay: "Poblacion III", email: "g.arroyo@tanjay.gov.ph", mobile: "0995-102-3492", status: "Active" },
-            { id: "TNJ-BNS-04", name: "Imelda R. Marcos", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Poblacion IV", email: "i.marcos@tanjay.gov.ph", mobile: "0995-102-3493", status: "Active" },
-            { id: "TNJ-BNS-05", name: "Teresa L. Magbanua", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Poblacion V", email: "t.magbanua@tanjay.gov.ph", mobile: "0995-102-3494", status: "Active" },
-            { id: "TNJ-BNS-06", name: "Gregoria de Jesus", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Poblacion VI", email: "g.dejesus@tanjay.gov.ph", mobile: "0995-102-3495", status: "Active" },
-            { id: "TNJ-BNS-07", name: "Marcela M. Agoncillo", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Poblacion VII", email: "m.agoncillo@tanjay.gov.ph", mobile: "0995-102-3496", status: "Active" },
-            { id: "TNJ-BNS-08", name: "Marina D. Dizon", role: "Trained Scholar", barangay: "Poblacion VIII", email: "m.dizon@tanjay.gov.ph", mobile: "0995-102-3497", status: "Active" },
-            { id: "TNJ-BNS-09", name: "Delfina E. Herbosa", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Azagra", email: "d.herbosa@tanjay.gov.ph", mobile: "0995-102-3498", status: "Active" },
-            { id: "TNJ-BNS-10", name: "Gliceria M. Marella", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Bahi-an", email: "g.marella@tanjay.gov.ph", mobile: "0995-102-3499", status: "Active" },
-            { id: "TNJ-BNS-11", name: "Patrocinio L. Gamboa", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Luca", email: "p.gamboa@tanjay.gov.ph", mobile: "0995-102-3500", status: "Active" },
-            { id: "TNJ-BNS-12", name: "Josefa Llanes-Escoda", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Novallas", email: "j.escoda@tanjay.gov.ph", mobile: "0995-102-3501", status: "Active" },
-            { id: "TNJ-BNS-13", name: "Concepcion A. Felix", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Obogon", email: "c.felix@tanjay.gov.ph", mobile: "0995-102-3502", status: "Active" },
-            { id: "TNJ-BNS-14", name: "Pura Villanueva-Kalaw", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Pal-pinas", email: "p.kalaw@tanjay.gov.ph", mobile: "0995-102-3503", status: "Active" },
-            { id: "TNJ-BNS-15", name: "Paz Marquez-Benitez", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Polo", email: "p.benitez@tanjay.gov.ph", mobile: "0995-102-3504", status: "Active" },
-            { id: "TNJ-BNS-16", name: "Librada M. Avelino", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "San Isidro", email: "l.avelino@tanjay.gov.ph", mobile: "0995-102-3505", status: "Active" },
-            { id: "TNJ-BNS-17", name: "Carmen D. Aguinaldo", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "San Jose", email: "c.aguinaldo@tanjay.gov.ph", mobile: "0995-102-3506", status: "Active" },
-            { id: "TNJ-BNS-18", name: "Francisca T. Benitez", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "San Miguel", email: "f.benitez@tanjay.gov.ph", mobile: "0995-102-3507", status: "Active" },
-            { id: "TNJ-BNS-19", name: "Encarnacion A. Alzona", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Santa Cruz Nuevo", email: "e.alzona@tanjay.gov.ph", mobile: "0995-102-3508", status: "Active" },
-            { id: "TNJ-BNS-20", name: "Ines S. Villa", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Santa Cruz Viejo", email: "i.villa@tanjay.gov.ph", mobile: "0995-102-3509", status: "Active" },
-            { id: "TNJ-BNS-21", name: "Estefania C. Aldaba", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Santo Niño", email: "e.aldaba@tanjay.gov.ph", mobile: "0995-102-3510", status: "Active" },
-            { id: "TNJ-BNS-22", name: "Asuncion A. Perez", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Tugas", email: "a.perez@tanjay.gov.ph", mobile: "0995-102-3511", status: "Active" },
-            { id: "TNJ-BNS-23", name: "Helena Z. Benitez", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Mandem", email: "h.benitez@tanjay.gov.ph", mobile: "0995-102-3512", status: "Active" },
-            { id: "TNJ-BNS-24", name: "Loreto Paras-Sulit", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Sycip", email: "l.sulit@tanjay.gov.ph", mobile: "0995-102-3513", status: "Active" }
+        const initialMockDocuments = [
+            { id: "eOPT-9082", fileName: "eOPT_Poblacion_IV_Consolidated.xlsx", size: "1.4 MB", type: "e-OPT Spreadsheet (.xlsx)", uploadedBy: "Imelda R. Marcos", date: "2026-05-12", status: "Approved", feedback: "Matches database totals." },
+            { id: "eOPT-8821", fileName: "Supplementary_Feeding_Polo_June.xlsx", size: "820 KB", type: "Feeding Logs", uploadedBy: "Paz Marquez-Benitez", date: "2026-06-01", status: "Approved", feedback: "Approved for fund release." },
+            { id: "eOPT-7751", fileName: "Stunting_Correction_Survey_Luca.pdf", size: "2.1 MB", type: "Census Document", uploadedBy: "Patrocinio L. Gamboa", date: "2026-06-04", status: "Pending", feedback: "" }
         ];
 
-        const initialMockDocuments = [
-            { id: "DOC-9082", fileName: "OPT_Poblacion_IV_Q1_Signed.pdf", size: "1.4 MB", type: "OPT+ Scanned Sheet", uploadedBy: "Imelda R. Marcos", date: "2026-05-12", status: "Approved", feedback: "Matches database totals." },
-            { id: "DOC-8821", fileName: "Supplementary_Feeding_Polo_June.xlsx", size: "820 KB", type: "Feeding Logs", uploadedBy: "Paz Marquez-Benitez", date: "2026-06-01", status: "Approved", feedback: "Approved for fund release." },
-            { id: "DOC-7751", fileName: "Stunting_Correction_Survey_Luca.pdf", size: "2.1 MB", type: "Census Document", uploadedBy: "Patrocinio L. Gamboa", date: "2026-06-04", status: "Pending", feedback: "" },
-            { id: "DOC-6112", fileName: "Moringa_Acceptability_Pilot_Azagra.docx", size: "1.1 MB", type: "Research Survey", uploadedBy: "Delfina E. Herbosa", date: "2026-06-06", status: "Pending", feedback: "" }
+        const initialStaffDirectory = [
+            { id: "TNJ-OFF-10", name: "Chan Labechan", role: "Officer", title: "Tanjay City Nutrition Council Officer", email: "chanlabechan@gmail.com", mobile: "0917-415-3119", status: "Active" },
+            { id: "TNJ-BNS-30", name: "Christian Labe", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Poblacion IV", email: "christian.labe@caremin.com", mobile: "0995-102-3490", status: "Active" }
         ];
 
         function App() {
@@ -135,20 +104,73 @@
             const [notification, setNotification] = useState(null);
             const [activeTab, setActiveTab] = useState("home");
             const [searchQuery, setSearchQuery] = useState("");
+            const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+
+            const [currentSlide, setCurrentSlide] = useState(0);
+            const carouselSlides = [
+                {
+                    image: "https://i.imgur.com/zULeKTE.png",
+                    dateText: "May 15, 2026 / Day 2 / 8:00 am - 5:00 pm",
+                    title: "City Level MELLPI Evaluation conducted by RNET",
+                    location: "TANJAY CITY, NEGROS ISLAND REGION",
+                    objectPosition: "center 45%"
+                },
+                {
+                    image: "https://i.imgur.com/BYn4frU.png",
+                    dateText: "May 18, 2026 / Day 1 / 9:00 am - 12:00 pm",
+                    title: "School-Based Feeding Program (SBFP) Fortified Milk Delivery",
+                    location: "TANJAY CITY, NEGROS ISLAND REGION",
+                    objectPosition: "center 35%"
+                },
+                {
+                    image: "https://i.imgur.com/ez1RtKx.png",
+                    dateText: "May 28, 2026 / 4:00 pm",
+                    title: "Best Practice Project initiated by City Mayor Jose T. Orlino in collaboration with City Agriculture Office & CNC",
+                    location: "TANJAY CITY, NEGROS ISLAND REGION",
+                    objectPosition: "center top"
+                },
+                {
+                    image: "https://i.imgur.com/m2IuJaC.png",
+                    dateText: "May 26, 2026 / 2:00 pm - 5:00 pm",
+                    title: "Coordination Meeting w/ CNC Dumaguete for the National Nutrition Month launching to be held in NIR",
+                    location: "DUMAGUETE CITY, NEGROS ISLAND REGION",
+                    objectPosition: "center 40%"
+                },
+                {
+                    image: "https://i.imgur.com/3Xyc9l7.png",
+                    dateText: "May 28, 2026 / Day 2 / 8:00 am - 11:30 am",
+                    title: "Bio-Intensive Home Garden Distribution and Community Planting",
+                    location: "TANJAY CITY, NEGROS ISLAND REGION",
+                    objectPosition: "center 35%"
+                },
+                {
+                    image: "https://i.imgur.com/HmAljwi.png",
+                    dateText: "June 02, 2026 / Day 1 / 9:00 am - 2:00 pm",
+                    title: "Emergency Dietary Supplement and Vitamin Package Handover",
+                    location: "TANJAY CITY, NEGROS ISLAND REGION",
+                    objectPosition: "center 35%"
+                },
+                {
+                    image: "https://i.imgur.com/JAfbeAc.png",
+                    dateText: "June 05, 2026 / Day 2 / 1:00 pm - 5:00 pm",
+                    title: "Regional Action Plan Review alongside Municipal Health Planners",
+                    location: "TANJAY CITY, NEGROS ISLAND REGION",
+                    objectPosition: "center 85%"
+                }
+            ];
 
             const [currentUser, setCurrentUser] = useState(null);
-            const [loginId, setLoginId] = useState("");
-            const [loginPassword, setLoginPassword] = useState(""); 
-            const [showAccountList, setShowAccountList] = useState(false);
-
-            // Document Center States
+            const [loginEmail, setLoginEmail] = useState("");
+            const [loginPassword, setLoginPassword] = useState("");
+            const [isSubmittingAuth, setIsSubmittingAuth] = useState(false);
             const [uploadedFiles, setUploadedFiles] = useState(initialMockDocuments);
             const [selectedFileToUpload, setSelectedFileToUpload] = useState(null);
-            const [fileCategory, setFileCategory] = useState("OPT+ Scanned Sheet");
+            const [fileCategory, setFileCategory] = useState("e-OPT Spreadsheet (.xlsx)");
+            const [staffList, setStaffList] = useState(initialStaffDirectory);
+            const [selectedDay, setSelectedDay] = useState("Monday");
+            const [editMenuInput, setEditMenuInput] = useState("");
             const fileInputRef = useRef(null);
 
-            // Nutritionist Menu Planner State
-            const [selectedDay, setSelectedDay] = useState("Monday");
             const [menuPlan, setMenuPlan] = useState({
                 Monday: "Fortified Nutri-Instant Champorado with Ground Malunggay Powder & Boiled Egg",
                 Tuesday: "Utan Kinunot (Mashed locally caught fish cooked in coconut milk with squash and moringa leaves)",
@@ -156,46 +178,173 @@
                 Thursday: "Local Chicken Tinola soup packed with fresh papaya and young chili/malunggay leaves",
                 Friday: "Boiled Sweet Potato (Camote) and Banana saba snacks paired with fresh milk"
             });
-            const [editMenuInput, setEditMenuInput] = useState("");
 
-            // Council Security & Directory States
-            const [staffList, setStaffList] = useState(initialStaffDirectory);
             const [sysLogs, setSysLogs] = useState([
-                { time: "10:14 AM", user: "Dr. Jose Rizal V. Teves (Officer)", action: "Accessed City Dashboard" },
-                { time: "09:30 AM", user: "Imelda R. Marcos (BNS)", action: "Logged in via Poblacion IV portal" },
-                { time: "Yesterday", user: "Gabriela Silang-Diaz (Nutritionist)", action: "Approved Document DOC-9082" }
+                { time: "10:14 AM", user: "Chan Labechan (Officer)", action: "Accessed City Dashboard" },
+                { time: "09:30 AM", user: "Christian Labe (BNS)", action: "Logged in via Poblacion IV portal" }
             ]);
+
+            const videoRef = useRef(null);
+            const [videoPlaying, setVideoPlaying] = useState(true);
+            const [videoMuted, setVideoMuted] = useState(true);
+            const [videoTime, setVideoTime] = useState(0);
+            const [videoDuration, setVideoDuration] = useState(0);
+            const [showVideoControls, setShowVideoControls] = useState(true);
+            const controlsTimeoutRef = useRef(null);
+
+            const togglePlayVideo = () => {
+                if (videoRef.current) {
+                    if (videoPlaying) {
+                        videoRef.current.pause();
+                    } else {
+                        videoRef.current.play().catch(err => console.log("Autoplay error:", err));
+                    }
+                    setVideoPlaying(!videoPlaying);
+                }
+            };
+
+            const toggleMuteVideo = () => {
+                if (videoRef.current) {
+                    const newMuted = !videoMuted;
+                    videoRef.current.muted = newMuted;
+                    setVideoMuted(newMuted);
+                    showNotification(newMuted ? "Audio muted" : "Audio unmuted", "info");
+                }
+            };
+
+            const handleVideoTimeUpdate = () => {
+                if (videoRef.current) {
+                    setVideoTime(videoRef.current.currentTime);
+                }
+            };
+
+            const handleVideoLoadedMetadata = () => {
+                if (videoRef.current) {
+                    setVideoDuration(videoRef.current.duration || 278); // Fallback to 4:38 in seconds
+                }
+            };
+
+            const handleSeekChange = (e) => {
+                const newTime = parseFloat(e.target.value);
+                if (videoRef.current) {
+                    videoRef.current.currentTime = newTime;
+                    setVideoTime(newTime);
+                }
+            };
+
+            const handleMouseMoveOnVideo = () => {
+                setShowVideoControls(true);
+                if (controlsTimeoutRef.current) {
+                    clearTimeout(controlsTimeoutRef.current);
+                }
+                controlsTimeoutRef.current = setTimeout(() => {
+                    if (videoPlaying) {
+                        setShowVideoControls(false);
+                    }
+                }, 2000);
+            };
+
+            const formatVideoTime = (timeInSeconds) => {
+                if (isNaN(timeInSeconds)) return "00:00";
+                const mins = Math.floor(timeInSeconds / 60);
+                const secs = Math.floor(timeInSeconds % 60);
+                return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            };
 
             const showNotification = (message, type = 'success') => {
                 setNotification({ message, type });
                 setTimeout(() => setNotification(null), 5000);
             };
 
-            const handleLogin = (e) => {
+            useEffect(() => {
+                const handleGlobalClick = () => {
+                    setAboutDropdownOpen(false);
+                };
+                window.addEventListener('click', handleGlobalClick);
+                return () => {
+                    window.removeEventListener('click', handleGlobalClick);
+                    if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
+                };
+            }, []);
+
+            useEffect(() => {
+                if (activeTab === "home") {
+                    const slideTimer = setInterval(() => {
+                        setCurrentSlide(prev => (prev + 1) % carouselSlides.length);
+                    }, 5000);
+                    return () => clearInterval(slideTimer);
+                }
+            }, [activeTab]);
+
+            useEffect(() => {
+                if (currentUser && typeof google !== 'undefined' && google.script && google.script.run) {
+                    google.script.run.withSuccessHandler((dbData) => {
+                        if (dbData && dbData.length > 0) setUploadedFiles(dbData);
+                    }).fetchDocumentRegistry();
+
+                    google.script.run.withSuccessHandler((dbLogs) => {
+                        if (dbLogs && dbLogs.length > 0) setSysLogs(dbLogs);
+                    }).fetchSystemLogs();
+                }
+            }, [currentUser]);
+
+            const handleFormLogin = (e) => {
                 e.preventDefault();
-                const matchedUser = staffList.find(staff => staff.id.toLowerCase() === loginId.trim().toLowerCase());
-                
-                if (matchedUser) {
-                    setCurrentUser(matchedUser);
-                    setLoginId("");
-                    setLoginPassword("");
-                    setSysLogs(prev => [
-                        { time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), user: `${matchedUser.name} (${matchedUser.role})`, action: "Successfully Authenticated" },
-                        ...prev
-                    ]);
-                    showNotification(`Welcome back, ${matchedUser.name}!`, "success");
-                    setActiveTab("portal-home");
+                setIsSubmittingAuth(true);
+
+                if (typeof google !== 'undefined' && google.script && google.script.run) {
+                    google.script.run
+                        .withSuccessHandler((res) => {
+                            setIsSubmittingAuth(false);
+                            if (res.success) {
+                                setCurrentUser(res.profile);
+                                setLoginEmail("");
+                                setLoginPassword("");
+                                showNotification(`Welcome, ${res.profile.name}!`, "success");
+                                setActiveTab("portal-home");
+                            } else {
+                                showNotification(res.error, "error");
+                            }
+                        })
+                        .withFailureHandler((err) => {
+                            setIsSubmittingAuth(false);
+                            showNotification("Critical Server Error connecting to Apps Script API.", "error");
+                        })
+                        .authenticateUser(loginEmail, loginPassword);
                 } else {
-                    showNotification("Invalid Staff ID. Please select one from the demo list.", "error");
+                    // Sandbox local verification fallback
+                    setTimeout(() => {
+                        setIsSubmittingAuth(false);
+                        const cleanEmail = loginEmail.toLowerCase().trim();
+                        
+                        const sandboxDatabase = {
+                            "chanlabechan@gmail.com": {
+                                password: "officer123",
+                                profile: { id: "TNJ-OFF-10", name: "Chan Labechan", role: "Officer", title: "Tanjay City Nutrition Council Officer" }
+                            },
+                            "christian.labe@caremin.com": {
+                                password: "bns123",
+                                profile: { id: "TNJ-BNS-30", name: "Christian Labe", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Poblacion IV" }
+                            }
+                        };
+
+                        const account = sandboxDatabase[cleanEmail];
+                        if (account && account.password === loginPassword) {
+                            setCurrentUser(account.profile);
+                            setLoginEmail("");
+                            setLoginPassword("");
+                            showNotification(`Sandbox Success! Logged in as ${account.profile.name}`, "success");
+                            setActiveTab("portal-home");
+                        } else {
+                            showNotification("Invalid Sandbox credentials.", "error");
+                        }
+                    }, 500);
                 }
             };
 
             const handleLogout = () => {
-                if (currentUser) {
-                    setSysLogs(prev => [
-                        { time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), user: `${currentUser.name} (${currentUser.role})`, action: "Logged out from session" },
-                        ...prev
-                    ]);
+                if (currentUser && typeof google !== 'undefined' && google.script && google.script.run) {
+                    google.script.run.logAction(currentUser.name, "Logged out from session");
                 }
                 setCurrentUser(null);
                 setActiveTab("home");
@@ -215,46 +364,111 @@
                     return;
                 }
 
-                const newDoc = {
-                    id: "DOC-" + Math.floor(1000 + Math.random() * 9000),
-                    fileName: selectedFileToUpload.name,
-                    size: (selectedFileToUpload.size / (1024 * 1024)).toFixed(1) + " MB",
-                    type: fileCategory,
-                    uploadedBy: currentUser ? currentUser.name : "Guest Scholar",
-                    date: new Date().toISOString().split('T')[0],
-                    status: "Pending",
-                    feedback: ""
-                };
+                const file = selectedFileToUpload;
+                const sizeString = (file.size / (1024 * 1024)).toFixed(1) + " MB";
+                const uploader = currentUser ? currentUser.name : "Guest Scholar";
 
-                setUploadedFiles([newDoc, ...uploadedFiles]);
+                if (typeof google !== 'undefined' && google.script && google.script.run) {
+                    showNotification("Uploading file to Google Drive & logging to Sheet...", "info");
+                    const reader = new FileReader();
+                    reader.onload = function(evt) {
+                        const base64Data = evt.target.result;
+                        google.script.run
+                            .withSuccessHandler((res) => {
+                                if (res.success) {
+                                    showNotification(res.message, "success");
+                                    google.script.run.withSuccessHandler((dbData) => {
+                                        setUploadedFiles(dbData);
+                                    }).fetchDocumentRegistry();
+                                    google.script.run.withSuccessHandler((dbLogs) => {
+                                        setSysLogs(dbLogs);
+                                    }).fetchSystemLogs();
+                                } else {
+                                    showNotification(res.message, "error");
+                                }
+                            })
+                            .uploadFileToDrive(base64Data, file.name, fileCategory, uploader, sizeString);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    const newDoc = {
+                        id: "eOPT-" + Math.floor(1000 + Math.random() * 9000),
+                        fileName: file.name,
+                        size: sizeString,
+                        type: fileCategory,
+                        uploadedBy: uploader,
+                        date: new Date().toISOString().split('T')[0],
+                        status: "Pending",
+                        feedback: ""
+                    };
+                    setUploadedFiles([newDoc, ...uploadedFiles]);
+                    showNotification("File uploaded (Sandbox)", "success");
+                }
+
                 setSelectedFileToUpload(null);
                 if (fileInputRef.current) fileInputRef.current.value = "";
-                
-                setSysLogs(prev => [
-                    { time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), user: currentUser?.name || "BNS Staff", action: `Uploaded file: ${newDoc.fileName}` },
-                    ...prev
-                ]);
-                showNotification("File transmitted successfully to Council review!", "success");
             };
 
             const handleApproveDocument = (docId, feedbackText) => {
-                setUploadedFiles(prev => prev.map(doc => {
-                    if (doc.id === docId) {
-                        return { ...doc, status: "Approved", feedback: feedbackText || "Validated by Nutrition Specialist." };
-                    }
-                    return doc;
-                }));
-                showNotification(`Document ${docId} approved successfully.`, "success");
+                const feedback = feedbackText || "Validated by Nutrition Specialist.";
+                const reviewer = currentUser ? currentUser.name : "Reviewer";
+
+                if (typeof google !== 'undefined' && google.script && google.script.run) {
+                    google.script.run
+                        .withSuccessHandler((res) => {
+                            if (res.success) {
+                                showNotification(`Document ${docId} approved.`, "success");
+                                google.script.run.withSuccessHandler((dbData) => {
+                                    setUploadedFiles(dbData);
+                                }).fetchDocumentRegistry();
+                                google.script.run.withSuccessHandler((dbLogs) => {
+                                    setSysLogs(dbLogs);
+                                }).fetchSystemLogs();
+                            } else {
+                                showNotification(res.message, "error");
+                            }
+                        })
+                        .updateDocumentStatusInSheet(docId, "Approved", feedback, reviewer);
+                } else {
+                    setUploadedFiles(prev => prev.map(doc => {
+                        if (doc.id === docId) {
+                            return { ...doc, status: "Approved", feedback: feedback };
+                        }
+                        return doc;
+                    }));
+                    showNotification(`Document ${docId} approved (Sandbox).`, "success");
+                }
             };
 
             const handleRejectDocument = (docId, feedbackText) => {
-                setUploadedFiles(prev => prev.map(doc => {
-                    if (doc.id === docId) {
-                        return { ...doc, status: "Needs Revision", feedback: feedbackText || "Missing standard seals." };
-                    }
-                    return doc;
-                }));
-                showNotification(`Document ${docId} sent back for revision.`, "error");
+                const feedback = feedbackText || "Requires signature in bottom corner.";
+                const reviewer = currentUser ? currentUser.name : "Reviewer";
+
+                if (typeof google !== 'undefined' && google.script && google.script.run) {
+                    google.script.run
+                        .withSuccessHandler((res) => {
+                            if (res.success) {
+                                showNotification(`Document ${docId} marked for review.`, "error");
+                                google.script.run.withSuccessHandler((dbData) => {
+                                    setUploadedFiles(dbData);
+                                }).fetchDocumentRegistry();
+                                google.script.run.withSuccessHandler((dbLogs) => {
+                                    setSysLogs(dbLogs);
+                                }).fetchSystemLogs();
+                            } else {
+                                showNotification(res.message, "error");
+                            }
+                        })
+                        .updateDocumentStatusInSheet(docId, "Needs Revision", feedback, reviewer);
+                } else {
+                    setUploadedFiles(prev => prev.map(doc => {
+                        if (doc.id === docId) {
+                            return { ...doc, status: "Needs Revision", feedback: feedback };
+                        }
+                        return doc;
+                    }));
+                    showNotification(`Document ${docId} marked for review (Sandbox).`, "error");
+                }
             };
 
             const handleBmiCalculation = (e) => {
@@ -273,11 +487,11 @@
 
                 if (bmi < 18.5) {
                     classification = "Underweight / Wasted";
-                    colorClass = "text-emerald-700 bg-emerald-50 border-emerald-200";
+                    colorClass = "text-[#1da187] bg-emerald-50 border-emerald-200";
                     advice = "Incorporate nutrient-dense foods using local Tanjay agricultural crops. We highly recommend adding Moringa (Malunggay) powder to soups, eating locally grown Sweet Potato (Camote), fresh eggs, Mung Beans (Munggo), and participating in the local Nutri-Instant Champorado SBFP programs.";
                 } else if (bmi >= 18.5 && bmi < 24.9) {
                     classification = "Normal Status";
-                    colorClass = "text-green-700 bg-green-50 border-green-200";
+                    colorClass = "text-[#1da187] bg-emerald-50/50 border-emerald-100";
                     advice = "Excellent! Maintain your active health. Ensure a balanced plate based on the DOST-FNRI 'Pinggang Pinoy' standard: 1/2 plate of Glow foods (fruits and vegetables like local eggplant, squash, and malunggay), 1/4 Grow foods (local fish or chicken), and 1/4 Go foods (rice or root crops).";
                 } else if (bmi >= 25 && bmi < 29.9) {
                     classification = "Overweight";
@@ -304,10 +518,10 @@
             };
 
             const resources = [
+                { title: "NNC e-OPT Local Level Tool (500-child capacity standard)", category: "NNC Templates", date: "2026-01-12", size: "1.8 MB", type: "XLSX" },
+                { title: "NNC e-OPT Local Level Tool (1000-child capacity standard)", category: "NNC Templates", date: "2026-01-12", size: "2.4 MB", type: "XLSX" },
                 { title: "Barangay Nutrition Council Reorganization Guide (EO No. 01 Series 2024)", category: "Executive Orders", date: "2024-01-02", size: "1.2 MB", type: "PDF" },
-                { title: "Operation Timbang Plus (OPT+) Form Template 2026", category: "Forms", date: "2026-02-15", size: "540 KB", type: "XLSX" },
                 { title: "Tanjay City Nutrition Action Plan (CNAP) 2023-2026", category: "Plans & Budgets", date: "2023-10-10", size: "4.8 MB", type: "PDF" },
-                { title: "Nutri-Instant Champorado Procurement Specification Guidelines", category: "Guidelines", date: "2026-03-06", size: "820 KB", type: "PDF" },
                 { title: "BNS Monthly Consolidated Accomplishment Report (MCAR)", category: "Forms", date: "2026-01-20", size: "310 KB", type: "PDF" }
             ];
 
@@ -317,246 +531,399 @@
             );
 
             return (
-                <div class="flex flex-col min-h-screen justify-between">
+                <div className="flex flex-col min-h-screen justify-between">
                     
                     {notification && (
-                        <div class={`fixed top-4 right-4 z-50 flex items-center p-4 rounded-lg shadow-xl border transition-all duration-300 max-w-sm ${
-                            notification.type === 'error' ? 'bg-red-50 text-red-800 border-red-200' : 'bg-emerald-50 text-emerald-800 border-emerald-200'
+                        <div className={`fixed top-4 right-4 z-50 flex items-center p-4 rounded-lg shadow-xl border transition-all duration-300 max-w-sm ${
+                            notification.type === 'error' ? 'bg-rose-50 text-rose-800 border-rose-200' : 'bg-emerald-50 text-emerald-800 border-emerald-200'
                         }`}>
-                            <i class={`fa-solid ${notification.type === 'error' ? 'fa-triangle-exclamation' : 'fa-circle-check'} mr-3 text-lg`}></i>
-                            <span class="text-sm font-medium">{notification.message}</span>
-                            <button onClick={() => setNotification(null)} class="ml-auto text-slate-400 hover:text-slate-600">
-                                <i class="fa-solid fa-xmark"></i>
+                            <i className={`fa-solid ${notification.type === 'error' ? 'fa-triangle-exclamation' : 'fa-circle-check'} mr-3 text-lg text-[#1da187]`}></i>
+                            <span className="text-sm font-medium">{notification.message}</span>
+                            <button onClick={() => setNotification(null)} className="ml-auto text-slate-400 hover:text-slate-650">
+                                <i className="fa-solid fa-xmark"></i>
                             </button>
                         </div>
                     )}
 
-                    {}
-                    <nav class="bg-[#1da187] text-white py-4 shadow-md sticky top-0 z-40">
-                        <div class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-center gap-6 md:gap-8 font-medium text-sm">
+                    {/* TOP NAVBAR */}
+                    <nav className="bg-[#1da187] text-white py-4 shadow-md sticky top-0 z-40">
+                        <div className="max-w-[1700px] mx-auto px-4 xl:px-12 2xl:px-16 flex flex-wrap items-center justify-center gap-6 md:gap-8 font-medium text-sm">
                             <button 
-                                onClick={() => setActiveTab("home")} 
-                                class={`pb-1 transition-all hover:text-[#3ce6c3] border-b-2 ${activeTab === 'home' ? 'border-[#3ce6c3] text-[#3ce6c3]' : 'border-transparent text-white'}`}
+                                onClick={() => { setActiveTab("home"); setAboutDropdownOpen(false); }} 
+                                className={`pb-1 transition-all hover:text-[#3ce6c3] border-b-2 ${activeTab === 'home' ? 'border-[#3ce6c3] text-[#3ce6c3]' : 'border-transparent text-white'}`}
                             >
                                 Home
                             </button>
                             
-                            <div class="relative group cursor-pointer">
-                                <span class="hover:text-[#3ce6c3] pb-1 flex items-center gap-1">
-                                    About CNC <i class="fa-solid fa-chevron-down text-[10px]"></i>
-                                </span>
-                                <div class="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 py-2 text-slate-800 text-xs hidden group-hover:block transition-all z-50">
-                                    <button onClick={() => { setActiveTab("home"); setTimeout(() => document.getElementById("about-section")?.scrollIntoView({ behavior: 'smooth' }), 100); }} class="w-full text-left px-4 py-2 hover:bg-emerald-50 font-semibold text-[#1da187]">
-                                        Our Mandate
-                                    </button>
-                                    <button onClick={() => { setActiveTab("home"); setTimeout(() => document.getElementById("sbfp-info")?.scrollIntoView({ behavior: 'smooth' }), 100); }} class="w-full text-left px-4 py-2 hover:bg-emerald-50 font-semibold text-[#1da187]">
-                                        Latest Campaigns
-                                    </button>
-                                </div>
+                            <div className="relative">
+                                <button 
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setAboutDropdownOpen(!aboutDropdownOpen);
+                                    }}
+                                    className="hover:text-[#3ce6c3] pb-1 flex items-center gap-1 focus:outline-none"
+                                >
+                                    About CNC <i className="fa-solid fa-chevron-down text-[10px]"></i>
+                                </button>
+                                {aboutDropdownOpen && (
+                                    <div 
+                                        className="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 py-2 text-slate-808 text-xs z-50 animate-fadeIn"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <button 
+                                            onClick={() => { setActiveTab("home"); setAboutDropdownOpen(false); setTimeout(() => document.getElementById("about-section")?.scrollIntoView({ behavior: 'smooth' }), 100); }} 
+                                            className="w-full text-left px-4 py-2 hover:bg-emerald-50 font-semibold text-[#1da187]"
+                                        >
+                                            Our Mandate
+                                        </button>
+                                        <button 
+                                            onClick={() => { setActiveTab("home"); setAboutDropdownOpen(false); setTimeout(() => document.getElementById("sbfp-info")?.scrollIntoView({ behavior: 'smooth' }), 100); }} 
+                                            className="w-full text-left px-4 py-2 hover:bg-emerald-50 font-semibold text-[#1da187]"
+                                        >
+                                            Latest Campaigns
+                                        </button>
+                                    </div>
+                                )}
                             </div>
 
                             <button 
-                                onClick={() => setActiveTab("dashboard")} 
-                                class={`pb-1 transition-all hover:text-[#3ce6c3] border-b-2 ${activeTab === 'dashboard' ? 'border-[#3ce6c3] text-[#3ce6c3]' : 'border-transparent text-white'}`}
+                                onClick={() => { setActiveTab("dashboard"); setAboutDropdownOpen(false); }} 
+                                className={`pb-1 transition-all hover:text-[#3ce6c3] border-b-2 ${activeTab === 'dashboard' ? 'border-[#3ce6c3] text-[#3ce6c3]' : 'border-transparent text-white'}`}
                             >
-                                OPT+ Dashboard
+                                e-OPT Dashboard
                             </button>
 
                             <button 
-                                onClick={() => setActiveTab("calculator")} 
-                                class={`pb-1 transition-all hover:text-[#3ce6c3] border-b-2 ${activeTab === 'calculator' ? 'border-[#3ce6c3] text-[#3ce6c3]' : 'border-transparent text-white'}`}
+                                onClick={() => { setActiveTab("calculator"); setAboutDropdownOpen(false); }} 
+                                className={`pb-1 transition-all hover:text-[#3ce6c3] border-b-2 ${activeTab === 'calculator' ? 'border-[#3ce6c3] text-[#3ce6c3]' : 'border-transparent text-white'}`}
                             >
                                 BMI Assessment
                             </button>
 
                             <button 
-                                onClick={() => setActiveTab("resources")} 
-                                class={`pb-1 transition-all hover:text-[#3ce6c3] border-b-2 ${activeTab === 'resources' ? 'border-[#3ce6c3] text-[#3ce6c3]' : 'border-transparent text-white'}`}
+                                onClick={() => { setActiveTab("resources"); setAboutDropdownOpen(false); }} 
+                                className={`pb-1 transition-all hover:text-[#3ce6c3] border-b-2 ${activeTab === 'resources' ? 'border-[#3ce6c3] text-[#3ce6c3]' : 'border-transparent text-white'}`}
                             >
                                 Transparency Seal
                             </button>
 
                             {currentUser ? (
-                        <button 
-                            onClick={() => setActiveTab("portal-home")} 
-                            class={`pb-1 transition-all hover:text-[#3ce6c3] border-b-2 ${activeTab === 'portal-home' ? 'border-[#3ce6c3] text-[#3ce6c3]' : 'border-transparent text-white'} flex items-center gap-1`}
-                        >
-                            <i class="fa-solid fa-folder-open text-xs"></i> Portal Hub
-                        </button>
-                    ) : (
-                        <button 
-                            onClick={() => setActiveTab("login")} 
-                            class={`pb-1 transition-all hover:text-[#3ce6c3] border-b-2 ${activeTab === 'login' ? 'border-[#3ce6c3] text-[#3ce6c3]' : 'border-transparent text-white'}`}
-                        >
-                            Portal Login
-                        </button>
-                    )}
-                </div>
-            </nav>
-
-            {}
-            <div class="relative bg-white border-b border-slate-200 py-10 overflow-hidden">
-                <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div class="flex items-center gap-4 text-center md:text-left">
-                        <div class="flex items-center gap-3 shrink-0">
-                            <img 
-                                src="https://i.imgur.com/eXF0Aq3.png" 
-                                alt="Tanjay City Logo" 
-                                class="w-16 h-16 object-contain" 
-                                onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/64x64/115e59/ffffff?text=LGU"; }}
-                            />
-                            <img 
-                                src="https://i.imgur.com/41Yq0pH.png" 
-                                alt="Nutrition Council Logo" 
-                                class="w-16 h-16 object-contain" 
-                                onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/64x64/115e59/ffffff?text=CNC"; }}
-                            />
+                                <button 
+                                    onClick={() => { setActiveTab("portal-home"); setAboutDropdownOpen(false); }} 
+                                    className={`pb-1 transition-all hover:text-[#3ce6c3] border-b-2 ${activeTab === 'portal-home' ? 'border-[#3ce6c3] text-[#3ce6c3]' : 'border-transparent text-white'} flex items-center gap-1`}
+                                >
+                                    <i className="fa-solid fa-folder-open text-xs"></i> Portal Hub
+                                </button>
+                            ) : (
+                                <button 
+                                    onClick={() => { setActiveTab("login"); setAboutDropdownOpen(false); }} 
+                                    className={`pb-1 transition-all hover:text-[#3ce6c3] border-b-2 ${activeTab === 'login' ? 'border-[#3ce6c3] text-[#3ce6c3]' : 'border-transparent text-white'}`}
+                                >
+                                    Portal Login
+                                </button>
+                            )}
                         </div>
-                        <div>
-                            <h1 class="text-xl md:text-2xl font-black tracking-tight gov-title leading-tight text-slate-900">
-                                Tanjay City Nutrition Council
-                            </h1>
-                            <p class="text-xs text-emerald-800 font-bold tracking-wide mt-0.5">
-                                Province of Negros Oriental • Local Government Unit
-                            </p>
+                    </nav>
+
+                    {/* BRANDING LOGO CONTAINER WITH 100% RAW PICTURE */}
+                    <div 
+                        className="relative border-b border-slate-200 py-12 overflow-hidden bg-cover bg-center md:bg-right bg-no-repeat"
+                        style={{ backgroundImage: "url('https://i.imgur.com/Yk63RAR.png')" }}
+                    >
+                        <div className="max-w-[1700px] mx-auto px-4 xl:px-12 2xl:px-16 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                            <div className="flex items-center gap-4 text-center md:text-left max-w-2xl">
+                                <div className="flex items-center gap-3 shrink-0">
+                                    <img 
+                                        src="https://i.imgur.com/VRnnRFC.png" 
+                                        alt="Tanjay City Logo" 
+                                        className="w-16 h-16 object-contain" 
+                                        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/64x64/115e59/ffffff?text=LGU"; }}
+                                    />
+                                    <div className="relative">
+                                        <div className="absolute inset-0 bg-white rounded-full p-0.5 shadow-sm"></div>
+                                        <img 
+                                            src="https://i.imgur.com/Paf57TV.png" 
+                                            alt="Nutrition Council Logo" 
+                                            className="w-16 h-16 object-contain relative z-10 p-0.5" 
+                                            onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/64x64/115e59/ffffff?text=CNC"; }}
+                                        />
+                                    </div>
+                                </div>
+                                <div>
+                                    <h1 
+                                        className="text-xl md:text-2xl font-black tracking-tight gov-title leading-tight text-slate-900"
+                                        style={{ textShadow: '0 2px 15px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,1), 0 0 4px rgba(255,255,255,1)' }}
+                                    >
+                                        Tanjay City Nutrition Council
+                                    </h1>
+                                    <p 
+                                        className="text-xs md:text-sm text-emerald-955 font-extrabold tracking-wide mt-1"
+                                        style={{ textShadow: '0 2px 15px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,1), 0 0 4px rgba(255,255,255,1)' }}
+                                    >
+                                        Negros Island Region • Local Government Unit
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div className="flex items-center gap-3">
+                                {currentUser && (
+                                    <div className="flex items-center gap-2 text-xs text-emerald-955 bg-white/80 backdrop-blur-xs px-4 py-2.5 rounded-xl border border-emerald-100/40 shadow-sm animate-fadeIn font-bold">
+                                        <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                                        <span>User: <strong>{currentUser.name}</strong> ({currentUser.role})</span>
+                                        <button onClick={handleLogout} className="text-rose-700 hover:text-rose-900 font-black ml-2 underline focus:outline-none">
+                                            Logout
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
-                    
-                    {currentUser && (
-                        <div class="flex items-center gap-2 text-xs text-emerald-900 bg-emerald-50 px-4 py-2.5 rounded-xl border border-emerald-100">
-                            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                            <span>Active: <strong>{currentUser.name}</strong> ({currentUser.role})</span>
-                            <button onClick={handleLogout} class="text-rose-700 hover:text-rose-900 font-bold ml-2 underline">
-                                Logout
-                            </button>
-                        </div>
-                    )}
-                </div>
-            </div>
 
-            {}
-            <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8">
-                        
-                        {/* Tab Content: Home */}
+                    {/* MAIN CONTENTS FEED */}
+                    <main className="flex-grow max-w-[1700px] w-full mx-auto px-4 xl:px-12 2xl:px-16 py-8">
+
+                        {/* Tab Content: Home / Dashboard landing */}
                         {activeTab === "home" && (
-                            <div class="space-y-10">
-                                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                                    <div class="lg:col-span-2 bg-white rounded-2xl shadow-md border border-emerald-100 overflow-hidden animate-fadeIn">
-                                        <div class="bg-gradient-to-r from-[#1da187] to-[#127b66] text-white px-6 py-4 flex items-center justify-between">
-                                            <h2 class="font-bold text-lg flex items-center gap-2">
-                                                <i class="fa-solid fa-bullhorn text-lime-300"></i> Local Campaign Spotlight
-                                            </h2>
-                                            <span class="text-xs bg-emerald-950/20 px-3 py-1 rounded-full border border-white/20">June 2026 Batch</span>
-                                        </div>
-                                        <div class="p-6 space-y-6">
-                                            <div class="flex flex-col md:flex-row gap-6 items-center">
-                                                <div class="w-full md:w-2/5 shrink-0 rounded-xl overflow-hidden shadow-sm relative group bg-emerald-50 flex items-center justify-center p-4 min-h-[160px]">
-                                                    <div class="text-center">
-                                                        <i class="fa-solid fa-bowl-food text-5xl text-[#1da187] mb-2"></i>
-                                                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">School Feeding</p>
+                            <div className="space-y-8 animate-fadeIn">
+                                
+                                {/* DYNAMIC ANNOUNCEMENT BAR */}
+                                <div className="bg-[#1da187] text-white px-4 py-3 rounded-2xl shadow-sm flex items-center justify-between gap-4 text-xs font-semibold">
+                                    <div className="flex items-center gap-2">
+                                        <span className="bg-lime-400 text-[#1da187] px-2 py-0.5 rounded text-[10px] font-extrabold uppercase animate-pulse">Announcement</span>
+                                        <span>e-OPT Plus 2026 data collection cycle is officially underway. All assigned Barangay Scholars must submit files before the regional deadline.</span>
+                                    </div>
+                                    <button onClick={() => showNotification("NNC Advisory details loaded.", "success")} className="underline hover:text-lime-200 shrink-0">Read Guidelines</button>
+                                </div>
+
+                                {/* AUTOMATIC PICTURE SLIDE SHOW (CAROUSEL) */}
+                                <div className="relative w-full h-[320px] md:h-[480px] rounded-3xl overflow-hidden shadow-md border border-emerald-100 bg-slate-900 group">
+                                    {carouselSlides.map((slide, idx) => (
+                                        <div 
+                                            key={idx}
+                                            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                                                idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                                            }`}
+                                        >
+                                            <img 
+                                                src={slide.image} 
+                                                alt={slide.title} 
+                                                className="w-full h-full object-cover brightness-[0.75]"
+                                                style={{ objectPosition: slide.objectPosition || "center" }}
+                                                onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/1600x480/064e3b/ffffff?text=" + encodeURIComponent(slide.title); }}
+                                            />
+                                            {/* Transparent black gradient background bar reproducing image_6ebea1.png exactly */}
+                                            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/85 to-transparent pt-12 pb-4 px-4 md:px-8 z-20 flex items-center gap-4">
+                                                
+                                                {/* Left-side triple logos layout without surrounding container box */}
+                                                <div className="flex items-center gap-3 shrink-0">
+                                                    <img 
+                                                        src="https://i.imgur.com/VRnnRFC.png" 
+                                                        alt="Tanjay LGU" 
+                                                        className="h-8 w-8 md:h-10 md:w-10 object-contain drop-shadow"
+                                                    />
+                                                    <div className="relative h-8 w-8 md:h-10 md:w-10">
+                                                        <div className="absolute inset-0 bg-white rounded-full"></div>
+                                                        <img 
+                                                            src="https://i.imgur.com/Paf57TV.png" 
+                                                            alt="Nutrition Council" 
+                                                            className="h-8 w-8 md:h-10 md:w-10 object-contain relative z-10 p-0.5 drop-shadow"
+                                                        />
+                                                    </div>
+                                                    <div className="relative h-8 w-8 md:h-10 md:w-10 flex items-center justify-center shrink-0">
+                                                        <img 
+                                                            src="https://i.imgur.com/FeIVYGK.png" 
+                                                            alt="Bagong Pilipinas" 
+                                                            className="h-full w-full object-contain drop-shadow"
+                                                        />
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <span class="inline-block bg-emerald-100 text-[#127b66] text-[10px] font-bold uppercase px-2 py-0.5 rounded-md mb-2">Nutrition Committee Project</span>
-                                                    <h3 id="sbfp-info" class="text-xl font-bold text-slate-900 hover:text-emerald-800 transition-colors">
-                                                        School-Based Feeding Program (SBFP): Nutri-Instant Champorado Rollout
+
+                                                {/* Meta text and structured tagging stack matching image_6ebea1.png */}
+                                                <div className="flex-grow min-w-0">
+                                                    <span className="block text-[10px] md:text-xs text-amber-300 font-bold tracking-wide uppercase">
+                                                        {slide.dateText}
+                                                    </span>
+                                                    <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-extrabold text-white leading-tight whitespace-normal break-words drop-shadow-md">
+                                                        {slide.title}
                                                     </h3>
-                                                    <p class="text-slate-600 text-sm mt-2 leading-relaxed">
-                                                        The Tanjay City Schools Division, in close collaboration with the City Nutrition Council, has initiated the distribution of premium, fortified Nutri-Instant Champorado packets across public elementary schools in Negros Oriental. This program conforms with National Nutrition Council specifications and is fortified with Sangkap Pinoy vitamins to decrease local childhood wasting rates.
-                                                    </p>
+                                                    <span className="block text-[8px] md:text-[10px] text-slate-300 font-black tracking-widest uppercase mt-0.5">
+                                                        {slide.location}
+                                                    </span>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    {/* Authorised Portals Entry Card */}
-                                    <div class="bg-white rounded-2xl shadow-md border border-emerald-100 p-6 flex flex-col justify-between animate-fadeIn">
-                                        <div>
-                                            <h3 class="font-bold text-slate-800 text-lg border-b border-emerald-50 pb-3 mb-4 flex items-center gap-2">
-                                                <i class="fa-solid fa-user-shield text-[#1da187]"></i> Scholar & Staff Gateway
-                                            </h3>
-                                            <p class="text-xs text-slate-500 mb-6">Access restricted tracking portals, file upload nodes, and validation parameters.</p>
-                                            
-                                            <div class="space-y-3">
-                                                {currentUser ? (
-                                                    <button 
-                                                        onClick={() => setActiveTab("portal-home")}
-                                                        class="w-full text-left p-3.5 rounded-xl border border-emerald-100 bg-emerald-50/20 hover:border-emerald-300 transition-all flex items-center justify-between group"
-                                                    >
-                                                        <div class="flex items-center gap-3">
-                                                            <div class="p-2.5 bg-emerald-100 text-emerald-850 rounded-lg">
-                                                                <i class="fa-solid fa-user-check"></i>
-                                                            </div>
-                                                            <div>
-                                                                <span class="block font-bold text-sm text-slate-800">Enter Council Portal</span>
-                                                                <span class="block text-xs text-slate-500">Active session: {currentUser.role}</span>
-                                                            </div>
-                                                        </div>
-                                                        <i class="fa-solid fa-arrow-right text-emerald-600"></i>
-                                                    </button>
-                                                ) : (
-                                                    <button 
-                                                        onClick={() => setActiveTab("login")}
-                                                        class="w-full text-left p-3.5 rounded-xl border border-slate-100 hover:border-emerald-300 hover:bg-emerald-50/30 transition-all flex items-center justify-between group"
-                                                    >
-                                                        <div class="flex items-center gap-3">
-                                                            <div class="p-2.5 bg-emerald-50 text-[#1da187] rounded-lg group-hover:bg-emerald-100 transition-colors">
-                                                                <i class="fa-solid fa-shield-halved text-lg"></i>
-                                                            </div>
-                                                            <div>
-                                                                <span class="block font-bold text-sm text-slate-800">BNS & Officers Login</span>
-                                                                <span class="block text-xs text-slate-500">Upload reports & OPT+ materials</span>
-                                                            </div>
-                                                        </div>
-                                                        <i class="fa-solid fa-arrow-right text-slate-400 group-hover:text-emerald-800 transition-all group-hover:translate-x-1"></i>
-                                                    </button>
-                                                )}
                                             </div>
                                         </div>
+                                    ))}
 
-                                        <div class="mt-6 pt-6 border-t border-slate-100 bg-emerald-50/30 -mx-6 -mb-6 p-6 rounded-b-2xl">
-                                            <div class="flex items-center gap-3">
-                                                <i class="fa-solid fa-phone-volume text-[#1da187] text-xl animate-bounce"></i>
-                                                <div>
-                                                    <span class="block font-bold text-xs text-slate-500 uppercase tracking-wide">Nutrition Hotline Office</span>
-                                                    <span class="block font-extrabold text-[#1da187] text-base">(035) 415-3119</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <button 
+                                        onClick={() => setCurrentSlide(prev => (prev - 1 + carouselSlides.length) % carouselSlides.length)}
+                                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 text-white flex items-center justify-center z-30 transition-all opacity-0 group-hover:opacity-100"
+                                    >
+                                        <i className="fa-solid fa-chevron-left"></i>
+                                    </button>
+                                    <button 
+                                        onClick={() => setCurrentSlide(prev => (prev + 1) % carouselSlides.length)}
+                                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 text-white flex items-center justify-center z-30 transition-all opacity-0 group-hover:opacity-100"
+                                    >
+                                        <i className="fa-solid fa-chevron-right"></i>
+                                    </button>
+
+                                    <div className="absolute bottom-4 right-4 flex gap-2 z-35">
+                                        {carouselSlides.map((_, idx) => (
+                                            <button 
+                                                key={idx}
+                                                onClick={() => setCurrentSlide(idx)}
+                                                className={`w-2.5 h-2.5 rounded-full transition-all ${
+                                                    idx === currentSlide ? "bg-lime-400 scale-125" : "bg-white/50 hover:bg-white"
+                                                }`}
+                                            ></button>
+                                        ))}
                                     </div>
                                 </div>
 
-                                {/* Local Malunggay Highlight Section */}
-                                <div class="bg-gradient-to-r from-[#1da187] to-emerald-700 text-white rounded-2xl p-6 md:p-8 shadow-md relative overflow-hidden">
-                                    <div class="absolute -right-10 -bottom-10 opacity-15 text-9xl pointer-events-none">
-                                        <i class="fa-solid fa-leaf"></i>
-                                    </div>
-                                    <div class="max-w-3xl relative z-10" id="about-section">
-                                        <span class="bg-[#127b66]/60 text-lime-300 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                                            Local Sustainable Ingredient Spotlight
-                                        </span>
-                                        <h3 class="text-2xl md:text-3xl font-black mt-3 leading-tight">
-                                            The Power of Malunggay (Moringa) in the Visayan Kitchen
-                                        </h3>
-                                        <p class="mt-2 text-emerald-50 text-sm md:text-base leading-relaxed">
-                                            Sourced abundantly throughout Tanjay's rural barangays, Malunggay is a nutritional powerhouse high in Calcium, Iron, and Vitamin A. The City Nutrition Council strongly advises adding fresh leaves to classic dishes like <em>Utan Kinunot</em> (vegetables cooked with local fish and coconut milk).
+                                {/* Hero / Welcome Panel */}
+                                <div className="bg-white rounded-2xl p-6 md:p-8 border border-emerald-100 shadow-sm">
+                                    <div className="max-w-3xl">
+                                        <h2 className="text-xl md:text-2xl font-black text-slate-900 gov-title leading-tight">Welcome to the Official TCNC Action Portal</h2>
+                                        <p className="text-slate-600 text-xs md:text-sm mt-2 leading-relaxed">
+                                            The digital workspace for coordinate health-centered projects. We implement structured food safety nets, deploy emergency dietary campaigns, and provide our Barangay Scholars (BNS) with secure, centralized e-OPT tools to monitor childhood health in Negros Island Region.
                                         </p>
                                     </div>
                                 </div>
 
                                 {}
-                                <div id="opt-dashboard" class="bg-white rounded-2xl shadow-md border border-emerald-100 p-6">
-                                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-100 pb-5 mb-6 gap-4">
-                                        <div>
-                                            <h3 class="font-extrabold text-slate-900 text-xl tracking-tight">Operation Timbang Plus Quick Surveillance</h3>
-                                            <p class="text-xs text-slate-500">Public dashboard of nutrition metrics across monitored barangays in Tanjay.</p>
+                                {/* HIGH-FIDELITY CUSTOM VIDEO PLAYER: Built to precisely mirror the controls design from image_6bf8c7.jpg */}
+                                <div className="bg-white rounded-2xl p-6 md:p-8 border border-emerald-100 shadow-sm space-y-6">
+                                    <div className="text-center space-y-2 max-w-2xl mx-auto">
+                                        <h3 className="text-xl md:text-2xl font-black text-slate-900 gov-title">
+                                            Congratulations, Mayor Jose T. Orlino!
+                                        </h3>
+                                        <p className="text-xs md:text-sm text-[#1da187] font-semibold leading-relaxed">
+                                            On behalf of the Tanjay City Nutrition Council, we extend our warmest congratulations to you on your State of the City Address 2026.
+                                        </p>
+                                    </div>
+
+                                    <div 
+                                        className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden border-4 border-emerald-500/30 bg-black group shadow-inner"
+                                        onMouseMove={handleMouseMoveOnVideo}
+                                        onMouseLeave={() => videoPlaying && setShowVideoControls(false)}
+                                    >
+                                        <video 
+                                            ref={videoRef}
+                                            className="w-full h-full object-cover brightness-[0.8]"
+                                            src="https://docs.google.com/uc?export=download&id=1CAiS_F4FoUu9pQwRSwp22f-8hGRpzMf4"
+                                            autoPlay 
+                                            muted={videoMuted} 
+                                            playsInline 
+                                            loop
+                                            onTimeUpdate={handleVideoTimeUpdate}
+                                            onLoadedMetadata={handleVideoLoadedMetadata}
+                                            onClick={togglePlayVideo}
+                                        />
+                                        
+                                        {/* Static Brand Title Overlay on bottom left */}
+                                        <div className="absolute top-4 left-4 z-10 pointer-events-none">
+                                            <div className="bg-[#1da187] text-white font-extrabold text-[10px] uppercase tracking-widest px-3 py-1 rounded-full shadow-md">
+                                                LGU Official Broadcast
+                                            </div>
                                         </div>
-                                        <div class="flex items-center gap-2">
-                                            <label class="text-xs font-bold text-slate-600 shrink-0">Select Barangay:</label>
+
+                                        {/* Play/Pause Large Center Trigger */}
+                                        {!videoPlaying && (
+                                            <button 
+                                                onClick={togglePlayVideo}
+                                                className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-white/20 hover:bg-[#3ce6c3]/40 border-2 border-[#3ce6c3] text-white flex items-center justify-center transition-all duration-300 scale-100 hover:scale-110 z-20"
+                                            >
+                                                <i className="fa-solid fa-play text-2xl"></i>
+                                            </button>
+                                        )}
+
+                                        {/* Dynamic Control Bar conforming to green branding theme with dual-logos */}
+                                        <div className={`absolute bottom-0 left-0 right-0 bg-[#1da187] p-4 flex flex-col gap-2.5 transition-opacity duration-300 z-20 ${
+                                            showVideoControls ? "opacity-100" : "opacity-0 pointer-events-none"
+                                        }`}>
+                                            {/* Progress range seeker bar */}
+                                            <div className="relative flex items-center group w-full h-2">
+                                                <input 
+                                                    type="range"
+                                                    min="0"
+                                                    max={videoDuration || 100}
+                                                    value={videoTime}
+                                                    onChange={handleSeekChange}
+                                                    className="w-full h-1 bg-white/30 rounded-lg appearance-none cursor-pointer accent-[#3ce6c3] focus:outline-none"
+                                                />
+                                                
+                                                {/* Float duration pill mimicking image_6bf8c7.jpg timestamp */}
+                                                <div 
+                                                    className="absolute -top-8 bg-black/80 text-[#3ce6c3] text-[9px] font-mono font-bold px-2 py-0.5 rounded border border-white/10 shadow pointer-events-none -translate-x-1/2"
+                                                    style={{ 
+                                                        left: `${(videoDuration ? (videoTime / videoDuration) : 0) * 100}%` 
+                                                    }}
+                                                >
+                                                    {formatVideoTime(videoTime)}
+                                                </div>
+                                            </div>
+
+                                            {/* Navigation buttons strip alongside dual LGU & Nutrition Logos */}
+                                            <div className="flex items-center justify-between mt-1 text-white">
+                                                {/* Left Side: Tanjay Logo + Controls */}
+                                                <div className="flex items-center gap-3">
+                                                    <img 
+                                                        src="https://i.imgur.com/VRnnRFC.png" 
+                                                        alt="Tanjay LGU Seal" 
+                                                        className="h-8 w-8 object-contain drop-shadow"
+                                                    />
+                                                    <button onClick={togglePlayVideo} className="hover:text-[#3ce6c3] transition-colors focus:outline-none text-sm">
+                                                        <i className={`fa-solid ${videoPlaying ? "fa-pause" : "fa-play"}`}></i>
+                                                    </button>
+                                                    <span className="font-mono text-[10px] text-emerald-100">
+                                                        {formatVideoTime(videoTime)} / {formatVideoTime(videoDuration)}
+                                                    </span>
+                                                </div>
+
+                                                {/* Right Side: Media Controls + Nutrition Logo */}
+                                                <div className="flex items-center gap-3">
+                                                    <button onClick={toggleMuteVideo} className="hover:text-[#3ce6c3] transition-colors focus:outline-none text-sm">
+                                                        <i className={`fa-solid ${videoMuted ? "fa-volume-mute text-rose-300" : "fa-volume-up text-[#3ce6c3]"}`}></i>
+                                                    </button>
+                                                    <button onClick={() => window.open("https://www.facebook.com/tanjaycitynutrition", "_blank")} className="hover:text-[#3ce6c3] transition-colors focus:outline-none text-sm">
+                                                        <i className="fa-solid fa-expand"></i>
+                                                    </button>
+                                                    <div className="relative h-8 w-8 bg-white rounded-full p-0.5 flex items-center justify-center shadow-sm">
+                                                        <img 
+                                                            src="https://i.imgur.com/Paf57TV.png" 
+                                                            alt="Nutrition Council Seal" 
+                                                            className="h-full w-full object-contain"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Action button beneath the custom video block */}
+                                    <div className="text-center pt-2">
+                                        <button 
+                                            onClick={() => window.open("https://www.facebook.com/tanjaycitynutrition", "_blank")}
+                                            className="inline-flex items-center gap-2 bg-[#1da187] hover:bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider py-3.5 px-8 rounded-xl shadow-lg transition-all duration-300 hover:scale-105"
+                                        >
+                                            <i className="fa-brands fa-facebook"></i> Visit Our Official Facebook Page
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Quick Barangay Status Section */}
+                                <div className="bg-white rounded-2xl p-6 border border-[#1da187]/20 shadow-sm space-y-6">
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 gap-4">
+                                        <div>
+                                            <h3 className="font-extrabold text-slate-850 text-lg">e-OPT Quick Status Look</h3>
+                                            <span className="text-xs text-slate-400 font-medium">Select any barangay to inspect its primary nutritional indices</span>
+                                        </div>
+                                        <div>
                                             <select 
                                                 value={selectedBarangay} 
                                                 onChange={(e) => setSelectedBarangay(e.target.value)}
-                                                class="bg-emerald-50 text-emerald-900 text-xs font-bold px-3 py-2 rounded-xl border border-emerald-200 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
+                                                className="bg-slate-50 text-slate-808 text-xs font-bold px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none"
                                             >
                                                 {Object.keys(barangayNutritionData).map(bar => (
                                                     <option key={bar} value={bar}>{bar}</option>
@@ -565,95 +932,131 @@
                                         </div>
                                     </div>
 
-                                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                                        <div class="md:col-span-3 space-y-4">
-                                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                                <div class="p-4 bg-emerald-50/20 rounded-xl border border-emerald-100">
-                                                    <div class="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5">
+                                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                                        <div className="md:col-span-3 space-y-4">
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                <div className="p-4 bg-emerald-50/20 rounded-xl border border-[#1da187]/20">
+                                                    <div className="flex justify-between items-center text-xs text-slate-606 font-bold mb-1.5">
                                                         <span>Normal Weight / Height</span>
-                                                        <span class="text-[#1da187] font-extrabold text-sm">{barangayNutritionData[selectedBarangay].normal}%</span>
+                                                        <span className="text-[#1da187] font-extrabold text-sm">{barangayNutritionData[selectedBarangay].normal}%</span>
                                                     </div>
-                                                    <div class="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
-                                                        <div class="bg-[#1da187] h-full rounded-full transition-all duration-700" style={{ width: `${barangayNutritionData[selectedBarangay].normal}%` }}></div>
+                                                    <div className="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
+                                                        <div className="bg-[#1da187] h-full rounded-full transition-all duration-700" style={{ width: `${barangayNutritionData[selectedBarangay].normal}%` }}></div>
                                                     </div>
                                                 </div>
 
-                                                <div class="p-4 bg-emerald-50/20 rounded-xl border border-emerald-100">
-                                                    <div class="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5">
+                                                <div className="p-4 bg-emerald-50/20 rounded-xl border border-[#1da187]/20">
+                                                    <div className="flex justify-between items-center text-xs text-slate-606 font-bold mb-1.5">
                                                         <span>Underweight / Wasted</span>
-                                                        <span class="text-amber-700 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].underweight}%</span>
+                                                        <span className="text-amber-700 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].underweight}%</span>
                                                     </div>
-                                                    <div class="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
-                                                        <div class="bg-amber-500 h-full rounded-full transition-all duration-700" style={{ width: `${barangayNutritionData[selectedBarangay].underweight}%` }}></div>
+                                                    <div className="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
+                                                        <div className="bg-amber-500 h-full rounded-full transition-all duration-700" style={{ width: `${barangayNutritionData[selectedBarangay].underweight}%` }}></div>
                                                     </div>
                                                 </div>
 
-                                                <div class="p-4 bg-emerald-50/20 rounded-xl border border-emerald-100">
-                                                    <div class="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5">
+                                                <div className="p-4 bg-emerald-50/20 rounded-xl border border-[#1da187]/20">
+                                                    <div className="flex justify-between items-center text-xs text-slate-606 font-bold mb-1.5">
                                                         <span>Stunted Growth</span>
-                                                        <span class="text-rose-700 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].stunted}%</span>
+                                                        <span className="text-rose-700 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].stunted}%</span>
                                                     </div>
-                                                    <div class="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
-                                                        <div class="bg-rose-500 h-full rounded-full transition-all duration-700" style={{ width: `${barangayNutritionData[selectedBarangay].stunted}%` }}></div>
+                                                    <div className="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
+                                                        <div className="bg-rose-500 h-full rounded-full transition-all duration-700" style={{ width: `${barangayNutritionData[selectedBarangay].stunted}%` }}></div>
                                                     </div>
                                                 </div>
 
-                                                <div class="p-4 bg-emerald-50/20 rounded-xl border border-emerald-100">
-                                                    <div class="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5">
+                                                <div className="p-4 bg-emerald-50/20 rounded-xl border border-[#1da187]/20">
+                                                    <div className="flex justify-between items-center text-xs text-slate-606 font-bold mb-1.5">
                                                         <span>Overweight</span>
-                                                        <span class="text-teal-700 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].overweight}%</span>
+                                                        <span className="text-teal-700 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].overweight}%</span>
                                                     </div>
-                                                    <div class="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
-                                                        <div class="bg-teal-500 h-full rounded-full transition-all duration-700" style={{ width: `${barangayNutritionData[selectedBarangay].overweight}%` }}></div>
+                                                    <div className="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
+                                                        <div className="bg-teal-500 h-full rounded-full transition-all duration-700" style={{ width: `${barangayNutritionData[selectedBarangay].overweight}%` }}></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="bg-gradient-to-br from-emerald-900 to-green-950 text-white p-5 rounded-2xl flex flex-col justify-between">
+                                        <div className="bg-gradient-to-br from-[#1da187] to-emerald-950 text-white p-5 rounded-2xl flex flex-col justify-between shadow-md">
                                             <div>
-                                                <span class="text-lime-300 font-extrabold text-xs tracking-wider uppercase block">Barangay Profile</span>
-                                                <h4 class="text-xl font-bold text-white mt-1 border-b border-emerald-800/40 pb-2 mb-4">{selectedBarangay}</h4>
+                                                <span className="text-lime-300 font-extrabold text-xs tracking-wider uppercase block">Barangay Profile</span>
+                                                <h4 className="text-xl font-bold text-white mt-1 border-b border-emerald-800/30 pb-2 mb-4">{selectedBarangay}</h4>
                                                 <div>
-                                                    <span class="block text-[10px] text-emerald-200 uppercase tracking-wide">Total Weighed Children</span>
-                                                    <span class="block text-2xl font-black text-white">{barangayNutritionData[selectedBarangay].totalWeighed}</span>
+                                                    <span className="block text-[10px] text-emerald-200 uppercase tracking-wide">Total Weighed Children</span>
+                                                    <span className="block text-2xl font-black text-white">{barangayNutritionData[selectedBarangay].totalWeighed}</span>
                                                 </div>
                                             </div>
-                                            <button onClick={() => setActiveTab("dashboard")} class="mt-4 w-full text-center bg-white text-emerald-950 hover:bg-[#3ce6c3] hover:text-emerald-950 transition-all font-bold text-xs py-2.5 rounded-xl">
+                                            <button onClick={() => setActiveTab("dashboard")} className="mt-4 w-full text-center bg-white text-[#1da187] hover:bg-[#3ce6c3] hover:text-[#1da187] transition-all duration-300 font-bold text-xs py-2.5 rounded-xl shadow">
                                                 View Comprehensive Dashboard
                                             </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Mandate & Feeding Campaigns Info */}
+                                <div id="about-section" className="grid grid-cols-1 md:grid-cols-2 gap-8 scroll-mt-24">
+                                    <div className="bg-white p-6 rounded-2xl border border-emerald-100 shadow-sm space-y-4">
+                                        <h3 className="font-extrabold text-slate-800 text-lg flex items-center gap-2">
+                                            <i className="fa-solid fa-seedling text-[#1da187]"></i> Our Legal Mandate & Core Mission
+                                        </h3>
+                                        <p className="text-xs text-slate-650 leading-relaxed">
+                                            Following national directives from the Philippine National Nutrition Council (NNC), the Tanjay City Nutrition Council works closely with Barangay Health Workers (BHWs) and Barangay Nutrition Scholars (BNSs). Together, we operate localized intervention strategies to elevate physical development status metrics, deploy emergency dietary care packages, and foster multi-sectoral coordination.
+                                        </p>
+                                        <ul className="text-xs text-slate-600 space-y-2 border-t border-slate-100 pt-4">
+                                            <li className="flex items-start gap-2">
+                                                <i className="fa-solid fa-check text-[#1da187] mt-0.5"></i>
+                                                <span>Coordinating the implementation of local nutrition programs across all 24 barangays of Tanjay.</span>
+                                            </li>
+                                            <li className="flex items-start gap-2">
+                                                <i className="fa-solid fa-check text-[#1da187] mt-0.5"></i>
+                                                <span>Supervising the e-Operation Timbang Plus (e-OPT) annual census targeting children under five years old.</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div id="sbfp-info" className="bg-white p-6 rounded-2xl border border-emerald-100 shadow-sm space-y-4">
+                                        <h3 className="font-extrabold text-slate-800 text-lg flex items-center gap-2">
+                                            <i className="fa-solid fa-kitchen-set text-[#1da187]"></i> SBFP and Feeding Campaigns
+                                        </h3>
+                                        <p className="text-xs text-slate-655 leading-relaxed">
+                                            In partnership with local elementary schools and health units, the council maintains school-based feeding programs (SBFP). We serve nutritious, locally sourced hot meals such as fortified Nutri-Instant Champorado mixed with ground moringa powder and fresh, locally sourced fruits.
+                                        </p>
+                                        <div className="bg-[#1da187]/5 p-4 rounded-xl border border-[#1da187]/20">
+                                            <span className="text-[10px] uppercase font-black text-[#1da187] block">Latest Program Stat</span>
+                                            <span className="text-lg font-bold text-slate-800 block mt-1">2,400+ Children Reached</span>
+                                            <span className="text-[10px] text-slate-500 font-semibold">Currently receiving daily fortified hot meals and vitamins across public community centers.</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         )}
 
+                        {}
                         {/* Tab Content: Dashboard */}
                         {activeTab === "dashboard" && (
-                            <div class="space-y-8 animate-fadeIn">
-                                <div class="bg-white rounded-2xl shadow-md border border-emerald-100 p-6">
-                                    <div class="border-b border-slate-100 pb-4 mb-6">
-                                        <h2 class="text-2xl font-black text-slate-900 gov-title">Operation Timbang Plus (OPT+) Interactive Dashboard</h2>
-                                        <p class="text-sm text-slate-500 mt-1">
-                                            Public surveillance of malnutrition status metrics for children ages 0-59 months in Tanjay City.
+                            <div className="space-y-8 animate-fadeIn">
+                                <div className="bg-white rounded-2xl shadow-md border border-emerald-100 p-6">
+                                    <div className="border-b border-slate-100 pb-4 mb-6">
+                                        <h2 className="text-2xl font-black text-slate-900 gov-title">e-Operation Timbang Plus (e-OPT) Interactive Dashboard</h2>
+                                        <p className="text-sm text-slate-500 mt-1">
+                                            Public surveillance of malnutrition status metrics for children ages 0-59 months in Tanjay City, compiled from official e-OPT Excel registries.
                                         </p>
                                     </div>
 
-                                    {}
-                                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                                        <div class="space-y-4">
-                                            <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
-                                                <i class="fa-solid fa-map-location-dot text-[#1da187]"></i> Select Barangay
+                                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                        <div className="space-y-4">
+                                            <h3 className="font-bold text-slate-800 text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
+                                                <i className="fa-solid fa-map-location-dot text-[#1da187]"></i> Select Barangay
                                             </h3>
-                                            <div class="grid grid-cols-2 gap-2 max-h-[380px] overflow-y-auto pr-2">
+                                            <div className="grid grid-cols-2 gap-2 max-h-[380px] overflow-y-auto pr-2">
                                                 {Object.keys(barangayNutritionData).map(bar => (
                                                     <button 
                                                         key={bar}
                                                         onClick={() => setSelectedBarangay(bar)}
-                                                        class={`text-left p-3 rounded-xl border text-xs font-semibold transition-all ${
+                                                        className={`text-left p-3 rounded-xl border text-xs font-semibold transition-all duration-300 ${
                                                             selectedBarangay === bar 
                                                             ? 'bg-[#1da187] text-white border-transparent shadow-md' 
-                                                            : 'bg-white text-slate-700 border-slate-200 hover:bg-emerald-50'
+                                                            : 'bg-white text-slate-700 border-slate-200 hover:bg-[#1da187]/5'
                                                         }`}
                                                     >
                                                         {bar}
@@ -662,46 +1065,46 @@
                                             </div>
                                         </div>
 
-                                        <div class="lg:col-span-2 space-y-6">
-                                            <div class="bg-emerald-50/30 rounded-2xl p-6 border border-emerald-100">
-                                                <div class="flex items-center justify-between border-b border-emerald-200/50 pb-3 mb-6">
+                                        <div className="lg:col-span-2 space-y-6">
+                                            <div className="bg-emerald-50/30 rounded-2xl p-6 border border-[#1da187]/20">
+                                                <div className="flex items-center justify-between border-b border-[#1da187]/20 pb-3 mb-6">
                                                     <div>
-                                                        <h3 class="font-extrabold text-slate-800 text-lg">{selectedBarangay} Analytics</h3>
-                                                        <span class="text-xs text-slate-500">Current Monitoring Cycle: Q1 2026</span>
+                                                        <h3 className="font-extrabold text-slate-800 text-lg">{selectedBarangay} Analytics</h3>
+                                                        <span className="text-xs text-slate-500 font-semibold">Source: Consolidated e-OPT sheets Q1 2026</span>
                                                     </div>
-                                                    <span class="bg-[#1da187]/15 text-[#1da187] text-xs font-bold px-3 py-1 rounded-full border border-[#1da187]/20">
+                                                    <span className="bg-[#1da187]/15 text-[#1da187] text-xs font-bold px-3 py-1 rounded-full border border-[#1da187]/20">
                                                         {barangayNutritionData[selectedBarangay].totalWeighed} Children Weighed
                                                     </span>
                                                 </div>
 
-                                                <div class="space-y-6">
+                                                <div className="space-y-6">
                                                     <div>
-                                                        <div class="flex justify-between text-xs font-bold text-slate-700 mb-2">
+                                                        <div className="flex justify-between text-xs font-bold text-slate-705 mb-2">
                                                             <span>Normal Status (Goal: &gt;90%)</span>
-                                                            <span class="text-emerald-700 font-extrabold">{barangayNutritionData[selectedBarangay].normal}%</span>
+                                                            <span className="text-[#1da187] font-extrabold">{barangayNutritionData[selectedBarangay].normal}%</span>
                                                         </div>
-                                                        <div class="h-6 w-full bg-slate-200 rounded-lg overflow-hidden flex shadow-inner">
-                                                            <div class="bg-[#1da187] h-full rounded-l transition-all duration-500" style={{ width: `${barangayNutritionData[selectedBarangay].normal}%` }}></div>
+                                                        <div className="h-6 w-full bg-slate-200 rounded-lg overflow-hidden flex shadow-inner">
+                                                            <div className="bg-[#1da187] h-full rounded-l transition-all duration-500" style={{ width: `${barangayNutritionData[selectedBarangay].normal}%` }}></div>
                                                         </div>
                                                     </div>
 
                                                     <div>
-                                                        <div class="flex justify-between text-xs font-bold text-slate-700 mb-2">
+                                                        <div className="flex justify-between text-xs font-bold text-slate-705 mb-2">
                                                             <span>Wasted / Underweight</span>
-                                                            <span class="text-amber-700 font-extrabold">{barangayNutritionData[selectedBarangay].underweight}%</span>
+                                                            <span className="text-amber-700 font-extrabold">{barangayNutritionData[selectedBarangay].underweight}%</span>
                                                         </div>
-                                                        <div class="h-6 w-full bg-slate-200 rounded-lg overflow-hidden flex shadow-inner">
-                                                            <div class="bg-amber-500 h-full rounded-l transition-all duration-500" style={{ width: `${barangayNutritionData[selectedBarangay].underweight}%` }}></div>
+                                                        <div className="h-6 w-full bg-slate-200 rounded-lg overflow-hidden flex shadow-inner">
+                                                            <div className="bg-amber-500 h-full rounded-l transition-all duration-500" style={{ width: `${barangayNutritionData[selectedBarangay].underweight}%` }}></div>
                                                         </div>
                                                     </div>
 
                                                     <div>
-                                                        <div class="flex justify-between text-xs font-bold text-slate-700 mb-2">
+                                                        <div className="flex justify-between text-xs font-bold text-slate-705 mb-2">
                                                             <span>Stunting Rates (Chronic Malnutrition)</span>
-                                                            <span class="text-rose-700 font-extrabold">{barangayNutritionData[selectedBarangay].stunted}%</span>
+                                                            <span className="text-rose-700 font-extrabold">{barangayNutritionData[selectedBarangay].stunted}%</span>
                                                         </div>
-                                                        <div class="h-6 w-full bg-slate-200 rounded-lg overflow-hidden flex shadow-inner">
-                                                            <div class="bg-rose-500 h-full rounded-l transition-all duration-500" style={{ width: `${barangayNutritionData[selectedBarangay].stunted}%` }}></div>
+                                                        <div className="h-6 w-full bg-slate-200 rounded-lg overflow-hidden flex shadow-inner">
+                                                            <div className="bg-rose-500 h-full rounded-l transition-all duration-500" style={{ width: `${barangayNutritionData[selectedBarangay].stunted}%` }}></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -712,43 +1115,43 @@
                             </div>
                         )}
 
+                        {}
                         {/* Tab Content: BMI Calculator */}
                         {activeTab === "calculator" && (
-                            <div class="space-y-8 animate-fadeIn" id="bmi-tool">
-                                <div class="bg-white rounded-2xl shadow-md border border-emerald-100 p-6">
-                                    <div class="border-b border-slate-100 pb-4 mb-6">
-                                        <h2 class="text-2xl font-black text-slate-900 gov-title">BMI & Nutritional Status Assessment Tool</h2>
-                                        <p class="text-sm text-slate-500 mt-1">
+                            <div className="space-y-8 animate-fadeIn" id="bmi-tool">
+                                <div className="bg-white rounded-2xl shadow-md border border-emerald-100 p-6">
+                                    <div className="border-b border-slate-100 pb-4 mb-6">
+                                        <h2 className="text-2xl font-black text-slate-900 gov-title">BMI & Nutritional Status Assessment Tool</h2>
+                                        <p className="text-sm text-slate-500 mt-1">
                                             This tool calculates the Body Mass Index (BMI) of individuals and recommends specific, healthy dietary structures leveraging Tanjay's local sustainable resources.
                                         </p>
                                     </div>
 
-                                    {}
-                                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                                        <div class="bg-emerald-50/20 p-6 rounded-2xl border border-emerald-100">
-                                            <h3 class="font-extrabold text-slate-800 text-base mb-4 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-scale-balanced text-[#1da187]"></i> Assessment Metrics
+                                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                        <div className="bg-emerald-50/20 p-6 rounded-2xl border border-emerald-100">
+                                            <h3 className="font-extrabold text-slate-800 text-base mb-4 flex items-center gap-1.5">
+                                                <i className="fa-solid fa-scale-balanced text-[#1da187]"></i> Assessment Metrics
                                             </h3>
                                             
-                                            <form onSubmit={handleBmiCalculation} class="space-y-4">
+                                            <form onSubmit={handleBmiCalculation} className="space-y-4">
                                                 <div>
-                                                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1.5">Age (Years)</label>
+                                                    <label className="block text-xs font-bold text-slate-650 uppercase mb-1.5">Age (Years)</label>
                                                     <input 
                                                         type="number" 
                                                         value={calculatorAge}
                                                         onChange={(e) => setCalculatorAge(e.target.value)}
                                                         placeholder="e.g. 28" 
-                                                        class="w-full bg-white text-slate-800 text-sm px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
+                                                        className="w-full bg-white text-slate-808 text-sm px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
                                                     />
                                                 </div>
 
                                                 <div>
-                                                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1.5">Gender</label>
-                                                    <div class="grid grid-cols-2 gap-2">
+                                                    <label className="block text-xs font-bold text-slate-650 uppercase mb-1.5">Gender</label>
+                                                    <div className="grid grid-cols-2 gap-2">
                                                         <button 
                                                             type="button" 
                                                             onClick={() => setCalculatorGender("male")}
-                                                            class={`py-2 px-4 rounded-xl border text-xs font-bold transition-all ${
+                                                            className={`py-2 px-4 rounded-xl border text-xs font-bold transition-all ${
                                                                 calculatorGender === 'male' ? 'bg-[#1da187] text-white border-transparent shadow-sm' : 'bg-white text-slate-700 border-slate-200'
                                                             }`}
                                                         >
@@ -757,7 +1160,7 @@
                                                         <button 
                                                             type="button" 
                                                             onClick={() => setCalculatorGender("female")}
-                                                            class={`py-2 px-4 rounded-xl border text-xs font-bold transition-all ${
+                                                            className={`py-2 px-4 rounded-xl border text-xs font-bold transition-all ${
                                                                 calculatorGender === 'female' ? 'bg-[#1da187] text-white border-transparent shadow-sm' : 'bg-white text-slate-700 border-slate-200'
                                                             }`}
                                                         >
@@ -767,75 +1170,75 @@
                                                 </div>
 
                                                 <div>
-                                                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1.5">Height (cm)</label>
+                                                    <label className="block text-xs font-bold text-slate-650 uppercase mb-1.5">Height (cm)</label>
                                                     <input 
                                                         type="number" 
                                                         value={calculatorHeight}
                                                         onChange={(e) => setCalculatorHeight(e.target.value)}
                                                         placeholder="e.g. 165" 
-                                                        class="w-full bg-white text-slate-800 text-sm px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
+                                                        className="w-full bg-white text-slate-805 text-sm px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
                                                     />
                                                 </div>
 
                                                 <div>
-                                                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1.5">Weight (kg)</label>
+                                                    <label className="block text-xs font-bold text-slate-655 uppercase mb-1.5">Weight (kg)</label>
                                                     <input 
                                                         type="number" 
                                                         value={calculatorWeight}
                                                         onChange={(e) => setCalculatorWeight(e.target.value)}
                                                         placeholder="e.g. 62" 
-                                                        class="w-full bg-white text-slate-800 text-sm px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
+                                                        className="w-full bg-white text-slate-805 text-sm px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
                                                     />
                                                 </div>
 
-                                                <button type="submit" class="w-full bg-[#1da187] hover:bg-[#127b66] text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-md mt-2 flex items-center justify-center gap-2">
-                                                    <i class="fa-solid fa-square-poll-vertical"></i> Calculate Health Index
+                                                <button type="submit" className="w-full bg-[#1da187] hover:bg-emerald-600 text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-md mt-2 flex items-center justify-center gap-2">
+                                                    <i className="fa-solid fa-square-poll-vertical"></i> Calculate Health Index
                                                 </button>
                                             </form>
                                         </div>
 
-                                        <div class="lg:col-span-2 space-y-6">
+                                        <div className="lg:col-span-2 space-y-6">
                                             {bmiResult ? (
-                                                <div class="bg-white rounded-2xl border border-emerald-100 overflow-hidden shadow-sm">
-                                                    <div class="bg-gradient-to-r from-[#1da187] to-[#127b66] text-white px-6 py-4">
-                                                        <h3 class="font-extrabold text-base flex items-center gap-2">
-                                                            <i class="fa-solid fa-clipboard-check text-lime-300"></i> Analysis Completed
+                                                <div className="bg-white rounded-2xl border border-emerald-100 overflow-hidden shadow-sm">
+                                                    <div className="bg-gradient-to-r from-[#1da187] to-emerald-600 text-white px-6 py-4">
+                                                        <h3 className="font-extrabold text-base flex items-center gap-2">
+                                                            <i className="fa-solid fa-clipboard-check text-lime-300"></i> Analysis Completed
                                                         </h3>
                                                     </div>
-                                                    <div class="p-6 space-y-6">
-                                                        <div class="flex flex-col sm:flex-row items-center gap-6">
-                                                            <div class="w-28 h-28 rounded-full border-4 border-lime-400 bg-emerald-50 flex flex-col items-center justify-center shrink-0">
-                                                                <span class="text-2xl font-black text-emerald-900">{bmiResult.bmi}</span>
-                                                                <span class="text-[9px] font-bold text-slate-400 tracking-wider uppercase">Your BMI</span>
+                                                    <div className="p-6 space-y-6">
+                                                        <div className="flex flex-col sm:flex-row items-center gap-6">
+                                                            <div className="w-28 h-28 rounded-full border-4 border-[#3ce6c3] bg-emerald-50 flex flex-col items-center justify-center shrink-0">
+                                                                <span className="text-2xl font-black text-emerald-950">{bmiResult.bmi}</span>
+                                                                <span className="text-[9px] font-bold text-slate-400 tracking-wider uppercase">Your BMI</span>
                                                             </div>
                                                             <div>
-                                                                <span class={`inline-block px-3 py-1 rounded-full text-xs font-bold border ${bmiResult.colorClass}`}>
+                                                                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border ${bmiResult.colorClass}`}>
                                                                     {bmiResult.classification}
                                                                 </span>
-                                                                <h4 class="font-extrabold text-slate-800 mt-2 text-lg">Nutritional Guideline Analysis</h4>
-                                                                <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                                                                <h4 className="font-extrabold text-slate-850 mt-2 text-lg">Nutritional Guideline Analysis</h4>
+                                                                <p className="text-sm text-slate-650 mt-1 leading-relaxed">
                                                                     Your results fall under standard categories established by the Food and Nutrition Research Institute (FNRI).
                                                                 </p>
                                                             </div>
                                                         </div>
 
-                                                        <div class="bg-emerald-50/50 p-5 rounded-2xl border border-emerald-100">
-                                                            <h5 class="font-bold text-emerald-900 text-sm flex items-center gap-1.5">
-                                                                <i class="fa-solid fa-leaf text-emerald-600"></i> Localized Dietary Recommendation:
+                                                        <div className="bg-emerald-50/50 p-5 rounded-2xl border border-emerald-100">
+                                                            <h5 className="font-bold text-emerald-900 text-sm flex items-center gap-1.5">
+                                                                <i className="fa-solid fa-leaf text-[#1da187]"></i> Localized Dietary Recommendation:
                                                             </h5>
-                                                            <p class="text-xs text-slate-700 mt-2 leading-relaxed">
+                                                            <p className="text-xs text-slate-700 mt-2 leading-relaxed">
                                                                 {bmiResult.advice}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             ) : (
-                                                <div class="h-full min-h-[320px] rounded-2xl border-2 border-dashed border-emerald-200 flex flex-col items-center justify-center text-center p-8 bg-emerald-50/20">
-                                                    <div class="p-4 bg-white rounded-full shadow-sm mb-4">
-                                                        <i class="fa-solid fa-calculator text-4xl text-[#1da187]"></i>
+                                                <div className="h-full min-h-[320px] rounded-2xl border-2 border-dashed border-[#1da187]/20 flex flex-col items-center justify-center text-center p-8 bg-emerald-50/20">
+                                                    <div className="p-4 bg-white rounded-full shadow-sm mb-4">
+                                                        <i className="fa-solid fa-calculator text-4xl text-[#1da187]"></i>
                                                     </div>
-                                                    <h3 class="font-bold text-slate-700 text-base">Awaiting Metrics</h3>
-                                                    <p class="text-xs text-slate-400 mt-1 max-w-sm">
+                                                    <h3 className="font-bold text-slate-700 text-base">Awaiting Metrics</h3>
+                                                    <p className="text-xs text-slate-400 mt-1 max-w-sm">
                                                         Input your age, gender, height, and weight in the side panel to receive a customized nutritional recommendation based on local crops.
                                                     </p>
                                                 </div>
@@ -846,79 +1249,79 @@
                             </div>
                         )}
 
+                        {}
                         {/* Tab Content: Transparency & Resources */}
                         {activeTab === "resources" && (
-                            <div class="space-y-8 animate-fadeIn">
-                                <div class="bg-white rounded-2xl shadow-md border border-emerald-100 p-6">
-                                    <div class="border-b border-slate-100 pb-4 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div className="space-y-8 animate-fadeIn">
+                                <div className="bg-white rounded-2xl shadow-md border border-emerald-100 p-6">
+                                    <div className="border-b border-slate-100 pb-4 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
                                         <div>
-                                            <h2 class="text-2xl font-black text-slate-900 gov-title">Transparency Seal & Document Portal</h2>
-                                            <p class="text-sm text-slate-500 mt-1">
-                                                Public access to official budgets, guidelines, and executive orders regarding Tanjay City Nutrition programs.
+                                            <h2 className="text-2xl font-black text-slate-900 gov-title">Transparency Seal & Document Portal</h2>
+                                            <p className="text-sm text-[#1da187] mt-1">
+                                                Public access to official budgets, guidelines, and e-OPT templates regarding Tanjay City Nutrition programs.
                                             </p>
                                         </div>
-                                        <div class="relative w-full md:w-80 shrink-0">
-                                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400"></i>
+                                        <div className="relative w-full md:w-80 shrink-0">
+                                            <i className="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400"></i>
                                             <input 
                                                 type="text" 
                                                 value={searchQuery}
                                                 onChange={(e) => setSearchQuery(e.target.value)}
                                                 placeholder="Search documents..." 
-                                                class="w-full bg-slate-50 text-slate-800 text-xs pl-10 pr-4 py-3 rounded-xl border border-emerald-200 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
+                                                className="w-full bg-slate-50 text-slate-808 text-xs pl-10 pr-4 py-3 rounded-xl border border-[#1da187]/20 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
                                             />
                                         </div>
                                     </div>
 
-                                    {}
-                                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                                        <div class="bg-emerald-50/20 rounded-2xl p-5 border border-emerald-100 space-y-4">
-                                            <div class="bg-white p-3.5 rounded-xl shadow-sm border border-emerald-100 text-center space-y-3">
-                                                <div class="w-24 h-24 mx-auto bg-emerald-900 rounded-full p-1 border-4 border-lime-400 flex items-center justify-center">
-                                                    <div class="text-white flex flex-col items-center">
-                                                        <i class="fa-solid fa-fingerprint text-3xl text-emerald-300"></i>
-                                                        <span class="text-[8px] font-black tracking-widest uppercase">TRANSPARENCY</span>
+                                    <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                                        <div className="bg-emerald-50/20 rounded-2xl p-5 border border-emerald-100 space-y-4">
+                                            <div className="bg-white p-3.5 rounded-xl shadow-sm border border-emerald-100 text-center space-y-3">
+                                                <div className="w-24 h-24 mx-auto bg-emerald-900 rounded-full p-1 border-4 border-[#3ce6c3] flex items-center justify-center">
+                                                    <div className="text-white flex flex-col items-center">
+                                                        <i className="fa-solid fa-fingerprint text-3xl text-[#3ce6c3]"></i>
+                                                        <span className="text-[8px] font-black tracking-widest uppercase">TRANSPARENCY</span>
                                                     </div>
                                                 </div>
-                                                <h4 class="font-extrabold text-xs text-emerald-900 uppercase tracking-wider">Transparency Seal Compliance</h4>
-                                                <p class="text-[10px] text-slate-500 leading-relaxed">
+                                                <h4 className="font-extrabold text-xs text-emerald-900 uppercase tracking-wider">Transparency Seal Compliance</h4>
+                                                <p className="text-[10px] text-slate-500 leading-relaxed">
                                                     Compliance with Sec. 93 of the General Appropriations Act, disclosing the council's budgets.
                                                 </p>
                                             </div>
                                         </div>
 
-                                        <div class="lg:col-span-3 space-y-4">
+                                        <div className="lg:col-span-3 space-y-4">
                                             {filteredResources.length > 0 ? (
-                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                     {filteredResources.map((res, index) => (
-                                                        <div key={index} class="bg-white p-5 rounded-2xl border border-emerald-100 shadow-sm flex flex-col justify-between hover:border-[#1da187] hover:shadow-md transition-all">
+                                                        <div key={index} className="bg-white p-5 rounded-2xl border border-emerald-100 shadow-sm flex flex-col justify-between hover:border-[#1da187] hover:shadow-md transition-all">
                                                             <div>
-                                                                <div class="flex justify-between items-start gap-4">
-                                                                    <span class="inline-block bg-emerald-50 text-emerald-800 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-md">
+                                                                <div className="flex justify-between items-start gap-4">
+                                                                    <span className="inline-block bg-emerald-50 text-emerald-800 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-md">
                                                                         {res.category}
                                                                     </span>
-                                                                    <span class="text-[10px] text-slate-400 font-bold">{res.type} ({res.size})</span>
+                                                                    <span className="text-[10px] text-slate-400 font-bold">{res.type} ({res.size})</span>
                                                                 </div>
-                                                                <h4 class="font-bold text-slate-800 text-sm mt-2">{res.title}</h4>
-                                                                <span class="block text-[10px] text-slate-400 mt-1">Uploaded: {res.date}</span>
+                                                                <h4 className="font-bold text-slate-800 text-sm mt-2">{res.title}</h4>
+                                                                <span className="block text-[10px] text-slate-400 mt-1">Uploaded: {res.date}</span>
                                                             </div>
 
-                                                            <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
-                                                                <span class="text-[10px] text-[#1da187] font-bold"><i class="fa-solid fa-circle-check"></i> Public Document</span>
+                                                            <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+                                                                <span className="text-[10px] text-[#1da187] font-bold"><i className="fa-solid fa-circle-check"></i> Public Document</span>
                                                                 <button 
                                                                     onClick={() => showNotification(`Downloading "${res.title}"...`)}
-                                                                    class="text-[#1da187] hover:text-[#127b66] font-bold text-xs flex items-center gap-1 bg-[#1da187]/10 hover:bg-[#1da187]/20 px-3 py-1.5 rounded-lg transition-colors"
+                                                                    className="text-[#1da187] hover:text-[#1da187] font-bold text-xs flex items-center gap-1 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg transition-colors"
                                                                 >
-                                                                    <i class="fa-solid fa-download"></i> Download
+                                                                    <i className="fa-solid fa-download"></i> Download
                                                                 </button>
                                                             </div>
                                                         </div>
                                                     ))}
                                                 </div>
                                             ) : (
-                                                <div class="text-center p-12 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl">
-                                                    <i class="fa-solid fa-file-excel text-4xl text-slate-300 mb-2"></i>
-                                                    <h4 class="font-bold text-slate-700 text-sm">No documents found</h4>
-                                                    <p class="text-xs text-slate-400 mt-1">Try modifying your search filter query.</p>
+                                                <div className="text-center p-12 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl">
+                                                    <i className="fa-solid fa-file-excel text-4xl text-slate-300 mb-2"></i>
+                                                    <h4 className="font-bold text-slate-700 text-sm">No documents found</h4>
+                                                    <p className="text-xs text-slate-400 mt-1">Try modifying your search filter query.</p>
                                                 </div>
                                             )}
                                         </div>
@@ -927,111 +1330,150 @@
                             </div>
                         )}
 
-                        {/* Tab Content: Login */}
+                        {}
+                        {/* Tab Content: wp-login.php Redesign */}
                         {activeTab === "login" && (
-                            <div class="max-w-md mx-auto animate-fadeIn">
-                                <div class="bg-white rounded-2xl shadow-xl border border-emerald-100 overflow-hidden">
-                                    <div class="bg-[#1da187] text-white p-6 text-center">
-                                        <i class="fa-solid fa-shield-halved text-4xl text-lime-300 mb-2"></i>
-                                        <h2 class="text-xl font-bold">Authorized Council Login</h2>
-                                        <p class="text-xs text-emerald-100 mt-1">For BNS, Nutritionists, and City Health Officers of Tanjay</p>
+                            <div className="w-full flex flex-col items-center justify-center py-10 animate-fadeIn bg-slate-100/40 rounded-3xl border border-slate-200/50">
+                                
+                                <div className="flex flex-col items-center text-center mb-6 max-w-sm px-4">
+                                    <div className="flex items-center gap-4 justify-center mb-3 p-3">
+                                        <img 
+                                            src="https://i.imgur.com/VRnnRFC.png" 
+                                            alt="Tanjay LGU Seal" 
+                                            className="w-14 h-14 object-contain" 
+                                            onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/64x64/115e59/ffffff?text=LGU"; }}
+                                        />
+                                        <div className="relative">
+                                            <div className="absolute inset-0 bg-white rounded-full"></div>
+                                            <img 
+                                                src="https://i.imgur.com/Paf57TV.png" 
+                                                alt="TCNC Seal" 
+                                                className="w-14 h-14 object-contain relative z-10 p-0.5" 
+                                                onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/64x64/115e59/ffffff?text=CNC"; }}
+                                            />
+                                        </div>
                                     </div>
+                                    <h2 className="text-lg font-black tracking-tight text-slate-800 gov-title uppercase leading-tight">
+                                        TCNC Authorized Portal
+                                    </h2>
+                                    <p className="text-[10px] text-[#1da187] font-semibold tracking-wide mt-1">
+                                        Tanjay City Nutrition Council • Secure Console
+                                    </p>
+                                </div>
+
+                                <div className="w-full max-w-sm bg-white rounded-lg shadow-xl border border-slate-200/85 p-6 space-y-5">
                                     
-                                    {}
-                                    <div class="p-6">
-                                        <form onSubmit={handleLogin} class="space-y-4">
-                                            <div>
-                                                <label class="block text-xs font-bold text-slate-600 uppercase mb-1.5">Official Staff ID Code</label>
-                                                <div class="relative">
-                                                    <i class="fa-solid fa-id-badge absolute left-3 top-3.5 text-slate-400"></i>
-                                                    <input 
-                                                        type="text" 
-                                                        value={loginId}
-                                                        onChange={(e) => setLoginId(e.target.value)}
-                                                        placeholder="e.g. TNJ-BNS-04" 
-                                                        class="w-full bg-slate-50 text-slate-800 text-sm pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
-                                                        required
-                                                    />
-                                                </div>
-                                            </div>
+                                    <form onSubmit={handleFormLogin} className="space-y-4">
+                                        <div>
+                                            <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">
+                                                Username or Email Address
+                                            </label>
+                                            <input 
+                                                type="email" 
+                                                value={loginEmail}
+                                                onChange={(e) => setLoginEmail(e.target.value)}
+                                                placeholder="e.g. chanlabechan@gmail.com" 
+                                                className="w-full bg-slate-50 text-slate-800 text-sm px-3 py-2.5 rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#1da187] focus:border-[#1da187] transition-all"
+                                                required
+                                            />
+                                        </div>
 
-                                            <div>
-                                                <label class="block text-xs font-bold text-slate-600 uppercase mb-1.5">Security Password</label>
-                                                <div class="relative">
-                                                    <i class="fa-solid fa-key absolute left-3 top-3.5 text-slate-400"></i>
-                                                    <input 
-                                                        type="password" 
-                                                        value={loginPassword}
-                                                        onChange={(e) => setLoginPassword(e.target.value)}
-                                                        placeholder="••••••••" 
-                                                        class="w-full bg-slate-50 text-slate-800 text-sm pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
-                                                        required
-                                                    />
-                                                </div>
-                                            </div>
+                                        <div>
+                                            <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">
+                                                Password
+                                            </label>
+                                            <input 
+                                                type="password" 
+                                                value={loginPassword}
+                                                onChange={(e) => setLoginPassword(e.target.value)}
+                                                placeholder="••••••••" 
+                                                className="w-full bg-slate-50 text-slate-808 text-sm px-3 py-2.5 rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#1da187] focus:border-[#1da187] transition-all"
+                                                required
+                                            />
+                                        </div>
 
+                                        <div className="flex items-center justify-between pt-1">
+                                            <label className="flex items-center text-xs text-slate-500 select-none font-medium cursor-pointer">
+                                                <input type="checkbox" className="mr-1.5 accent-emerald-600 rounded" />
+                                                Remember Me
+                                            </label>
+                                            
                                             <button 
                                                 type="submit" 
-                                                class="w-full bg-[#1da187] hover:bg-[#127b66] text-white font-bold py-3 px-4 rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
+                                                disabled={isSubmittingAuth}
+                                                className="bg-[#1da187] hover:bg-emerald-650 text-white font-bold text-xs px-5 py-2.5 rounded-md shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-[#1da187] flex items-center gap-1.5"
                                             >
-                                                <i class="fa-solid fa-right-to-bracket"></i> Sign In to Portal
+                                                {isSubmittingAuth ? (
+                                                    <><i className="fa-solid fa-spinner animate-spin"></i> Authenticating...</>
+                                                ) : (
+                                                    <><i className="fa-solid fa-arrow-right-to-bracket"></i> Log In</>
+                                                )}
                                             </button>
-                                        </form>
+                                        </div>
+                                    </form>
 
-                                    </div>
                                 </div>
+
+                                <div className="w-full max-w-sm mt-4 px-2 flex flex-col gap-2 text-xs text-slate-500 font-semibold tracking-wide">
+                                    <button 
+                                        onClick={() => setActiveTab("home")}
+                                        className="text-left hover:text-[#1da187] transition-colors focus:outline-none"
+                                    >
+                                        ← Go to Tanjay City Nutrition Council
+                                    </button>
+                                </div>
+
                             </div>
                         )}
 
+                        {}
                         {/* Tab Content: Logged-in Council Portal */}
                         {activeTab === "portal-home" && currentUser && (
-                            <div class="space-y-8 animate-fadeIn">
+                            <div className="space-y-8 animate-fadeIn">
                                 
-                                {/* Welcome Header widget */}
-                                <div class="bg-gradient-to-r from-emerald-950 to-green-900 text-white p-6 rounded-2xl shadow-lg border border-emerald-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-14 h-14 bg-lime-500/20 text-lime-450 border border-lime-500/30 rounded-xl flex items-center justify-center text-2xl">
-                                            <i class="fa-solid fa-user-shield"></i>
+                                <div className="bg-gradient-to-r from-emerald-955 to-[#1da187] text-white p-6 rounded-2xl shadow-lg border border-emerald-805 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-14 h-14 bg-[#3ce6c3]/20 text-[#3ce6c3] border border-[#3ce6c3]/30 rounded-xl flex items-center justify-center text-2xl">
+                                            <i className="fa-solid fa-user-shield"></i>
                                         </div>
                                         <div>
-                                            <div class="flex items-center gap-2">
-                                                <span class="bg-lime-400 text-emerald-950 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md">
+                                            <div className="flex items-center gap-2">
+                                                <span className="bg-[#3ce6c3] text-emerald-955 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md">
                                                     {currentUser.role}
                                                 </span>
-                                                <span class="text-emerald-300 text-xs">Logged In</span>
+                                                <span className="text-emerald-300 text-xs font-semibold">Workspace Authenticated</span>
                                             </div>
-                                            <h3 class="font-extrabold text-xl mt-0.5">{currentUser.name}</h3>
-                                            <p class="text-xs text-slate-300 mt-1">
+                                            <h3 className="font-extrabold text-xl mt-0.5">{currentUser.name}</h3>
+                                            <p className="text-xs text-slate-300 mt-1">
                                                 {currentUser.barangay ? `Assigned to Barangay: ${currentUser.barangay}` : `${currentUser.title}`}
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="flex gap-2">
-                                        <button onClick={handleLogout} class="bg-rose-950/60 hover:bg-rose-900 text-rose-200 border border-rose-800/40 font-bold text-xs px-4 py-2 rounded-xl transition-all flex items-center gap-1">
-                                            <i class="fa-solid fa-sign-out"></i> Logout Session
+                                    <div className="flex gap-2">
+                                        <button onClick={handleLogout} className="bg-rose-900/60 hover:bg-rose-900 text-rose-200 border border-rose-800/40 font-bold text-xs px-4 py-2 rounded-xl transition-all flex items-center gap-1">
+                                            <i className="fa-solid fa-sign-out"></i> Logout Session
                                         </button>
                                     </div>
                                 </div>
 
-                                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                                     
                                     {/* Left Panel: Upload New File / Data */}
-                                    <div class="space-y-6">
-                                        <div class="bg-white rounded-2xl border border-emerald-100 p-5 shadow-sm">
-                                            <h4 class="font-bold text-slate-800 text-base mb-4 flex items-center gap-1.5 border-b border-slate-100 pb-2">
-                                                <i class="fa-solid fa-cloud-arrow-up text-[#1da187]"></i> Document Upload Node
+                                    <div className="space-y-6">
+                                        <div className="bg-white rounded-2xl border border-emerald-100 p-5 shadow-sm">
+                                            <h4 className="font-bold text-slate-800 text-base mb-4 flex items-center gap-1.5 border-b border-slate-100 pb-2">
+                                                <i className="fa-solid fa-cloud-arrow-up text-[#1da187]"></i> Document Upload Node
                                             </h4>
 
-                                            {}
-                                            <form onSubmit={handleFileUploadSubmit} class="space-y-4">
+                                            <form onSubmit={handleFileUploadSubmit} className="space-y-4">
                                                 <div>
-                                                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1.5">Document Class</label>
+                                                    <label className="block text-xs font-bold text-slate-605 uppercase mb-1.5">Document Class</label>
                                                     <select 
                                                         value={fileCategory} 
                                                         onChange={(e) => setFileCategory(e.target.value)}
-                                                        class="w-full bg-slate-50 text-slate-800 text-xs font-bold px-3 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
+                                                        className="w-full bg-slate-50 text-slate-800 text-xs font-bold px-3 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
                                                     >
-                                                        <option value="OPT+ Scanned Sheet">OPT+ Scanned Weighing Sheet (PDF/Image)</option>
+                                                        <option value="e-OPT Spreadsheet (.xlsx)">e-OPT Spreadsheet (.xlsx)</option>
                                                         <option value="Feeding Logs">School Feeding Log Sheet</option>
                                                         <option value="Census Document">Community Census / Survey Update</option>
                                                         <option value="Executive Clearance">Barangay Executive Sign-off</option>
@@ -1039,107 +1481,110 @@
                                                 </div>
 
                                                 <div>
-                                                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1.5">Choose Document File</label>
-                                                    <div class="border-2 border-dashed border-emerald-200 hover:border-emerald-400 bg-emerald-50/10 hover:bg-emerald-50/40 rounded-xl p-6 text-center cursor-pointer relative transition-all">
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Choose Document File</label>
+                                                    <div className="border-2 border-dashed border-[#1da187]/20 hover:border-[#1da187]/50 bg-emerald-50/10 hover:bg-emerald-50/40 rounded-xl p-6 text-center cursor-pointer relative transition-all">
                                                         <input 
                                                             type="file" 
                                                             ref={fileInputRef}
                                                             onChange={handleFileChange}
-                                                            class="absolute inset-0 opacity-0 cursor-pointer"
+                                                            className="absolute inset-0 opacity-0 cursor-pointer"
                                                         />
-                                                        <i class="fa-solid fa-file-pdf text-3xl text-emerald-600 mb-2"></i>
-                                                        <p class="text-xs text-slate-700 font-bold block">
+                                                        <i className="fa-solid fa-file-excel text-3xl text-[#1da187] mb-2"></i>
+                                                        <p className="text-xs text-slate-700 font-bold block">
                                                             {selectedFileToUpload ? selectedFileToUpload.name : "Select or drag & drop file"}
                                                         </p>
-                                                        <span class="text-[9px] text-slate-400 mt-1 block">Maximum upload size: 10MB (PDF, XLSX, DOCX, PNG)</span>
+                                                        <span className="text-[9px] text-slate-400 mt-1 block">Maximum upload size: 10MB (Excel e-OPT files)</span>
                                                     </div>
                                                 </div>
 
-                                                <button type="submit" class="w-full bg-[#1da187] hover:bg-[#127b66] text-white font-bold text-xs py-3 rounded-xl transition-all flex items-center justify-center gap-1">
-                                                    <i class="fa-solid fa-paper-plane"></i> Transmit to City Council
+                                                <button type="submit" className="w-full bg-[#1da187] hover:bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl transition-all flex items-center justify-center gap-1">
+                                                    <i className="fa-solid fa-paper-plane"></i> Transmit to City Council
                                                 </button>
                                             </form>
                                         </div>
 
-                                        {/* Security activity tracker */}
-                                        <div class="bg-white rounded-2xl border border-emerald-100 p-5 shadow-sm">
-                                            <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-3 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-fingerprint text-slate-400"></i> Security Activity Logs
-                                            </h4>
-                                            <div class="space-y-3 font-mono text-[10px]">
-                                                {sysLogs.map((log, i) => (
-                                                    <div key={i} class="p-2 bg-slate-50 rounded-lg border border-slate-100 flex justify-between gap-2">
-                                                        <div>
-                                                            <span class="text-slate-400">[{log.time}]</span> <strong>{log.user}</strong>: <span class="text-slate-600">{log.action}</span>
+                                        {/* Security activity tracker - HIDDEN FOR BNS */}
+                                        {currentUser.role !== "BNS" && (
+                                            <div className="bg-white rounded-2xl border border-emerald-100 p-5 shadow-sm animate-fadeIn">
+                                                <h4 className="font-bold text-slate-800 text-xs uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                                                    <i className="fa-solid fa-fingerprint text-slate-400"></i> Security Activity Logs
+                                                </h4>
+                                                <div className="space-y-3 font-mono text-[10px]">
+                                                    {sysLogs.map((log, i) => (
+                                                        <div key={i} className="p-2 bg-slate-50 rounded-lg border border-slate-100 flex justify-between gap-2">
+                                                            <div>
+                                                                <span className="text-slate-400">[{log.time}]</span> <strong>{log.user}</strong>: <span className="text-slate-600">{log.action}</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                ))}
+                                                    ))}
+                                                </div>
                                             </div>
-                                        </div>
+                                        )}
                                     </div>
 
-                                    {/* Middle & Right Panel: Directory, Upload Center Review */}
-                                    <div class="lg:col-span-2 space-y-6">
+                                    {/* Middle & Right Panel */}
+                                    <div className="lg:col-span-2 space-y-6">
                                         
-                                        {}
-                                        <div class="bg-white rounded-2xl border border-emerald-100 p-5 shadow-sm">
-                                            <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
-                                                <h4 class="font-bold text-slate-800 text-base flex items-center gap-1.5">
-                                                    <i class="fa-solid fa-list-check text-[#1da187]"></i> Submitted Document Registry
+                                        {/* Real-time registry table */}
+                                        <div className="bg-white rounded-2xl border border-emerald-100 p-5 shadow-sm">
+                                            <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                                                <h4 className="font-bold text-slate-800 text-base flex items-center gap-1.5">
+                                                    <i className="fa-solid fa-list-check text-[#1da187]"></i> Submitted Document Registry
                                                 </h4>
-                                                <span class="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-0.5 rounded-full">
-                                                    {uploadedFiles.length} Records
+                                                <span className="bg-slate-100 text-slate-605 text-xs font-bold px-2 py-0.5 rounded-full">
+                                                    {uploadedFiles.filter(doc => currentUser.role !== "BNS" || doc.uploadedBy === currentUser.name).length} Records
                                                 </span>
                                             </div>
 
-                                            <div class="space-y-4 max-h-[480px] overflow-y-auto pr-2">
-                                                {uploadedFiles.map((doc) => (
-                                                    <div key={doc.id} class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 transition-all">
-                                                        <div class="space-y-1">
-                                                            <div class="flex items-center gap-2">
-                                                                <span class="font-mono text-xs font-bold text-emerald-800">{doc.id}</span>
-                                                                <span class={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                                                                    doc.status === 'Approved' ? 'bg-emerald-100 text-emerald-850' :
-                                                                    doc.status === 'Pending' ? 'bg-amber-100 text-amber-800' : 'bg-red-105 text-red-800'
+                                            <div className="space-y-4 max-h-[480px] overflow-y-auto pr-2">
+                                                {uploadedFiles
+                                                    .filter(doc => currentUser.role !== "BNS" || doc.uploadedBy === currentUser.name)
+                                                    .map((doc) => (
+                                                    <div key={doc.id} className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 transition-all">
+                                                        <div className="space-y-1">
+                                                            <div className="flex items-center gap-2">
+                                                                <span className="font-mono text-xs font-bold text-[#1da187]">{doc.id}</span>
+                                                                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                                                                    doc.status === 'Approved' ? 'bg-emerald-100 text-emerald-900' :
+                                                                    doc.status === 'Pending' ? 'bg-amber-100 text-amber-900' : 'bg-red-100 text-red-800'
                                                                 }`}>
                                                                     {doc.status}
                                                                 </span>
-                                                                <span class="text-[9px] bg-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded-md">{doc.type}</span>
+                                                                <span className="text-[9px] bg-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded-md">{doc.type}</span>
                                                             </div>
-                                                            <h5 class="font-bold text-slate-800 text-sm">{doc.fileName}</h5>
-                                                            <p class="text-[10px] text-slate-500">
+                                                            <h5 className="font-bold text-slate-800 text-sm">{doc.fileName}</h5>
+                                                            <p className="text-[10px] text-slate-500">
                                                                 Transmitted by: <strong>{doc.uploadedBy}</strong> on {doc.date} ({doc.size})
                                                             </p>
                                                             {doc.feedback && (
-                                                                <div class="mt-2 text-[11px] bg-white p-2 rounded-lg border border-slate-100 text-slate-600">
-                                                                    <i class="fa-solid fa-comment-dots text-[#1da187]"></i> Review Note: <em>{doc.feedback}</em>
+                                                                <div className="mt-2 text-[11px] bg-white p-2 rounded-lg border border-slate-100 text-slate-600">
+                                                                    <i className="fa-solid fa-comment-dots text-[#1da187]"></i> Review Note: <em>{doc.feedback}</em>
                                                                 </div>
                                                             )}
                                                         </div>
 
-                                                        {/* Role actions logic */}
-                                                        <div class="flex gap-2 shrink-0 w-full md:w-auto justify-end">
+                                                        <div className="flex gap-2 shrink-0 w-full md:w-auto justify-end">
                                                             {doc.status === "Pending" && (currentUser.role === "Nutritionist" || currentUser.role === "Officer") ? (
-                                                                <div class="flex gap-1.5 w-full md:w-auto">
+                                                                <div className="flex gap-1.5 w-full md:w-auto">
                                                                     <button 
                                                                         onClick={() => handleApproveDocument(doc.id, "Validated after check.")}
-                                                                        class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-1.5 px-3 rounded-lg transition-colors flex items-center gap-1"
+                                                                        className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-1.5 px-3 rounded-lg transition-colors flex items-center gap-1"
                                                                     >
-                                                                        <i class="fa-solid fa-check"></i> Approve
+                                                                        <i className="fa-solid fa-check"></i> Approve
                                                                     </button>
                                                                     <button 
                                                                         onClick={() => handleRejectDocument(doc.id, "Requires signature in bottom corner.")}
-                                                                        class="bg-red-600 hover:bg-red-700 text-white font-bold text-xs py-1.5 px-3 rounded-lg transition-colors flex items-center gap-1"
+                                                                        className="bg-red-650 hover:bg-red-700 text-white font-bold text-xs py-1.5 px-3 rounded-lg transition-colors flex items-center gap-1"
                                                                     >
-                                                                        <i class="fa-solid fa-xmark"></i> Send Back
+                                                                        <i className="fa-solid fa-xmark"></i> Send Back
                                                                     </button>
                                                                 </div>
                                                             ) : (
                                                                 <button 
-                                                                    onClick={() => showNotification(`Simulating file download for ${doc.fileName}...`)}
-                                                                    class="text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 font-bold text-xs py-1.5 px-3 rounded-lg flex items-center gap-1 transition-all"
+                                                                    onClick={() => showNotification(`Opening e-OPT record...`)}
+                                                                    className="text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 font-bold text-xs py-1.5 px-3 rounded-lg flex items-center gap-1 transition-all"
                                                                 >
-                                                                    <i class="fa-solid fa-download"></i> Download
+                                                                    <i className="fa-solid fa-download"></i> Download File
                                                                 </button>
                                                             )}
                                                         </div>
@@ -1148,69 +1593,69 @@
                                             </div>
                                         </div>
 
-                                        {}
+                                        {/* Weekly Nutrition plan card - Nutritionist Access */}
                                         {currentUser.role === "Nutritionist" && (
-                                            <div class="bg-gradient-to-br from-emerald-50/50 to-emerald-50 rounded-2xl border border-emerald-100 p-5 shadow-sm">
-                                                <h4 class="font-bold text-emerald-950 text-base mb-3 flex items-center gap-1.5">
-                                                    <i class="fa-solid fa-kitchen-set text-emerald-600"></i> Localized Menu Planner (Nutritionist Hub)
+                                            <div className="bg-gradient-to-br from-[#1da187]/5 to-[#1da187]/10 rounded-2xl border border-emerald-100 p-5 shadow-sm animate-fadeIn">
+                                                <h4 className="font-bold text-emerald-900 text-base mb-3 flex items-center gap-1.5">
+                                                    <i className="fa-solid fa-kitchen-set text-[#1da187]"></i> Localized Menu Planner (Nutritionist Hub)
                                                 </h4>
                                                 
-                                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                                    <div class="space-y-2">
-                                                        <label class="block text-xs font-bold text-slate-600 uppercase">Target Feeding Day</label>
+                                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                                    <div className="space-y-2">
+                                                        <label className="block text-xs font-bold text-slate-600 uppercase">Target Feeding Day</label>
                                                         <select 
                                                             value={selectedDay} 
                                                             onChange={(e) => setSelectedDay(e.target.value)}
-                                                            class="w-full bg-white text-slate-800 text-xs font-bold px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none"
+                                                            className="w-full bg-white text-slate-800 text-xs font-bold px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none"
                                                         >
                                                             {Object.keys(menuPlan).map(day => (
                                                                 <option key={day} value={day}>{day}</option>
                                                             ))}
                                                         </select>
                                                     </div>
-                                                    <div class="md:col-span-2 space-y-2">
-                                                        <label class="block text-xs font-bold text-slate-600 uppercase">Weekly Dish Formulation</label>
-                                                        <form onSubmit={handleUpdateMenu} class="flex gap-2">
+                                                    <div className="md:col-span-2 space-y-2">
+                                                        <label className="block text-xs font-bold text-slate-600 uppercase">Weekly Dish Formulation</label>
+                                                        <form onSubmit={handleUpdateMenu} className="flex gap-2">
                                                             <input 
                                                                 type="text" 
                                                                 value={editMenuInput}
                                                                 onChange={(e) => setEditMenuInput(e.target.value)}
                                                                 placeholder={menuPlan[selectedDay]}
-                                                                class="flex-grow bg-white text-slate-800 text-xs px-3 py-2 rounded-xl border border-slate-200"
+                                                                className="flex-grow bg-white text-slate-800 text-xs px-3 py-2 rounded-xl border border-slate-200"
                                                                 required
                                                             />
-                                                            <button type="submit" class="bg-[#1da187] hover:bg-[#127b66] text-white font-bold text-xs px-4 py-2 rounded-xl transition-all">
+                                                            <button type="submit" className="bg-[#1da187] hover:bg-emerald-655 text-white font-bold text-xs px-4 py-2 rounded-xl transition-all">
                                                                 Update
                                                             </button>
                                                         </form>
                                                     </div>
                                                 </div>
 
-                                                <div class="mt-4 p-3.5 bg-white rounded-xl border border-emerald-100">
-                                                    <span class="text-[10px] uppercase font-black text-slate-400 block tracking-wider">Current Menu for {selectedDay}:</span>
-                                                    <p class="text-xs text-emerald-900 font-bold mt-1">"{menuPlan[selectedDay]}"</p>
+                                                <div className="mt-4 p-3.5 bg-white rounded-xl border border-[#1da187]/10">
+                                                    <span className="text-[10px] uppercase font-black text-slate-400 block tracking-wider">Current Menu for {selectedDay}:</span>
+                                                    <p className="text-xs text-emerald-900 font-bold mt-1">"{menuPlan[selectedDay]}"</p>
                                                 </div>
                                             </div>
                                         )}
 
-                                        {}
+                                        {/* Staff Directory Panel - Officer Access */}
                                         {currentUser.role === "Officer" && (
-                                            <div class="bg-white rounded-2xl border border-emerald-100 p-5 shadow-sm">
-                                                <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
-                                                    <h4 class="font-bold text-slate-800 text-base flex items-center gap-1.5">
-                                                        <i class="fa-solid fa-users text-[#1da187]"></i> Council Personnel Directory ({staffList.length})
+                                            <div className="bg-white rounded-2xl border border-emerald-100 p-5 shadow-sm animate-fadeIn">
+                                                <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                                                    <h4 className="font-bold text-slate-800 text-base flex items-center gap-1.5">
+                                                        <i className="fa-solid fa-users text-[#1da187]"></i> Whitelisted Directory ({staffList.length})
                                                     </h4>
                                                 </div>
 
-                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[300px] overflow-y-auto pr-2">
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[300px] overflow-y-auto pr-2">
                                                     {staffList.map((staff) => (
-                                                        <div key={staff.id} class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between gap-2">
+                                                        <div key={staff.id} className="p-3 bg-slate-50 rounded-xl border border-slate-202 flex items-center justify-between gap-2">
                                                             <div>
-                                                                <span class="text-[9px] uppercase font-bold text-slate-400">{staff.role} {staff.barangay ? `• ${staff.barangay}` : ''}</span>
-                                                                <h5 class="font-bold text-slate-800 text-xs">{staff.name}</h5>
-                                                                <span class="block text-[10px] font-mono text-slate-500 mt-0.5">{staff.id}</span>
+                                                                <span className="text-[9px] uppercase font-bold text-slate-400">{staff.role} {staff.barangay ? `• ${staff.barangay}` : ''}</span>
+                                                                <h5 className="font-bold text-slate-800 text-xs">{staff.name}</h5>
+                                                                <span className="block text-[10px] font-mono text-[#1da187] mt-0.5">{staff.email}</span>
                                                             </div>
-                                                            <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">
+                                                            <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-[#1da187]/20">
                                                                 {staff.status}
                                                             </span>
                                                         </div>
@@ -1218,23 +1663,6 @@
                                                 </div>
                                             </div>
                                         )}
-
-                                        {/* Technical Integration Advice Box */}
-                                        <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-950 leading-relaxed">
-                                            <h5 class="font-bold mb-1"><i class="fa-solid fa-code-merge"></i> Google Apps Script (GAS) Integration Notice</h5>
-                                            <p class="mb-2">
-                                                This portal is ready to bind to your <strong>Google Apps Script backend</strong>. When deploying to GAS, you can map the file input above to save directly inside your **Google Drive** using the script below inside your `Code.gs`:
-                                            </p>
-                                            <pre class="bg-slate-900 text-slate-300 p-3 rounded-lg font-mono text-[9px] overflow-x-auto">
-{`function uploadFileToGoogleDrive(base64Data, fileName) {
-  var folder = DriveApp.getFolderById("YOUR_TARGET_FOLDER_ID");
-  var decoded = Utilities.base64Decode(base64Data);
-  var blob = Utilities.newBlob(decoded, "application/pdf", fileName);
-  var file = folder.createFile(blob);
-  return file.getUrl();
-}`}
-                                            </pre>
-                                        </div>
 
                                     </div>
                                 </div>
@@ -1244,36 +1672,47 @@
                     </main>
 
                     {}
-                    <footer class="bg-emerald-950 text-white mt-12 border-t-4 border-[#3ce6c3]">
-                        <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div class="space-y-4">
-                                <h4 class="font-extrabold text-base text-lime-400 uppercase tracking-widest">Tanjay City CNC</h4>
-                                <p class="text-xs text-emerald-200 leading-relaxed">
-                                    The central health policy agency under the Office of the City Mayor dedicated to upgrading childhood nutrition, height growth parameters, and school-feeding program transparency in Tanjay City.
+                    {/* FOOTER STRIP WITH WHITE FONTS */}
+                    <footer className="bg-emerald-950 text-white mt-12 border-t-4 border-[#3ce6c3]">
+                        <div className="max-w-[1700px] mx-auto px-4 xl:px-12 2xl:px-16 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div className="space-y-4">
+                                <h4 className="font-extrabold text-base text-white uppercase tracking-widest">Tanjay City CNC</h4>
+                                <p className="text-xs text-white/90 leading-relaxed">
+                                    The central health policy agency under the Office of the City Mayor dedicated to upgrading childhood nutrition, stunting management parameters, and school-feeding program transparency in Tanjay City.
                                 </p>
                             </div>
 
-                            <div class="space-y-4">
-                                <h4 class="font-extrabold text-sm text-lime-100 uppercase tracking-wide">Government Quick Links</h4>
-                                <ul class="text-xs text-emerald-200 space-y-2">
-                                    <li><a href="https://www.gov.ph" target="_blank" class="hover:underline hover:text-lime-300"><i class="fa-solid fa-angle-right mr-1"></i> National Government Portal (GOV.PH)</a></li>
-                                    <li><a href="https://www.depedtanjay.ph" target="_blank" class="hover:underline hover:text-lime-300"><i class="fa-solid fa-angle-right mr-1"></i> DepEd Division of Tanjay City</a></li>
+                            <div className="space-y-4">
+                                <h4 className="font-extrabold text-sm text-white uppercase tracking-wide">Government Quick Links</h4>
+                                <ul className="text-xs text-white/90 space-y-2">
+                                    <li><a href="https://www.gov.ph" target="_blank" className="hover:underline text-white hover:text-[#3ce6c3]"><i className="fa-solid fa-angle-right mr-1"></i> National Government Portal (GOV.PH)</a></li>
+                                    <li><a href="https://www.depedtanjay.ph" target="_blank" className="hover:underline text-white hover:text-[#3ce6c3]"><i className="fa-solid fa-angle-right mr-1"></i> DepEd Division of Tanjay City</a></li>
                                 </ul>
                             </div>
 
-                            <div class="space-y-4">
-                                <h4 class="font-extrabold text-sm text-lime-100 uppercase tracking-wide">Contact Council Desk</h4>
-                                <div class="text-xs text-emerald-200 space-y-3">
-                                    <p class="flex items-center gap-2"><i class="fa-solid fa-phone text-lime-400"></i> Hotline: (035) 415-3119</p>
-                                    <p class="flex items-center gap-2"><i class="fa-solid fa-envelope text-lime-400"></i> nutrition@tanjay.gov.ph</p>
+                            <div className="space-y-4">
+                                <h4 className="font-extrabold text-sm text-white uppercase tracking-wide">Contact Council Desk</h4>
+                                <div className="text-xs text-white/90 space-y-3">
+                                    <p className="flex items-center gap-2"><i className="fa-solid fa-phone text-white"></i> Hotline: (035) 415-3119</p>
+                                    <p className="flex items-center gap-2"><i className="fa-solid fa-envelope text-white"></i> nutrition@tanjay.gov.ph</p>
+                                    <p className="flex items-center gap-2">
+                                        <a 
+                                            href="https://www.facebook.com/tanjaycitynutrition" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer" 
+                                            className="inline-flex items-center gap-1.5 hover:text-[#3ce6c3] text-white hover:underline transition-colors"
+                                        >
+                                            <i className="fa-brands fa-facebook text-white text-sm"></i> Facebook: Tanjay City Nutrition Page
+                                        </a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="bg-emerald-900/40 py-4 text-xs text-center text-emerald-300 border-t border-emerald-900/60">
-                            <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
-                                <p>© 2026 Tanjay City Nutrition Council. All Rights Reserved.</p>
-                                <p class="text-[10px] text-emerald-400">Built in accordance with national government accessibility and security protocols.</p>
+                        <div className="bg-emerald-900/40 py-4 text-xs text-center text-white/85 border-t border-emerald-900/60">
+                            <div className="max-w-[1700px] mx-auto px-4 xl:px-12 2xl:px-16 flex flex-col sm:flex-row justify-between items-center gap-2">
+                                <p className="text-white">© 2026 Tanjay City Nutrition Council. All Rights Reserved.</p>
+                                <p className="text-[10px] text-white/75">Built in accordance with national government accessibility and security protocols.</p>
                             </div>
                         </div>
                     </footer>
