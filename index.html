@@ -74,7 +74,7 @@
         }
     </style>
 </head>
-<body class="bg-emerald-50/20 text-slate-800 flex flex-col min-h-screen">
+<body class="bg-[#f8fafc] text-slate-800 flex flex-col min-h-screen">
 
     <div id="root" class="flex flex-col min-h-screen"></div>
 
@@ -121,7 +121,7 @@
         ];
 
         const initialStaffDirectory = [
-            { id: "TNJ-OFF-10", name: "Chan Labechan", role: "Officer", title: "Tanjay City Nutrition Action Officer (CNAO)", email: "chanlabechan@gmail.com", mobile: "0917-415-3119", status: "Active" },
+            { id: "TNJ-OFF-10", name: "Stephy Detty", role: "Officer", title: "Tanjay City Nutrition Action Officer (CNAO)", email: "stephydetty14@gmail.com", mobile: "0917-415-3119", status: "Active" },
             { id: "TNJ-BNS-30", name: "Christian Labe", role: "BNS", title: "Barangay Nutrition Scholar (PD 1569)", barangay: "Poblacion IV", email: "christian.labe@caremin.com", mobile: "0995-102-3490", status: "Active" }
         ];
 
@@ -137,6 +137,9 @@
             const [activeTab, setActiveTab] = useState("home");
             const [searchQuery, setSearchQuery] = useState("");
             const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+
+            // Access Statement Modal State
+            const [showAccessStatementModal, setShowAccessStatementModal] = useState(false);
 
             // UI Enhancement States
             const [fontSizeScale, setFontSizeScale] = useState(1);
@@ -230,7 +233,7 @@
             });
 
             const [sysLogs, setSysLogs] = useState([
-                { time: "10:14 AM", user: "Chan Labechan (CNAO)", action: "Accessed Policy Compliance Dashboard" },
+                { time: "10:14 AM", user: "Stephy Detty (CNAO)", action: "Accessed Policy Compliance Dashboard" },
                 { time: "09:30 AM", user: "Christian Labe (BNS)", action: "Validated e-OPT Data under PD 1569 mandate" }
             ]);
 
@@ -341,9 +344,9 @@
                         const cleanEmail = loginEmail.toLowerCase().trim();
                         
                         const sandboxDatabase = {
-                            "chanlabechan@gmail.com": {
+                            "stephydetty14@gmail.com": {
                                 password: "officer123",
-                                profile: { id: "TNJ-OFF-10", name: "Chan Labechan", role: "Officer", title: "Tanjay City Nutrition Action Officer (CNAO)" }
+                                profile: { id: "TNJ-OFF-10", name: "Stephy Detty", role: "Officer", title: "Tanjay City Nutrition Action Officer (CNAO)" }
                             },
                             "christian.labe@caremin.com": {
                                 password: "bns123",
@@ -604,7 +607,6 @@
                 showNotification("Weekly Menu updated under NNC nutrient standards!", "success");
             };
 
-            // Enhanced statutory disclosures matching RA 11936/12314 Transparency Seal Guidelines
             const resources = [
                 { title: "NNC e-OPT Local Level Tool (500-child capacity standard)", category: "NNC Official Templates", date: "2026-01-12", size: "1.8 MB", type: "XLSX" },
                 { title: "NNC e-OPT Local Level Tool (1000-child capacity standard)", category: "NNC Official Templates", date: "2026-01-12", size: "2.4 MB", type: "XLSX" },
@@ -633,7 +635,7 @@
                         }`}>
                             <i className="fa-solid fa-circle-check mr-3 text-lg text-[#1da187]"></i>
                             <span className="text-sm font-medium">{notification.message}</span>
-                            <button onClick={() => setNotification(null)} className="ml-auto text-slate-400 hover:text-slate-650">
+                            <button onClick={() => setNotification(null)} className="ml-auto text-slate-400 hover:text-slate-655">
                                 <i className="fa-solid fa-xmark"></i>
                             </button>
                         </div>
@@ -690,8 +692,46 @@
                         </div>
                     )}
 
-                    {/* TOP NAVBAR */}
-                    <nav className="bg-[#1da187] text-white py-4 shadow-md sticky top-0 z-40">
+                    {/* WCAG 2.0 / DOST-ICT ACCESSIBILITY STATEMENT MODAL */}
+                    {showAccessStatementModal && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fadeIn">
+                            <div className="bg-white rounded-3xl max-w-2xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
+                                <div className="bg-[#1da187] text-white p-6">
+                                    <h3 className="font-extrabold text-lg flex items-center gap-2 gov-title">
+                                        <i className="fa-solid fa-universal-access"></i> Web Accessibility Statement
+                                    </h3>
+                                    <span className="text-xs text-emerald-100 font-semibold block mt-1">WCAG 2.0 Level AA Standards Compliance</span>
+                                </div>
+                                <div className="p-6 overflow-y-auto space-y-4 text-xs text-slate-650 leading-relaxed">
+                                    <p>
+                                        The <strong>Tanjay City Nutrition Council Action Portal</strong> is committed to ensuring digital accessibility for individuals with disabilities. We continually improve the user experience for everyone, applying relevant accessibility guidelines under DICT directives and international WCAG principles.
+                                    </p>
+                                    <div className="bg-emerald-50/40 p-4 rounded-xl border border-[#1da187]/20 space-y-2">
+                                        <h4 className="font-bold text-[#1da187] uppercase">Accessibility Features Active</h4>
+                                        <ul className="list-disc pl-4 space-y-1">
+                                            <li><strong>High Contrast Mode:</strong> Increases element and text visibility ratios across dashboards and calculator screens.</li>
+                                            <li><strong>Flexible Font Scaler:</strong> Allows seamless scaling of site text for low-vision visitors.</li>
+                                            <li><strong>Skip Links:</strong> Keyboard navigation bypass mechanisms to skip repetitive headers directly into active forms and content.</li>
+                                        </ul>
+                                    </div>
+                                    <p>
+                                        We welcome your feedback on the accessibility of this platform. If you encounter any barriers or need screen-reader accommodations regarding e-OPT data retrieval, please coordinate directly with our local DPO desk.
+                                    </p>
+                                </div>
+                                <div className="bg-slate-50 p-4 border-t border-slate-200 flex justify-end shrink-0">
+                                    <button 
+                                        onClick={() => setShowAccessStatementModal(false)}
+                                        className="bg-[#1da187] hover:bg-emerald-700 text-white font-bold text-xs py-2 px-5 rounded-xl shadow-sm"
+                                    >
+                                        Close Statement
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* TOP NAVBAR (Exactly modeled from image_fee1c0.jpg - STRICTLY NON-STICKY RELATIVE) */}
+                    <nav className="bg-[#1da187] text-white py-3 shadow-md z-40 relative">
                         <div className="max-w-[1700px] mx-auto px-4 xl:px-12 2xl:px-16 flex flex-wrap items-center justify-center gap-6 md:gap-8 font-medium text-sm">
                             <button 
                                 onClick={() => { setActiveTab("home"); setAboutDropdownOpen(false); }} 
@@ -776,73 +816,72 @@
                         </div>
                     </nav>
 
-                    {/* BRANDING LOGO CONTAINER */}
+                    {/* BRANDING LOGO CONTAINER (Exactly modeled after image_fee1c0.jpg - STRICTLY RELATIVE) */}
                     <div 
-                        className="relative border-b border-slate-200 py-12 overflow-hidden bg-cover bg-center md:bg-right bg-no-repeat"
+                        className="relative border-b border-slate-200 py-16 overflow-hidden bg-cover bg-center md:bg-right bg-no-repeat shadow-inner z-10"
                         style={{ backgroundImage: "url('https://i.imgur.com/Yk63RAR.png')" }}
                     >
+                        {/* Subtle background dim overlay */}
+                        <div className="absolute inset-0 bg-black/5"></div>
+
                         <div className="max-w-[1700px] mx-auto px-4 xl:px-12 2xl:px-16 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                            <div className="flex items-center gap-4 text-center md:text-left max-w-2xl">
-                                <div className="flex items-center gap-3 shrink-0">
+                            <div className="flex items-center gap-5 text-center md:text-left max-w-4xl">
+                                {/* Logos Side-by-Side as seen in image_fee1c0.jpg */}
+                                <div className="flex items-center gap-4 shrink-0">
                                     <img 
                                         src="https://i.imgur.com/VRnnRFC.png" 
                                         alt="Tanjay City Logo" 
-                                        className="w-16 h-16 object-contain" 
+                                        className="w-16 h-16 object-contain drop-shadow-md" 
                                         onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/64x64/115e59/ffffff?text=LGU"; }}
                                     />
-                                    <div className="relative">
-                                        <div className="absolute inset-0 bg-white rounded-full p-0.5 shadow-sm"></div>
-                                        <img 
-                                            src="https://i.imgur.com/Paf57TV.png" 
-                                            alt="Nutrition Council Logo" 
-                                            className="w-16 h-16 object-contain relative z-10 p-0.5" 
-                                            onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/64x64/115e59/ffffff?text=CNC"; }}
-                                        />
-                                    </div>
+                                    <img 
+                                        src="https://i.imgur.com/Paf57TV.png" 
+                                        alt="Nutrition Council Logo" 
+                                        className="w-16 h-16 object-contain drop-shadow-md" 
+                                        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/64x64/115e59/ffffff?text=CNC"; }}
+                                    />
                                 </div>
-                                <div>
+                                <div className="text-left">
+                                    {/* Black title with crisp white backdrop shadow exactly matching image_fee1c0.jpg */}
                                     <h1 
-                                        className="text-xl md:text-2xl font-black tracking-tight gov-title leading-tight text-slate-900"
-                                        style={{ textShadow: '0 2px 15px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,1)' }}
+                                        className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900 gov-title leading-tight"
+                                        style={{ textShadow: '2px 2px 8px rgba(255,255,255,0.95), -2px -2px 8px rgba(255,255,255,0.95), 2px -2px 8px rgba(255,255,255,0.95), -2px 2px 8px rgba(255,255,255,0.95)' }}
                                     >
                                         Tanjay City Nutrition Council
                                     </h1>
                                     <p 
-                                        className="text-xs md:text-sm text-emerald-950 font-extrabold tracking-wide mt-1"
-                                        style={{ textShadow: '0 2px 15px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,1)' }}
+                                        className="text-xs md:text-sm text-slate-800 font-semibold tracking-wide mt-1"
+                                        style={{ textShadow: '1px 1px 6px rgba(255,255,255,0.95), -1px -1px 6px rgba(255,255,255,0.95)' }}
                                     >
                                         Negros Island Region • National Nutrition Council Compliance Portal
                                     </p>
                                 </div>
                             </div>
-                            
-                            <div className="flex items-center gap-3">
-                                {currentUser && (
-                                    <div className="flex items-center gap-2 text-xs text-emerald-955 bg-white/80 backdrop-blur-xs px-4 py-2.5 rounded-xl border border-emerald-100/40 shadow-sm animate-fadeIn font-bold">
-                                        <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                                        <span>User: <strong>{currentUser.name}</strong></span>
-                                        <button onClick={handleLogout} className="text-rose-700 hover:text-rose-900 font-black ml-2 underline focus:outline-none">
-                                            Logout
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
                         </div>
                     </div>
 
                     {/* MAIN CONTENTS FEED */}
-                    <main className="flex-grow max-w-[1700px] w-full mx-auto px-4 xl:px-12 2xl:px-16 py-8">
+                    <main id="main-content" className="flex-grow max-w-[1700px] w-full mx-auto px-4 xl:px-12 2xl:px-16 py-6 relative">
 
                         {activeTab === "home" && (
                             <div className="space-y-8 animate-fadeIn">
                                 
-                                {/* DYNAMIC ANNOUNCEMENT BAR */}
-                                <div className="bg-[#1da187] text-white px-4 py-3 rounded-2xl shadow-sm flex items-center justify-between gap-4 text-xs font-semibold">
-                                    <div className="flex items-center gap-2">
-                                        <span className="bg-lime-400 text-[#1da187] px-2 py-0.5 rounded text-[10px] font-extrabold uppercase animate-pulse">Advisory</span>
-                                        <span>PPAN 2023-2028 Data Cycle: e-Operation Timbang Plus (e-OPT) registers are open. Ensure compliance with PD 1569 Barangay Scholar structures.</span>
+                                {/* DYNAMIC ANNOUNCEMENT BAR (Strictly styled after image_fee1c0.jpg) */}
+                                <div className="bg-[#1da187] text-white px-5 py-3.5 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-semibold">
+                                    <div className="flex items-center gap-3">
+                                        <span className="bg-[#8cd824] text-[#115e59] px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wide shrink-0">
+                                            Advisory
+                                        </span>
+                                        <span className="leading-relaxed">
+                                            PPAN 2023-2028 Data Cycle: e-Operation Timbang Plus (e-OPT) registers are open. Ensure compliance with PD 1569 Barangay Scholar structures.
+                                        </span>
                                     </div>
-                                    <button onClick={() => showNotification("NNC Guidelines loaded.", "success")} className="underline hover:text-lime-200 shrink-0">Read Mandates</button>
+                                    <button 
+                                        onClick={() => showNotification("NNC Guidelines loaded.", "success")} 
+                                        className="underline hover:text-lime-200 shrink-0 uppercase tracking-wider text-[11px] font-bold animate-pulse"
+                                    >
+                                        Read Mandates
+                                    </button>
                                 </div>
 
                                 {/* AUTOMATIC PICTURE SLIDE SHOW (CAROUSEL) */}
@@ -915,7 +954,7 @@
                                     </div>
                                 </div>
 
-                                {/* NEW: COMPREHENSIVE NATIONAL POLICY & LEGAL COMPLIANCE CENTER */}
+                                {/* COMPREHENSIVE NATIONAL POLICY & LEGAL COMPLIANCE CENTER */}
                                 <div id="nnc-mandates" className="bg-white rounded-3xl p-6 md:p-8 border-2 border-[#1da187] shadow-lg space-y-6 scroll-mt-24">
                                     <div className="border-b border-slate-200 pb-4">
                                         <span className="text-[10px] font-black uppercase text-[#1da187] tracking-widest block">Statutory Alignment Center</span>
@@ -932,7 +971,7 @@
                                                     <i className="fa-solid fa-scale-balanced text-lg"></i>
                                                     <h3 className="font-extrabold text-sm text-slate-800">Presidential Decree No. 491</h3>
                                                 </div>
-                                                <p className="text-xs text-slate-650 leading-relaxed">
+                                                <p className="text-xs text-slate-655 leading-relaxed">
                                                     <strong>The Nutrition Act of the Philippines</strong>. Establishes the NNC as the highest policy-making body, mandating integration of municipal and barangay-level feeding networks under LGU jurisdiction.
                                                 </p>
                                             </div>
@@ -945,7 +984,7 @@
                                                     <i className="fa-solid fa-people-carry-box text-lg"></i>
                                                     <h3 className="font-extrabold text-sm text-slate-800">Presidential Decree No. 1569</h3>
                                                 </div>
-                                                <p className="text-xs text-slate-650 leading-relaxed">
+                                                <p className="text-xs text-slate-655 leading-relaxed">
                                                     <strong>Barangay Nutrition Scholar Program</strong>. Institutionalizes a trained community leader (BNS) in every barangay to monitor growth (e-OPT) and deliver vital nutrition counseling.
                                                 </p>
                                             </div>
@@ -958,7 +997,7 @@
                                                     <i className="fa-solid fa-baby-carriage text-lg"></i>
                                                     <h3 className="font-extrabold text-sm text-slate-800">Republic Act No. 11148</h3>
                                                 </div>
-                                                <p className="text-xs text-slate-650 leading-relaxed">
+                                                <p className="text-xs text-slate-655 leading-relaxed">
                                                     <strong>First 1000 Days Law</strong>. Mandates localized medical and nutritional intervention during a child's critical developmental window from conception up to age two (0-23 months).
                                                 </p>
                                             </div>
@@ -971,7 +1010,7 @@
                                                     <i className="fa-solid fa-utensils text-lg"></i>
                                                     <h3 className="font-extrabold text-sm text-slate-800">Republic Act No. 11037</h3>
                                                 </div>
-                                                <p className="text-xs text-slate-650 leading-relaxed">
+                                                <p className="text-xs text-slate-655 leading-relaxed">
                                                     <strong>Masustansyang Pagkain Act</strong>. Establishes national feeding mechanisms using local produce to address physical undernutrition and micronutrient deficiency in public centers.
                                                 </p>
                                             </div>
@@ -984,7 +1023,7 @@
                                                     <i className="fa-solid fa-shield-halved text-lg"></i>
                                                     <h3 className="font-extrabold text-sm text-slate-800">Republic Act No. 8976</h3>
                                                 </div>
-                                                <p className="text-xs text-slate-650 leading-relaxed">
+                                                <p className="text-xs text-slate-655 leading-relaxed">
                                                     <strong>Philippine Food Fortification Act</strong>. Mandates the usage and promotion of staple grains and items fortified with Iron and Vitamin A to eliminate hidden hungers.
                                                 </p>
                                             </div>
@@ -997,7 +1036,7 @@
                                                     <i className="fa-solid fa-vial-virus text-lg"></i>
                                                     <h3 className="font-extrabold text-sm text-slate-800">Republic Act No. 8172</h3>
                                                 </div>
-                                                <p className="text-xs text-slate-650 leading-relaxed">
+                                                <p className="text-xs text-slate-655 leading-relaxed">
                                                     <strong>ASIN Law (Salt Iodization)</strong>. Promotes elimination of iodine deficiency disorders by ensuring local diets exclusively leverage iodized salt for cooking.
                                                 </p>
                                             </div>
@@ -1007,7 +1046,7 @@
                                 </div>
 
                                 {/* State of the City Address video panel */}
-                                <div className="bg-gradient-to-br from-emerald-900 via-[#1da187] to-emerald-950 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6 relative overflow-hidden">
+                                <div className="bg-gradient-to-br from-emerald-900 via-[#1da187] to-emerald-955 text-white rounded-3xl p-6 md:p-8 shadow-xl space-y-6 relative overflow-hidden">
                                     <div className="text-center space-y-2 max-w-4xl mx-auto relative z-10">
                                         <h3 className="text-2xl md:text-3xl font-black gov-title tracking-tight text-white leading-tight">
                                             Congratulations, Mayor Jose T. Orlino!
@@ -1173,10 +1212,10 @@
                                         <h3 className="font-extrabold text-slate-800 text-lg flex items-center gap-2">
                                             <i className="fa-solid fa-seedling text-[#1da187]"></i> PPAN 2023-2028 Strategic Framework
                                         </h3>
-                                        <p className="text-xs text-slate-600 leading-relaxed">
+                                        <p className="text-xs text-slate-650 leading-relaxed">
                                             The Philippine Plan of Action for Nutrition (PPAN) is our blueprint to reduce child stunting and wasting. The current PPAN cycle emphasizes nutrition-specific measures—including vitamin supplementation and exclusive breastfeeding mandates—and sensitive efforts linked to sustainable water, sanitation, and agricultural systems.
                                         </p>
-                                        <ul className="text-xs text-slate-600 space-y-2 border-t border-slate-100 pt-4">
+                                        <ul className="text-xs text-slate-605 space-y-2 border-t border-slate-100 pt-4">
                                             <li className="flex items-start gap-2">
                                                 <i className="fa-solid fa-check text-[#1da187] mt-0.5"></i>
                                                 <span>Targeting zero micronutrient deficiencies through strict community vitamin distribution.</span>
@@ -1192,7 +1231,7 @@
                                         <h3 className="font-extrabold text-slate-800 text-lg flex items-center gap-2">
                                             <i className="fa-solid fa-kitchen-set text-[#1da187]"></i> RA 11037 Integrated School Feedings
                                         </h3>
-                                        <p className="text-xs text-slate-600 leading-relaxed">
+                                        <p className="text-xs text-slate-655 leading-relaxed">
                                             Under the Masustansyang Pagkain para sa Batang Pilipino Act, we organize systematic feeding operations using fortified agricultural foods. Hot meals utilize iron-fortified rice and iodized salt to naturally suppress nutrient gaps.
                                         </p>
                                         <div className="bg-[#1da187]/5 p-4 rounded-xl border border-[#1da187]/20">
@@ -1319,7 +1358,7 @@
                                             
                                             <form onSubmit={handleBmiCalculation} className="space-y-4">
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-650 uppercase mb-1.5">Age (Years)</label>
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Age (Years)</label>
                                                     <input 
                                                         type="number" 
                                                         value={calculatorAge}
@@ -1330,7 +1369,7 @@
                                                 </div>
 
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-650 uppercase mb-1.5">Gender</label>
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Gender</label>
                                                     <div className="grid grid-cols-2 gap-2">
                                                         <button 
                                                             type="button" 
@@ -1354,7 +1393,7 @@
                                                 </div>
 
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-650 uppercase mb-1.5">Height (cm)</label>
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Height (cm)</label>
                                                     <input 
                                                         type="number" 
                                                         value={calculatorHeight}
@@ -1365,7 +1404,7 @@
                                                 </div>
 
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-655 uppercase mb-1.5">Weight (kg)</label>
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Weight (kg)</label>
                                                     <input 
                                                         type="number" 
                                                         value={calculatorWeight}
@@ -1400,7 +1439,7 @@
                                                                     {bmiResult.classification}
                                                                 </span>
                                                                 <h4 className="font-extrabold text-slate-800 mt-2 text-lg font-title">Nutritional Advisory Summary</h4>
-                                                                <p className="text-sm text-slate-655 mt-1 leading-relaxed">
+                                                                <p className="text-sm text-slate-650 mt-1 leading-relaxed">
                                                                     Your analysis indicates standard guidelines mapped in accordance with FNRI and NNC policies.
                                                                 </p>
                                                             </div>
@@ -1476,7 +1515,7 @@
                                             {/* LEGAL STANDARD NOTICES */}
                                             <div className="p-4 bg-white/70 rounded-xl border border-slate-150 space-y-2 text-[10px]">
                                                 <span className="block font-bold text-slate-700 uppercase tracking-wide">Legal Compliance Links</span>
-                                                <ul className="space-y-1 text-slate-500">
+                                                <ul className="space-y-1 text-slate-505">
                                                     <li><i className="fa-solid fa-check text-emerald-600 mr-1"></i> RA 11032 Citizen's Charter</li>
                                                     <li><i className="fa-solid fa-check text-emerald-600 mr-1"></i> RA 10173 DPA Shield Active</li>
                                                     <li><i className="fa-solid fa-check text-emerald-600 mr-1"></i> EO No. 2, s. 2016 FOI Manual</li>
@@ -1553,7 +1592,7 @@
                                                 type="email" 
                                                 value={loginEmail}
                                                 onChange={(e) => setLoginEmail(e.target.value)}
-                                                placeholder="e.g. christian.labe@caremin.com" 
+                                                placeholder="e.g. stephydetty14@gmail.com" 
                                                 className="w-full bg-slate-50 text-slate-800 text-sm px-3 py-2.5 rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#1da187]"
                                                 required
                                             />
@@ -1575,7 +1614,7 @@
 
                                         {/* DATA PRIVACY CONSENT CHECKBOX (RA 10173 LEGAL REQUIREMENT) */}
                                         <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                                            <label className="flex items-start text-[10px] text-slate-650 font-semibold cursor-pointer select-none leading-relaxed">
+                                            <label className="flex items-start text-[10px] text-slate-600 font-semibold cursor-pointer select-none leading-relaxed">
                                                 <input 
                                                     type="checkbox" 
                                                     checked={privacyConsented}
@@ -1604,7 +1643,7 @@
                                             <button 
                                                 type="submit" 
                                                 disabled={isSubmittingAuth}
-                                                className="bg-[#1da187] hover:bg-emerald-650 text-white font-bold text-xs px-5 py-2.5 rounded-md shadow-sm transition-all flex items-center gap-1.5"
+                                                className="bg-[#1da187] hover:bg-emerald-655 text-white font-bold text-xs px-5 py-2.5 rounded-md shadow-sm transition-all flex items-center gap-1.5"
                                             >
                                                 {isSubmittingAuth ? (
                                                     <><i className="fa-solid fa-spinner animate-spin"></i> Checking...</>
@@ -1679,7 +1718,7 @@
                                                     )}
                                                 </div>
 
-                                                <div className="bg-emerald-50/20 p-3.5 rounded-xl border border-emerald-100/60 text-center text-slate-600 mb-2 text-[10px]">
+                                                <div className="bg-emerald-50/20 p-3.5 rounded-xl border border-emerald-100/60 text-center text-slate-650 mb-2 text-[10px]">
                                                     <span className="block uppercase tracking-wider font-extrabold text-emerald-800 mb-0.5">NNC Reporting Compliance</span>
                                                     Submit audited headcounts for ages 0-59 months. Proportions will compute instantly to cross-verify stunting prevalence indices.
                                                 </div>
@@ -1744,7 +1783,7 @@
 
                                         {/* Audit Logs */}
                                         {currentUser.role !== "BNS" && (
-                                            <div className="bg-white rounded-2xl border border-emerald-100 p-5 shadow-sm">
+                                            <div className="bg-white rounded-2xl border border-emerald-100 p-5 shadow-sm animate-fadeIn">
                                                 <h4 className="font-bold text-slate-800 text-xs uppercase tracking-wider mb-3 flex items-center gap-1.5">
                                                     <i className="fa-solid fa-fingerprint text-slate-400"></i> Audit logs & System Tracks
                                                 </h4>
@@ -1785,7 +1824,7 @@
                                                         </select>
                                                     </div>
                                                     <div>
-                                                        <label className="block text-xs font-bold text-slate-650 uppercase mb-1.5">Physical File</label>
+                                                        <label className="block text-xs font-bold text-slate-655 uppercase mb-1.5">Physical File</label>
                                                         <div className="border-2 border-dashed border-[#1da187]/20 hover:border-[#1da187]/50 bg-emerald-50/10 hover:bg-emerald-50/40 rounded-xl p-3 text-center cursor-pointer relative transition-all">
                                                             <input 
                                                                 type="file" 
@@ -1821,7 +1860,7 @@
                                                 {uploadedFiles
                                                     .filter(doc => currentUser.role !== "BNS" || doc.uploadedBy === currentUser.name)
                                                     .map((doc) => (
-                                                    <div key={doc.id} className="p-4 bg-slate-50 rounded-xl border border-slate-202 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 transition-all">
+                                                    <div key={doc.id} className="p-4 bg-slate-50 rounded-xl border border-slate-202 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 transition-all animate-fadeIn">
                                                         <div className="space-y-1">
                                                             <div className="flex items-center gap-2 flex-wrap">
                                                                 <span className="font-mono text-xs font-bold text-[#1da187]">{doc.id}</span>
@@ -1838,7 +1877,7 @@
                                                                 Uploaded by: <strong>{doc.uploadedBy}</strong> on {doc.date} ({doc.size})
                                                             </p>
                                                             {doc.feedback && (
-                                                                <div className="mt-2 text-[11px] bg-white p-2 rounded-lg border border-slate-100 text-slate-650">
+                                                                <div className="mt-2 text-[11px] bg-white p-2 rounded-lg border border-slate-100 text-slate-600 animate-fadeIn">
                                                                     <i className="fa-solid fa-comment-dots text-[#1da187]"></i> Feedback: <em>{doc.feedback}</em>
                                                                 </div>
                                                             )}
@@ -1846,7 +1885,7 @@
 
                                                         <div className="flex gap-2 shrink-0 w-full md:w-auto justify-end">
                                                             {doc.status === "Pending" && (currentUser.role === "Officer") ? (
-                                                                <div className="flex gap-1.5 w-full md:w-auto">
+                                                                <div className="flex gap-1.5 w-full md:w-auto animate-fadeIn">
                                                                     <button 
                                                                         onClick={() => handleApproveDocument(doc.id, "Validated under PPAN standards.")}
                                                                         className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-1.5 px-3 rounded-lg transition-colors flex items-center gap-1"
@@ -1912,16 +1951,16 @@
                                                     </div>
                                                 </div>
 
-                                                <div className="mt-4 p-3.5 bg-white rounded-xl border border-[#1da187]/10 text-xs font-semibold text-slate-700">
+                                                <div className="mt-4 p-3.5 bg-white rounded-xl border border-[#1da187]/10 text-xs font-semibold text-slate-700 animate-fadeIn">
                                                     <span className="block text-[10px] uppercase font-black text-slate-400 tracking-wider">Scheduled Dish for {selectedDay}:</span>
                                                     <p className="text-emerald-900 mt-1">"{menuPlan[selectedDay]}"</p>
                                                 </div>
                                             </div>
                                         )}
 
-                                        {/* WHitelisting details */}
+                                        {/* Whitelisting details */}
                                         {currentUser.role === "Officer" && (
-                                            <div className="bg-white rounded-2xl border border-emerald-100 p-5 shadow-sm">
+                                            <div className="bg-white rounded-2xl border border-emerald-100 p-5 shadow-sm animate-fadeIn">
                                                 <h4 className="font-bold text-slate-800 text-base mb-4 flex items-center gap-1.5">
                                                     <i className="fa-solid fa-users text-[#1da187]"></i> Ground BNS Officers Registry (PD 1569 Compliance)
                                                 </h4>
@@ -1950,7 +1989,7 @@
                     </main>
 
                     {/* FOOTER */}
-                    <footer className="bg-[#1da187] text-white mt-12 border-t-4 border-[#3ce6c3]">
+                    <footer id="footer" className="bg-[#1da187] text-white mt-12 border-t-4 border-[#3ce6c3] scroll-mt-24 relative">
                         <div className="max-w-[1700px] mx-auto px-4 xl:px-12 2xl:px-16 py-12">
                             
                             <div className="flex items-center justify-center md:justify-start gap-4 mb-8 pb-8 border-b border-white/20">
@@ -2001,8 +2040,9 @@
                         </div>
                     </footer>
 
-                    {/* INTERACTIVE UI ACCESSIBILITY TOOLBAR & BACK-TO-TOP */}
+                    {/* INTERACTIVE UI ACCESSIBILITY TOOLBAR & BACK-TO-TOP STACKED VERTICALLY */}
                     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-2">
+                        {/* 1. AUTO UP SCROLL BUTTON (Always rendering first in standard column layout on scroll detection) */}
                         {showBackToTop && (
                             <button 
                                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -2013,22 +2053,76 @@
                             </button>
                         )}
 
+                        {/* 2. ACCESSIBILITY MENU DROPDOWN (Positioned directly under/below the auto-up scroll button) */}
                         <div className="relative group">
-                            <button className="w-11 h-11 bg-white hover:bg-slate-50 text-slate-800 rounded-full shadow-2xl flex items-center justify-center border border-slate-200">
+                            <button className="w-11 h-11 bg-slate-950 hover:bg-slate-800 text-white rounded-full shadow-2xl flex items-center justify-center border border-slate-700 transition-colors">
                                 <i className="fa-solid fa-universal-access text-xl"></i>
                             </button>
                             
-                            <div className="absolute bottom-12 right-0 bg-white border border-slate-200 p-3 rounded-2xl shadow-2xl space-y-3 w-40 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 scale-95 origin-bottom-right group-hover:scale-100">
-                                <span className="block text-[9px] uppercase tracking-wider font-extrabold text-slate-400 border-b border-slate-100 pb-1">Accessibility</span>
-                                <div className="space-y-2 text-xs">
-                                    <button onClick={() => setHighContrastMode(!highContrastMode)} className="w-full text-left font-bold text-slate-700 hover:text-[#1da187] flex items-center gap-1.5">
-                                        <i className="fa-solid fa-circle-half-stroke"></i> Contrast
+                            {/* Consolidated Access Panel (Renders directly above/to-the-left of trigger block upon hover) */}
+                            <div className="absolute bottom-12 right-0 bg-white border border-slate-200 p-3.5 rounded-2xl shadow-2xl space-y-3.5 w-52 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 scale-95 origin-bottom-right group-hover:scale-100 z-55">
+                                
+                                <div className="space-y-2.5 text-xs">
+                                    {/* Shortcut 1: Accessibility Statement Document Modal */}
+                                    <button 
+                                        onClick={() => setShowAccessStatementModal(true)} 
+                                        className="w-full text-left font-bold text-slate-700 hover:text-[#1da187] flex items-center gap-2"
+                                        title="Read Web Accessibility Statement Guidelines"
+                                    >
+                                        <i className="fa-regular fa-file-lines text-sm"></i>
+                                        <span>Accessibility Policy</span>
                                     </button>
-                                    <div className="flex items-center justify-between pt-1">
-                                        <span className="font-bold text-slate-500 text-[10px]">Text Size</span>
-                                        <div className="flex gap-1.5">
-                                            <button onClick={() => setFontSizeScale(prev => Math.min(prev + 0.05, 1.2))} className="w-6 h-6 bg-slate-100 font-bold rounded flex items-center justify-center">+</button>
-                                            <button onClick={() => setFontSizeScale(prev => Math.max(prev - 0.05, 0.85))} className="w-6 h-6 bg-slate-100 font-bold rounded flex items-center justify-center">-</button>
+
+                                    {/* Shortcut 2: High Contrast Eye Switch */}
+                                    <button 
+                                        onClick={() => setHighContrastMode(!highContrastMode)} 
+                                        className="w-full text-left font-bold text-slate-700 hover:text-[#1da187] flex items-center gap-2"
+                                        title="Toggle Contrast Level"
+                                    >
+                                        <i className="fa-solid fa-eye-slash text-xs"></i>
+                                        <span>Contrast Switch</span>
+                                    </button>
+
+                                    {/* Shortcut 3: Skip straight to Dashboard data blocks */}
+                                    <button 
+                                        onClick={() => document.getElementById("main-content")?.scrollIntoView({ behavior: 'smooth' })} 
+                                        className="w-full text-left font-bold text-slate-700 hover:text-[#1da187] flex items-center gap-2"
+                                        title="Skip to analytical graphs and records"
+                                    >
+                                        <i className="fa-solid fa-circle-down text-xs"></i>
+                                        <span>Skip to Dashboard</span>
+                                    </button>
+
+                                    {/* Shortcut 4: Skip directly to contact/footer details */}
+                                    <button 
+                                        onClick={() => document.getElementById("footer")?.scrollIntoView({ behavior: 'smooth' })} 
+                                        className="w-full text-left font-bold text-slate-700 hover:text-[#1da187] flex items-center gap-2"
+                                        title="Skip to local support and hotlines"
+                                    >
+                                        <i className="fa-solid fa-chevron-down text-xs"></i>
+                                        <span>Skip to Footer</span>
+                                    </button>
+
+                                    <hr className="border-slate-100" />
+
+                                    {/* Shortcut 5: Native relative Text Scaler */}
+                                    <div className="flex items-center justify-between pt-0.5">
+                                        <span className="font-bold text-slate-500 text-[10px] uppercase">Text Size</span>
+                                        <div className="flex gap-1">
+                                            <button 
+                                                onClick={() => setFontSizeScale(prev => Math.min(prev + 0.05, 1.2))} 
+                                                className="w-6 h-6 bg-slate-100 font-bold rounded hover:bg-slate-200 text-xs flex items-center justify-center"
+                                                title="Increase Font Size scale"
+                                            >
+                                                +
+                                            </button>
+                                            <button 
+                                                onClick={() => setFontSizeScale(prev => Math.max(prev - 0.05, 0.85))} 
+                                                className="w-6 h-6 bg-slate-100 font-bold rounded hover:bg-slate-200 text-xs flex items-center justify-center"
+                                                title="Decrease Font Size scale"
+                                            >
+                                                -
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
