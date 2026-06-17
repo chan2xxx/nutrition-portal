@@ -312,7 +312,7 @@
                             }
                         }).fetchBarangayMetrics();
                     } catch(e) {
-                        console.warn("Google Apps Script context not fully operational:", e);
+                        console.warn("Google Apps Script context offline:", e);
                     }
                 }
             }, []);
@@ -332,7 +332,7 @@
                                 if (dbLogs && dbLogs.length > 0) setSysLogs(dbLogs);
                             }).fetchSystemLogs();
                         } catch(e) {
-                            console.warn("Database sync error:", e);
+                            console.warn("Database connection issue:", e);
                         }
                     }
                 }
@@ -370,7 +370,7 @@
                         setIsSubmittingAuth(false);
                         const cleanEmail = loginEmail.toLowerCase().trim();
                         
-                        const sandboxDatabase = {
+                        const database = {
                             "stephydetty14@gmail.com": {
                                 password: "officer123",
                                 profile: { id: "TNJ-OFF-10", name: "Stephy Detty", role: "Officer", title: "Tanjay City Nutrition Action Officer (CNAO)", email: "stephydetty14@gmail.com" }
@@ -385,15 +385,15 @@
                             }
                         };
 
-                        const account = sandboxDatabase[cleanEmail];
+                        const account = database[cleanEmail];
                         if (account && account.password === loginPassword) {
                             setCurrentUser(account.profile);
                             setLoginEmail("");
                             setLoginPassword("");
-                            showNotification(`Sandbox Success! Logged in as ${account.profile.name}`, "success");
+                            showNotification(`Authorized successfully! Logged in as ${account.profile.name}`, "success");
                             setActiveTab("portal-home");
                         } else {
-                            showNotification("Invalid Sandbox credentials.", "error");
+                            showNotification("Invalid credentials or server connection unavailable.", "error");
                         }
                     }, 500);
                 }
@@ -466,7 +466,7 @@
                         setRawUnderweight("");
                         setRawStunted("");
                         setRawOverweight("");
-                        showNotification("Metrics updated successfully (Sandbox Mode)!", "success");
+                        showNotification("Metrics updated successfully!", "success");
                     }, 600);
                 }
             };
@@ -522,7 +522,7 @@
                         feedback: ""
                     };
                     setUploadedFiles([newDoc, ...uploadedFiles]);
-                    showNotification("File uploaded (Sandbox)", "success");
+                    showNotification("File uploaded successfully", "success");
                 }
 
                 setSelectedFileToUpload(null);
@@ -556,7 +556,7 @@
                         }
                         return doc;
                     }));
-                    showNotification(`Document ${docId} approved (Sandbox).`, "success");
+                    showNotification(`Document ${docId} approved.`, "success");
                 }
             };
 
@@ -587,7 +587,7 @@
                         }
                         return doc;
                     }));
-                    showNotification(`Document ${docId} marked for review (Sandbox).`, "error");
+                    showNotification(`Document ${docId} marked for review.`, "error");
                 }
             };
 
@@ -676,9 +676,9 @@
                                     <h3 className="font-extrabold text-base md:text-lg flex items-center gap-2 gov-title">
                                         <i className="fa-solid fa-shield-halved"></i> Data Privacy Agreement (RA 10173)
                                     </h3>
-                                    <span className="text-[10px] md:text-xs text-emerald-100 font-semibold block mt-1">Tanjay City Nutrition Council Protection Protocol</span>
+                                    <span className="text-[10px] md:text-xs text-emerald-100 font-semibold block mt-1 font-sans">Tanjay City Nutrition Council Protection Protocol</span>
                                 </div>
-                                <div className="p-5 overflow-y-auto space-y-4 text-xs text-slate-600 leading-relaxed">
+                                <div className="p-5 overflow-y-auto space-y-4 text-xs text-slate-600 leading-relaxed font-sans">
                                     <p>
                                         In compliance with the <strong>Data Privacy Act of 2012 (RA 10173)</strong>, its Implementing Rules and Regulations (IRR), and guidelines set by the National Privacy Commission, please read our processing protocols carefully.
                                     </p>
@@ -729,12 +729,12 @@
                                     </h3>
                                     <span className="text-[10px] md:text-xs text-emerald-100 font-semibold block mt-1">WCAG 2.0 Level AA Standards Compliance</span>
                                 </div>
-                                <div className="p-5 overflow-y-auto space-y-4 text-xs text-slate-600 leading-relaxed">
+                                <div className="p-5 overflow-y-auto space-y-4 text-xs text-slate-600 leading-relaxed font-sans">
                                     <p>
                                         The <strong>Tanjay City Nutrition Council Portal</strong> is committed to ensuring digital accessibility for individuals with disabilities. We continually improve the user experience for everyone, applying relevant accessibility guidelines under DICT directives and international WCAG principles.
                                     </p>
                                     <div className="bg-emerald-50/40 p-4 rounded-xl border border-[#1da187]/20 space-y-2">
-                                        <h4 className="font-bold text-[#1da187] uppercase">Accessibility Features Active</h4>
+                                        <h4 className="font-bold text-[#1da187] uppercase font-sans">Accessibility Features Active</h4>
                                         <ul className="list-disc pl-4 space-y-1">
                                             <li><strong>High Contrast Mode:</strong> Increases element and text visibility ratios across dashboards and calculator screens.</li>
                                             <li><strong>Flexible Font Scaler:</strong> Allows seamless scaling of site text for low-vision visitors.</li>
@@ -790,7 +790,7 @@
                                             e.stopPropagation();
                                             setAboutDropdownOpen(!aboutDropdownOpen);
                                         }}
-                                        className="hover:text-[#3ce6c3] pb-1 flex items-center gap-1 focus:outline-none text-white"
+                                        className="hover:text-[#3ce6c3] pb-1 flex items-center gap-1 focus:outline-none text-white font-sans"
                                     >
                                         About us <i className="fa-solid fa-chevron-down text-[10px]"></i>
                                     </button>
@@ -856,8 +856,7 @@
                             {/* Mobile Navigation controls */}
                             <div className="flex md:hidden items-center justify-between w-full font-sans">
                                 <span className="font-extrabold text-[10px] tracking-wider uppercase flex items-center gap-2">
-                                    <img src="https://i.imgur.com/Paf57TV.png" className="w-5 h-5 object-contain" alt="" />
-                                    TCNC Portal
+                                    Tanjay City Nutrition Council
                                 </span>
                                 <button 
                                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -930,14 +929,14 @@
                         )}
                     </nav>
 
-                    {/* Branding Banner Header representing State of Government Entity */}
+                    {/* Branding Banner Header */}
                     <div 
-                        className="relative border-b border-slate-200 py-8 md:py-16 overflow-hidden bg-cover bg-center md:bg-right bg-no-repeat shadow-inner z-10"
+                        className="relative border-b border-slate-200 py-8 md:py-12 overflow-hidden bg-cover bg-center md:bg-right bg-no-repeat shadow-inner z-10 bg-white"
                         style={{ backgroundImage: "url('https://i.imgur.com/Yk63RAR.png')" }}
                     >
                         <div className="absolute inset-0 bg-black/5"></div>
 
-                        <div className="max-w-[1700px] mx-auto px-4 xl:px-12 2xl:px-16 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div className="max-w-[1700px] mx-auto px-4 xl:px-12 2xl:px-16 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6">
                             <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-5 text-center sm:text-left max-w-4xl w-full">
                                 <div className="flex items-center justify-center gap-4 shrink-0">
                                     <img 
@@ -956,22 +955,21 @@
                                 <div className="text-center sm:text-left">
                                     <h1 
                                         className="text-lg sm:text-2xl md:text-3xl font-bold tracking-tight text-slate-900 gov-title leading-tight"
-                                        style={{ textShadow: '2px 2px 8px rgba(255,255,255,0.95), -2px -2px 8px rgba(255,255,255,0.95)' }}
+                                        style={{ textShadow: '2px 2px 8px rgba(255,255,255,0.95), -2px -2px 8px rgba(255,255,255,0.95), 2px -2px 8px rgba(255,255,255,0.95), -2px 2px 8px rgba(255,255,255,0.95)' }}
                                     >
                                         Tanjay City Nutrition Council
                                     </h1>
                                     <p 
                                         className="text-[11px] sm:text-xs md:text-sm text-slate-800 font-semibold tracking-wide mt-1"
-                                        style={{ textShadow: '1px 1px 6px rgba(255,255,255,0.95)' }}
+                                        style={{ textShadow: '1px 1px 6px rgba(255,255,255,0.95), -1px -1px 6px rgba(255,255,255,0.95)' }}
                                     >
-                                        Negros Island Region • National Nutrition Council Compliance Portal
+                                        Negros Island Region
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Main Interactive Screen */}
                     <main id="main-content" className="flex-grow max-w-[1700px] w-full mx-auto px-4 xl:px-12 2xl:px-16 py-6 relative">
 
                         {activeTab === "home" && (
@@ -994,7 +992,6 @@
                                     </button>
                                 </div>
 
-                                {/* News Slide Carousel */}
                                 <div className="relative w-full h-[240px] sm:h-[320px] md:h-[480px] rounded-3xl overflow-hidden shadow-md border border-emerald-100 bg-slate-900 group">
                                     {carouselSlides.map((slide, idx) => (
                                         <div 
@@ -1008,7 +1005,7 @@
                                                 alt={slide.title} 
                                                 className="w-full h-full object-cover brightness-[0.75]"
                                                 style={{ objectPosition: slide.objectPosition || "center" }}
-                                                onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "https://placehold.co/1600x480/064e3b/ffffff?text=" + encodeURIComponent(slide.title); }}
+                                                onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/1600x480/064e3b/ffffff?text=" + encodeURIComponent(slide.title); }}
                                             />
                                             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/85 to-transparent pt-10 pb-3 px-4 md:px-8 z-20 flex items-center gap-3 md:gap-4">
                                                 
@@ -1049,21 +1046,8 @@
                                     >
                                         <i className="fa-solid fa-chevron-right text-xs"></i>
                                     </button>
-
-                                    <div className="absolute bottom-3 right-3 flex gap-1.5 z-35">
-                                        {carouselSlides.map((_, idx) => (
-                                            <button 
-                                                key={idx}
-                                                onClick={() => setCurrentSlide(idx)}
-                                                className={`w-2 h-2 rounded-full transition-all ${
-                                                    idx === currentSlide ? "bg-lime-400 scale-125" : "bg-white/50 hover:bg-white"
-                                                }`}
-                                            ></button>
-                                        ))}
-                                    </div>
                                 </div>
 
-                                {/* Congratulations Banner for LGU Admin */}
                                 <div className="bg-gradient-to-br from-emerald-900 via-[#1da187] to-emerald-950 text-white rounded-3xl p-5 md:p-8 shadow-xl space-y-6 relative overflow-hidden">
                                     <div className="text-center space-y-2 max-w-4xl mx-auto relative z-10">
                                         <h3 className="text-xl md:text-3xl font-black gov-title tracking-tight text-white leading-tight">
@@ -1097,25 +1081,24 @@
 
                                         <div className="hidden lg:flex flex-col items-center justify-center col-span-1">
                                             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-full border border-white/20 shadow-lg">
-                                                <img src="https://i.imgur.com/Paf57TV.png" alt="Tanjay City Nutrition Council Seal" className="w-20 h-20 object-contain" />
+                                                <img src="https://i.imgur.com/Paf57TV.png" alt="TCNC Seal" className="w-20 h-20 object-contain" />
                                             </div>
                                             <span className="text-[9px] font-bold text-emerald-200 mt-2 tracking-wider uppercase">Nutrition Council</span>
                                         </div>
                                     </div>
 
-                                    <div className="text-center pt-1 relative z-10 font-sans">
+                                    <div className="text-center pt-1 relative z-10">
                                         <a 
                                             href="https://www.facebook.com/tanjaycitynutrition" 
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             className="inline-flex w-full justify-center items-center gap-2 bg-white hover:bg-emerald-50 text-emerald-950 font-black text-xs md:text-sm uppercase tracking-wider py-3 px-4 rounded-xl shadow-lg transition-all min-h-[44px]"
                                         >
-                                            <i className="fa-brands fa-facebook text-base text-[#1da187]"></i> Visit Our Official Facebook Page
+                                            <i className="fa-brands fa-facebook text-base"></i> Visit Our Official Facebook Page
                                         </a>
                                     </div>
                                 </div>
 
-                                {/* Vision and Mission statements */}
                                 <div id="vision-mission-section" className="relative overflow-hidden bg-emerald-50/10 rounded-3xl p-6 md:p-10 border-2 border-[#1da187]/20 shadow-md scroll-mt-24">
                                     <div 
                                         className="absolute inset-0 opacity-[0.05] pointer-events-none bg-no-repeat bg-center bg-contain"
@@ -1125,7 +1108,7 @@
                                     <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-emerald-100">
                                         <div className="flex flex-col space-y-2 pb-4 md:pb-0">
                                             <div className="text-[#1da187]">
-                                                <h3 className="font-black text-base md:text-xl uppercase tracking-wider gov-title">Our Vision</h3>
+                                                <h3 className="font-black text-base md:text-xl uppercase tracking-wider gov-title font-sans">Our Vision</h3>
                                             </div>
                                             <p className="text-slate-700 font-semibold text-xs md:text-base leading-relaxed">
                                                 To improve human health physically, emotionally, mentally, and food secure healthy people of Tanjay City through nutrition.
@@ -1134,7 +1117,7 @@
                                         
                                         <div className="flex flex-col space-y-2 md:pl-8 pt-4 md:pt-0">
                                             <div className="text-[#1da187]">
-                                                <h3 className="font-black text-base md:text-xl uppercase tracking-wider gov-title">Our Mission</h3>
+                                                <h3 className="font-black text-base md:text-xl uppercase tracking-wider gov-title font-sans">Our Mission</h3>
                                             </div>
                                             <p className="text-slate-700 font-semibold text-xs md:text-base leading-relaxed">
                                                 Food and nutrition education in communities promotes positive nutrition practices through nutrition-specific and sensitive programs, policies to encourage wise use of resources, enable access to nutritious and safe food, and foster food secure communities for low-income individuals and families.
@@ -1143,11 +1126,10 @@
                                     </div>
                                 </div>
 
-                                {/* e-OPT quick status look card component */}
                                 <div className="bg-white rounded-2xl p-4 sm:p-6 border border-[#1da187]/20 shadow-sm space-y-6">
                                     <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 gap-3">
                                         <div>
-                                            <h3 className="font-extrabold text-slate-800 text-sm sm:text-lg">e-OPT Quick Status Look</h3>
+                                            <h3 className="font-extrabold text-slate-800 text-sm sm:text-lg font-sans">e-OPT Quick Status Look</h3>
                                             <span className="text-xs text-slate-400 font-medium">Select a barangay to inspect dynamic nutrition indicators</span>
                                         </div>
                                         <div>
@@ -1169,40 +1151,40 @@
                                                 <div className="p-4 bg-emerald-50/20 rounded-xl border border-[#1da187]/20">
                                                     <div className="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5 font-sans">
                                                         <span>Normal Weight & Height</span>
-                                                        <span className="text-emerald-850 font-extrabold text-sm">{barangayNutritionData[selectedBarangay]?.normal}%</span>
+                                                        <span className="text-emerald-850 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].normal}%</span>
                                                     </div>
                                                     <div className="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
-                                                        <div className="bg-[#1da187] h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay]?.normal}%` }}></div>
+                                                        <div className="bg-[#1da187] h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay].normal}%` }}></div>
                                                     </div>
                                                 </div>
 
                                                 <div className="p-4 bg-emerald-50/20 rounded-xl border border-[#1da187]/20">
                                                     <div className="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5 font-sans">
                                                         <span>Underweight / Wasted</span>
-                                                        <span className="text-amber-800 font-extrabold text-sm">{barangayNutritionData[selectedBarangay]?.underweight}%</span>
+                                                        <span className="text-amber-800 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].underweight}%</span>
                                                     </div>
                                                     <div className="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
-                                                        <div className="bg-amber-500 h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay]?.underweight}%` }}></div>
+                                                        <div className="bg-amber-500 h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay].underweight}%` }}></div>
                                                     </div>
                                                 </div>
 
                                                 <div className="p-4 bg-emerald-50/20 rounded-xl border border-[#1da187]/20">
                                                     <div className="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5 font-sans">
                                                         <span>Stunted Growth (Chronic)</span>
-                                                        <span className="text-rose-800 font-extrabold text-sm">{barangayNutritionData[selectedBarangay]?.stunted}%</span>
+                                                        <span className="text-rose-800 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].stunted}%</span>
                                                     </div>
                                                     <div className="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
-                                                        <div className="bg-rose-500 h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay]?.stunted}%` }}></div>
+                                                        <div className="bg-rose-500 h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay].stunted}%` }}></div>
                                                     </div>
                                                 </div>
 
                                                 <div className="p-4 bg-emerald-50/20 rounded-xl border border-[#1da187]/20">
                                                     <div className="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5 font-sans">
                                                         <span>Overweight</span>
-                                                        <span className="text-teal-800 font-extrabold text-sm">{barangayNutritionData[selectedBarangay]?.overweight}%</span>
+                                                        <span className="text-teal-800 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].overweight}%</span>
                                                     </div>
                                                     <div className="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
-                                                        <div className="bg-teal-500 h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay]?.overweight}%` }}></div>
+                                                        <div className="bg-teal-500 h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay].overweight}%` }}></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1210,65 +1192,53 @@
 
                                         <div className="bg-gradient-to-br from-[#1da187] to-emerald-950 text-white p-5 rounded-2xl flex flex-col justify-between shadow-md">
                                             <div className="mb-4">
-                                                <span className="text-lime-300 font-extrabold text-[10px] sm:text-xs tracking-wider uppercase block">Barangay Profile</span>
-                                                <h4 className="text-base sm:text-xl font-bold text-white mt-1 border-b border-emerald-800/30 pb-2 mb-3">{selectedBarangay}</h4>
+                                                <span className="text-lime-300 font-extrabold text-[10px] sm:text-xs tracking-wider uppercase block font-sans">Barangay Profile</span>
+                                                <h4 className="text-base sm:text-xl font-bold text-white mt-1 border-b border-emerald-800/30 pb-2 mb-3 font-sans">{selectedBarangay}</h4>
                                                 <div>
-                                                    <span className="block text-[9px] sm:text-[10px] text-emerald-200 uppercase tracking-wide font-sans">Children Surveyed</span>
-                                                    <span className="block text-xl sm:text-2xl font-black text-white">{barangayNutritionData[selectedBarangay]?.totalWeighed}</span>
+                                                    <span className="block text-[9px] sm:text-[10px] text-emerald-200 uppercase tracking-wide font-sans">Children Weighed</span>
+                                                    <span className="block text-xl sm:text-2xl font-black text-white font-sans">{barangayNutritionData[selectedBarangay].totalWeighed}</span>
                                                 </div>
                                             </div>
-                                            <button onClick={() => setActiveTab("dashboard")} className="w-full text-center bg-white text-emerald-800 hover:bg-[#3ce6c3] hover:text-emerald-900 font-bold text-xs py-2.5 rounded-xl shadow min-h-[44px]">
+                                            <button onClick={() => setActiveTab("dashboard")} className="w-full text-center bg-white text-emerald-800 hover:bg-[#3ce6c3] hover:text-emerald-900 font-bold text-xs py-2.5 rounded-xl shadow min-h-[44px] font-sans">
                                                 View Analytical Dashboard
                                             </button>
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* SBFP Information block */}
                                 <div id="sbfp-info" className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 scroll-mt-24">
                                     <div className="bg-white p-5 sm:p-6 rounded-2xl border border-emerald-100 shadow-sm space-y-4">
-                                        <h3 className="font-extrabold text-slate-800 text-sm sm:text-lg flex items-center gap-2">
+                                        <h3 className="font-extrabold text-slate-800 text-sm sm:text-lg flex items-center gap-2 font-sans">
                                             <i className="fa-solid fa-seedling text-[#1da187]"></i> PPAN 2023-2028 Strategic Framework
                                         </h3>
                                         <p className="text-xs text-slate-600 leading-relaxed font-sans">
                                             The Philippine Plan of Action for Nutrition (PPAN) is our blueprint to reduce child stunting and wasting. The current PPAN cycle emphasizes nutrition-specific measures—including vitamin supplementation and exclusive breastfeeding mandates—and sensitive efforts linked to sustainable water, sanitation, and agricultural systems.
                                         </p>
-                                        <ul className="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4 font-sans">
-                                            <li className="flex items-start gap-2">
-                                                <i className="fa-solid fa-check text-[#1da187] mt-0.5"></i>
-                                                <span>Targeting zero micronutrient deficiencies through strict community vitamin distribution.</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <i className="fa-solid fa-check text-[#1da187] mt-0.5"></i>
-                                                <span>Fostering agricultural collaborations with local growers to enrich school meals.</span>
-                                            </li>
-                                        </ul>
                                     </div>
 
                                     <div className="bg-white p-5 sm:p-6 rounded-2xl border border-emerald-100 shadow-sm space-y-4">
-                                        <h3 className="font-extrabold text-slate-800 text-sm sm:text-lg flex items-center gap-2">
+                                        <h3 className="font-extrabold text-slate-800 text-sm sm:text-lg flex items-center gap-2 font-sans">
                                             <i className="fa-solid fa-kitchen-set text-[#1da187]"></i> RA 11037 Integrated School Feedings
                                         </h3>
                                         <p className="text-xs text-slate-600 leading-relaxed font-sans">
                                             Under the Masustansyang Pagkain para sa Batang Pilipino Act, we organize systematic feeding operations using fortified agricultural foods. Hot meals utilize iron-fortified rice and iodized salt to naturally suppress nutrient gaps.
                                         </p>
-                                        <div className="bg-[#1da187]/5 p-4 rounded-xl border border-[#1da187]/20 font-sans">
-                                            <span className="text-[9px] uppercase font-black text-[#1da187] block">Program Coverage</span>
-                                            <span className="text-base sm:text-lg font-bold text-slate-800 block mt-1">2,400+ Under-Five Children Reached</span>
-                                            <span className="text-[10px] text-slate-500 font-semibold">Active hot meals cooked in compliance with RA 8976 food fortification directives.</span>
+                                        <div className="bg-[#1da187]/5 p-4 rounded-xl border border-[#1da187]/20">
+                                            <span className="text-[9px] uppercase font-black text-[#1da187] block font-sans">Program Coverage</span>
+                                            <span className="text-base sm:text-lg font-bold text-slate-800 block mt-1 font-sans">2,400+ Under-Five Children Reached</span>
+                                            <span className="text-[10px] text-slate-500 font-semibold font-sans">Active hot meals cooked in compliance with RA 8976 food fortification directives.</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         )}
 
-                        {/* e-OPT Analytical Dashboard component */}
                         {activeTab === "dashboard" && (
                             <div className="space-y-6 md:space-y-8 animate-fadeIn">
                                 <div className="bg-white rounded-2xl shadow-md border border-emerald-100 p-4 sm:p-6">
                                     <div className="border-b border-slate-100 pb-4 mb-6">
                                         <h2 className="text-lg sm:text-2xl font-black text-slate-900 gov-title">e-Operation Timbang Plus (e-OPT) Database Dashboard</h2>
-                                        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                                        <p class="text-xs sm:text-sm text-slate-500 mt-1 font-sans">
                                             Surveillance data monitoring the physical progress of children aged 0-59 months, mapped in compliance with NNC reporting standards.
                                         </p>
                                     </div>
@@ -1283,7 +1253,7 @@
                                                     <button 
                                                         key={bar}
                                                         onClick={() => setSelectedBarangay(bar)}
-                                                        className={`text-left p-2.5 sm:p-3 rounded-xl border text-[11px] sm:text-xs font-bold font-sans transition-all duration-300 min-h-[44px] ${
+                                                        className={`text-left p-2.5 sm:p-3 rounded-xl border text-[11px] sm:text-xs font-semibold transition-all duration-300 min-h-[44px] font-sans ${
                                                             selectedBarangay === bar 
                                                             ? 'bg-[#1da187] text-white border-transparent shadow-md' 
                                                             : 'bg-white text-slate-700 border-slate-200 hover:bg-[#1da187]/5'
@@ -1299,42 +1269,42 @@
                                             <div className="bg-emerald-50/30 rounded-2xl p-4 sm:p-6 border border-[#1da187]/20">
                                                 <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#1da187]/20 pb-3 mb-6 gap-3">
                                                     <div>
-                                                        <h3 className="font-extrabold text-slate-800 text-base sm:text-lg">{selectedBarangay} Analytics</h3>
+                                                        <h3 className="font-extrabold text-slate-800 text-base sm:text-lg font-sans">{selectedBarangay} Analytics</h3>
                                                         <span className="text-[10px] sm:text-xs text-slate-500 font-semibold font-mono">BNS Surveillance Metrics</span>
                                                     </div>
-                                                    <span className="bg-[#1da187]/15 text-[#1da187] text-xs font-bold px-3 py-1.5 rounded-full border border-[#1da187]/20 self-start sm:self-center">
-                                                        {barangayNutritionData[selectedBarangay]?.totalWeighed} Children Weighed
+                                                    <span className="bg-[#1da187]/15 text-[#1da187] text-xs font-bold px-3 py-1.5 rounded-full border border-[#1da187]/20 self-start sm:self-center font-sans">
+                                                        {barangayNutritionData[selectedBarangay].totalWeighed} Children Weighed
                                                     </span>
                                                 </div>
 
                                                 <div className="space-y-6">
                                                     <div>
-                                                        <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-700 mb-2">
+                                                        <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-700 mb-2 font-sans">
                                                             <span>Normal Status (Goal: &gt;90% under PPAN guidelines)</span>
-                                                            <span className="text-[#1da187] font-extrabold">{barangayNutritionData[selectedBarangay]?.normal}%</span>
+                                                            <span className="text-[#1da187] font-extrabold">{barangayNutritionData[selectedBarangay].normal}%</span>
                                                         </div>
                                                         <div className="h-6 w-full bg-slate-200 rounded-lg overflow-hidden flex shadow-inner">
-                                                            <div className="bg-[#1da187] h-full rounded-l" style={{ width: `${barangayNutritionData[selectedBarangay]?.normal}%` }}></div>
+                                                            <div className="bg-[#1da187] h-full rounded-l" style={{ width: `${barangayNutritionData[selectedBarangay].normal}%` }}></div>
                                                         </div>
                                                     </div>
 
                                                     <div>
-                                                        <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-700 mb-2">
+                                                        <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-700 mb-2 font-sans">
                                                             <span>Wasted / Underweight (PPAN reduction target: &lt;3%)</span>
-                                                            <span className="text-amber-800 font-extrabold">{barangayNutritionData[selectedBarangay]?.underweight}%</span>
+                                                            <span className="text-amber-800 font-extrabold">{barangayNutritionData[selectedBarangay].underweight}%</span>
                                                         </div>
                                                         <div className="h-6 w-full bg-slate-200 rounded-lg overflow-hidden flex shadow-inner">
-                                                            <div className="bg-amber-500 h-full rounded-l" style={{ width: `${barangayNutritionData[selectedBarangay]?.underweight}%` }}></div>
+                                                            <div className="bg-amber-500 h-full rounded-l" style={{ width: `${barangayNutritionData[selectedBarangay].underweight}%` }}></div>
                                                         </div>
                                                     </div>
 
                                                     <div>
-                                                        <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-700 mb-2">
+                                                        <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-700 mb-2 font-sans">
                                                             <span>Stunting Prevalence (Chronic Underdevelopment Goal: &lt;10%)</span>
-                                                            <span className="text-rose-800 font-extrabold">{barangayNutritionData[selectedBarangay]?.stunted}%</span>
+                                                            <span className="text-rose-800 font-extrabold">{barangayNutritionData[selectedBarangay].stunted}%</span>
                                                         </div>
                                                         <div className="h-6 w-full bg-slate-200 rounded-lg overflow-hidden flex shadow-inner">
-                                                            <div className="bg-rose-500 h-full rounded-l" style={{ width: `${barangayNutritionData[selectedBarangay]?.stunted}%` }}></div>
+                                                            <div className="bg-rose-500 h-full rounded-l" style={{ width: `${barangayNutritionData[selectedBarangay].stunted}%` }}></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1345,7 +1315,6 @@
                             </div>
                         )}
 
-                        {/* BMI calculator widget */}
                         {activeTab === "calculator" && (
                             <div className="space-y-6 md:space-y-8 animate-fadeIn" id="bmi-tool">
                                 <div className="bg-white rounded-2xl shadow-md border border-emerald-100 p-4 sm:p-6">
@@ -1362,14 +1331,14 @@
 
                                     <div className="border-b border-slate-100 pb-4 mb-6">
                                         <h2 className="text-lg sm:text-2xl font-black text-slate-900 gov-title">BMI & Dietary Assessment Hub</h2>
-                                        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                                        <p className="text-xs sm:text-sm text-slate-500 mt-1 font-sans">
                                             Evaluate dynamic mass index ratios and receive nutritional guidance designed in accordance with local crops.
                                         </p>
                                     </div>
 
                                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
                                         <div className="bg-emerald-50/20 p-5 sm:p-6 rounded-2xl border border-emerald-100">
-                                            <h3 className="font-extrabold text-slate-800 text-sm sm:text-base mb-4 flex items-center gap-1.5">
+                                            <h3 className="font-extrabold text-slate-800 text-sm sm:text-base mb-4 flex items-center gap-1.5 font-sans">
                                                 <i className="fa-solid fa-scale-balanced text-[#1da187]"></i> Parameters Input
                                             </h3>
                                             
@@ -1391,7 +1360,7 @@
                                                         <button 
                                                             type="button" 
                                                             onClick={() => setCalculatorGender("male")}
-                                                            className={`py-2 px-4 rounded-xl border text-xs sm:text-sm font-bold transition-all min-h-[44px] ${
+                                                            className={`py-2 px-4 rounded-xl border text-xs sm:text-sm font-bold transition-all min-h-[44px] font-sans ${
                                                                 calculatorGender === 'male' ? 'bg-[#1da187] text-white border-transparent shadow-sm' : 'bg-white text-slate-700 border-slate-200'
                                                             }`}
                                                         >
@@ -1400,7 +1369,7 @@
                                                         <button 
                                                             type="button" 
                                                             onClick={() => setCalculatorGender("female")}
-                                                            className={`py-2 px-4 rounded-xl border text-xs sm:text-sm font-bold transition-all min-h-[44px] ${
+                                                            className={`py-2 px-4 rounded-xl border text-xs sm:text-sm font-bold transition-all min-h-[44px] font-sans ${
                                                                 calculatorGender === 'female' ? 'bg-[#1da187] text-white border-transparent shadow-sm' : 'bg-white text-slate-700 border-slate-200'
                                                             }`}
                                                         >
@@ -1431,7 +1400,7 @@
                                                     />
                                                 </div>
 
-                                                <button type="submit" className="w-full bg-[#1da187] hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-md mt-2 flex items-center justify-center gap-2 min-h-[44px]">
+                                                <button type="submit" className="w-full bg-[#1da187] hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-md mt-2 flex items-center justify-center gap-2 min-h-[44px] font-sans">
                                                     <i className="fa-solid fa-calculator"></i> Calculate Health Index
                                                 </button>
                                             </form>
@@ -1441,32 +1410,32 @@
                                             {bmiResult ? (
                                                 <div className="bg-white rounded-2xl border border-emerald-100 overflow-hidden shadow-sm animate-fadeIn">
                                                     <div className="bg-gradient-to-r from-[#1da187] to-emerald-600 text-white px-5 py-4">
-                                                        <h3 className="font-extrabold text-sm sm:text-base flex items-center gap-2">
+                                                        <h3 className="font-extrabold text-sm sm:text-base flex items-center gap-2 font-sans">
                                                             <i className="fa-solid fa-clipboard-check text-lime-300"></i> Analysis Completed
                                                         </h3>
                                                     </div>
                                                     <div className="p-4 sm:p-6 space-y-5 sm:space-y-6">
                                                         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
                                                             <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-[#3ce6c3] bg-emerald-50 flex flex-col items-center justify-center shrink-0">
-                                                                <span className="text-xl sm:text-2xl font-black text-emerald-950">{bmiResult.bmi}</span>
-                                                                <span className="text-[8px] sm:text-[9px] font-bold text-slate-400 tracking-wider uppercase">Your BMI</span>
+                                                                <span className="text-xl sm:text-2xl font-black text-emerald-950 font-sans">{bmiResult.bmi}</span>
+                                                                <span className="text-[8px] sm:text-[9px] font-bold text-slate-400 tracking-wider uppercase font-sans">Your BMI</span>
                                                             </div>
                                                             <div className="text-center sm:text-left">
-                                                                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border ${bmiResult.colorClass}`}>
+                                                                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border font-sans ${bmiResult.colorClass}`}>
                                                                     {bmiResult.classification}
                                                                 </span>
-                                                                <h4 className="font-extrabold text-slate-800 mt-2 text-sm sm:text-lg font-title">Nutritional Advisory Summary</h4>
-                                                                <p className="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
+                                                                <h4 className="font-extrabold text-slate-800 mt-2 text-sm sm:text-lg font-title font-sans">Nutritional Advisory Summary</h4>
+                                                                <p className="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed font-sans">
                                                                     Your analysis indicates standard guidelines mapped in accordance with FNRI and NNC policies.
                                                                 </p>
                                                             </div>
                                                         </div>
 
                                                         <div className="bg-emerald-50/50 p-4 sm:p-5 rounded-2xl border border-emerald-100">
-                                                            <h5 className="font-bold text-emerald-900 text-xs sm:text-sm flex items-center gap-1.5">
+                                                            <h5 className="font-bold text-emerald-900 text-xs sm:text-sm flex items-center gap-1.5 font-sans">
                                                                 <i className="fa-solid fa-leaf text-[#1da187]"></i> Localized Dietary Advice:
                                                             </h5>
-                                                            <p className="text-[11px] sm:text-xs text-slate-700 mt-2 leading-relaxed font-medium">
+                                                            <p className="text-[11px] sm:text-xs text-slate-700 mt-2 leading-relaxed font-medium font-sans">
                                                                 {bmiResult.advice}
                                                             </p>
                                                         </div>
@@ -1477,8 +1446,8 @@
                                                     <div className="p-3 bg-white rounded-full shadow-sm mb-3">
                                                         <i className="fa-solid fa-calculator text-2xl sm:text-4xl text-[#1da187]"></i>
                                                     </div>
-                                                    <h3 className="font-bold text-slate-700 text-xs sm:text-base">Awaiting Input</h3>
-                                                    <p className="text-[11px] sm:text-xs text-slate-400 mt-1 max-w-sm leading-relaxed">
+                                                    <h3 className="font-bold text-slate-700 text-xs sm:text-base font-sans">Awaiting Input</h3>
+                                                    <p className="text-[11px] sm:text-xs text-slate-400 mt-1 max-w-sm leading-relaxed font-sans">
                                                         Input metrics in the parameters form container to run the BMI evaluator. Recommended diets utilize nutrient-dense, locally fortified products.
                                                     </p>
                                                 </div>
@@ -1489,14 +1458,13 @@
                             </div>
                         )}
 
-                        {/* Transparency Seal Document table component */}
                         {activeTab === "resources" && (
                             <div className="space-y-6 md:space-y-8 animate-fadeIn">
                                 <div className="bg-white rounded-2xl shadow-md border border-emerald-100 p-4 sm:p-6">
                                     <div className="border-b border-slate-100 pb-4 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
                                         <div>
                                             <h2 className="text-lg sm:text-2xl font-black text-slate-900 gov-title">Transparency Seal Compliance Hub</h2>
-                                            <p className="text-xs sm:text-sm text-[#1da187] mt-1">
+                                            <p className="text-xs sm:text-sm text-[#1da187] mt-1 font-sans">
                                                 Public files, stunting budgets, procurement schedules, and statutory NNC templates.
                                             </p>
                                         </div>
@@ -1507,7 +1475,7 @@
                                                 value={searchQuery}
                                                 onChange={(e) => setSearchQuery(e.target.value)}
                                                 placeholder="Search registry..." 
-                                                className="w-full bg-slate-50 text-slate-800 text-xs pl-10 pr-4 py-3 rounded-xl border border-[#1da187]/20 focus:outline-none min-h-[44px]"
+                                                className="w-full bg-slate-50 text-slate-800 text-xs pl-10 pr-4 py-3 rounded-xl border border-[#1da187]/20 focus:outline-none min-h-[44px] font-sans"
                                             />
                                         </div>
                                     </div>
@@ -1549,7 +1517,7 @@
                                                                     </span>
                                                                     <span className="text-[9px] sm:text-[10px] text-slate-400 font-bold font-sans">{res.type} ({res.size})</span>
                                                                 </div>
-                                                                <h4 className="font-bold text-slate-800 text-xs sm:text-sm mt-2">{res.title}</h4>
+                                                                <h4 className="font-bold text-slate-800 text-xs sm:text-sm mt-2 font-sans">{res.title}</h4>
                                                                 <span className="block text-[9px] sm:text-[10px] text-slate-400 mt-1 font-sans">Uploaded: {res.date}</span>
                                                             </div>
 
@@ -1568,7 +1536,7 @@
                                             ) : (
                                                 <div className="text-center p-8 sm:p-12 bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl">
                                                     <i className="fa-solid fa-file-excel text-3xl sm:text-4xl text-slate-300 mb-2"></i>
-                                                    <h4 className="font-bold text-slate-700 text-xs sm:text-sm">No items match criteria</h4>
+                                                    <h4 className="font-bold text-slate-700 text-xs sm:text-sm font-sans">No items match criteria</h4>
                                                 </div>
                                             )}
                                         </div>
@@ -1577,7 +1545,6 @@
                             </div>
                         )}
 
-                        {/* Login container panel */}
                         {activeTab === "login" && (
                             <div className="w-full flex flex-col items-center justify-center py-6 sm:py-10 animate-fadeIn bg-slate-100/40 rounded-3xl border border-slate-200/50">
                                 <div className="flex flex-col items-center text-center mb-6 max-w-sm px-4">
@@ -1585,28 +1552,24 @@
                                         <img src="https://i.imgur.com/VRnnRFC.png" alt="Tanjay LGU Seal" className="w-12 h-12 sm:w-14 sm:h-14 object-contain" />
                                         <div className="relative">
                                             <div className="absolute inset-0 bg-white rounded-full"></div>
-                                            <img src="https://i.imgur.com/Paf57TV.png" alt="Nutrition Council Seal" className="w-12 h-12 sm:w-14 sm:h-14 object-contain relative z-10 p-0.5" />
+                                            <img src="https://i.imgur.com/Paf57TV.png" alt="TCNC Seal" className="w-12 h-12 sm:w-14 sm:h-14 object-contain relative z-10 p-0.5" />
                                         </div>
                                     </div>
-                                    <h2 className="text-base sm:text-lg font-black tracking-tight text-slate-800 gov-title uppercase leading-tight">
-                                        Authorized Portal Console
+                                    <h2 className="text-base sm:text-lg font-black tracking-tight text-slate-800 gov-title uppercase leading-tight font-sans">
+                                        Authorized Portal
                                     </h2>
-                                    <p className="text-[9px] sm:text-[10px] text-[#1da187] font-semibold tracking-wide mt-1 font-sans text-center">
-                                        Admin, Encoder, & BNS Secure Database Access
-                                    </p>
                                 </div>
 
                                 <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl border border-slate-200 p-5 sm:p-6 space-y-5">
                                     <form onSubmit={handleFormLogin} className="space-y-4">
                                         <div>
                                             <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide font-sans">
-                                                Username or Email
+                                                Email
                                             </label>
                                             <input 
                                                 type="email" 
                                                 value={loginEmail}
                                                 onChange={(e) => setLoginEmail(e.target.value)}
-                                                placeholder="e.g. stephydetty14@gmail.com" 
                                                 className="w-full bg-slate-50 text-slate-800 text-xs sm:text-sm px-3 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#1da187] min-h-[44px]"
                                                 required
                                             />
@@ -1632,23 +1595,25 @@
                                                     type="checkbox" 
                                                     checked={privacyConsented}
                                                     onChange={(e) => setPrivacyConsented(e.target.checked)}
-                                                    className="mt-0.5 mr-2 accent-emerald-755 rounded scale-105 shrink-0" 
+                                                    className="mt-0.5 mr-2 accent-emerald-750 rounded scale-105 shrink-0" 
                                                 />
                                                 <span>
-                                                    I acknowledge and consent to the secure collection & processing of my workspace credentials and e-OPT metric summaries in compliance with the <span className="text-[#1da187] font-bold font-sans">Data Privacy Act of 2012 (RA 10173)</span>.
+                                                    I acknowledge and consent to the secure collection & processing of my workspace credentials and e-OPT metric summaries in compliance with the <span className="text-[#1da187] font-bold">Data Privacy Act of 2012 (RA 10173)</span>.
                                                 </span>
                                             </label>
-                                            <button 
-                                                type="button"
-                                                onClick={() => setShowPrivacyModal(true)}
-                                                className="text-[9px] text-[#1da187] font-bold underline hover:text-emerald-800 uppercase text-left block font-sans"
-                                            >
-                                                Read Privacy Notice Statement
-                                            </button>
+                                            <div className="text-center pt-1.5">
+                                                <button 
+                                                    type="button"
+                                                    onClick={() => setShowPrivacyModal(true)}
+                                                    className="text-[9px] text-[#1da187] font-bold underline hover:text-emerald-800 uppercase font-sans mx-auto inline-block"
+                                                >
+                                                    Read Privacy Notice Statement
+                                                </button>
+                                            </div>
                                         </div>
 
-                                        <div className="flex items-center justify-between pt-1 gap-2 flex-wrap font-sans">
-                                            <label className="flex items-center text-xs text-slate-500 font-medium cursor-pointer">
+                                        <div className="flex items-center justify-between pt-1 gap-2 flex-wrap">
+                                            <label className="flex items-center text-xs text-slate-500 font-medium cursor-pointer font-sans">
                                                 <input type="checkbox" className="mr-1.5 accent-emerald-600 rounded" />
                                                 Keep Logged In
                                             </label>
@@ -1656,7 +1621,7 @@
                                             <button 
                                                 type="submit" 
                                                 disabled={isSubmittingAuth}
-                                                className="bg-[#1da187] hover:bg-emerald-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-1.5 min-h-[44px]"
+                                                className="bg-[#1da187] hover:bg-emerald-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-1.5 min-h-[44px] font-sans"
                                             >
                                                 {isSubmittingAuth ? (
                                                     <><i className="fa-solid fa-spinner animate-spin"></i> Checking...</>
@@ -1666,15 +1631,6 @@
                                             </button>
                                         </div>
                                     </form>
-                                    
-                                    <div className="mt-4 p-4 bg-slate-100 border border-slate-200 rounded-xl text-left">
-                                        <p className="text-[11px] font-black text-slate-700 mb-2 font-sans">Sandbox Demonstration Accounts:</p>
-                                        <div className="space-y-1.5 text-[10px] text-slate-600 font-sans">
-                                            <p><strong>CNAO Admin:</strong> <span className="bg-white px-1 py-0.5 rounded border font-mono">stephydetty14@gmail.com</span> / <span className="bg-white px-1 py-0.5 rounded border font-semibold">officer123</span></p>
-                                            <p><strong>BNS Scholar:</strong> <span className="bg-white px-1 py-0.5 rounded border font-mono">portia.catacutan@tcnc.gov.ph</span> / <span className="bg-white px-1 py-0.5 rounded border font-semibold">bns123</span></p>
-                                            <p><strong>City Encoder:</strong> <span className="bg-white px-1 py-0.5 rounded border font-mono">micahaba199x@gmail.com</span> / <span className="bg-white px-1 py-0.5 rounded border font-semibold">encoder123</span></p>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         )}
@@ -1693,10 +1649,10 @@
                                                     {currentUser.role} Account
                                                 </span>
                                                 <span className="text-emerald-300 text-[10px] sm:text-xs font-semibold">
-                                                    {currentUser.role === "BNS" ? "Scholar Authorized under PD 1569" : currentUser.role === "Encoder" ? "Authorized Municipal Data Encoder" : "CNAO Officer Console"}
+                                                    {currentUser.role === "BNS" ? "Scholar Authorized under PD 1569" : "Authorized Data Console"}
                                                 </span>
                                             </div>
-                                            <h3 className="font-extrabold text-base sm:text-xl mt-0.5">{currentUser.name}</h3>
+                                            <h3 className="font-extrabold text-base sm:text-xl mt-0.5 font-sans">{currentUser.name}</h3>
                                             <p className="text-[10px] sm:text-xs text-slate-300 mt-1 font-sans">
                                                 {currentUser.barangay ? `Coverage Barangay: ${currentUser.barangay}` : `${currentUser.title}`}
                                             </p>
@@ -1711,7 +1667,7 @@
                                     
                                     <div className="space-y-6">
                                         <div className="bg-white rounded-2xl border border-emerald-100 p-4 sm:p-5 shadow-sm">
-                                            <h4 className="font-bold text-slate-800 text-sm sm:text-base mb-4 flex items-center gap-1.5 border-b border-slate-100 pb-2">
+                                            <h4 className="font-bold text-slate-800 text-sm sm:text-base mb-4 flex items-center gap-1.5 border-b border-slate-100 pb-2 font-sans">
                                                 <i className="fa-solid fa-file-medical text-[#1da187]"></i> Dynamic e-OPT Metrics Form
                                             </h4>
 
@@ -1739,7 +1695,7 @@
                                                 </div>
 
                                                 <div className="bg-emerald-50/20 p-3 rounded-xl border border-emerald-100/60 text-center text-slate-600 mb-2 text-[10px] leading-relaxed font-sans">
-                                                    <span className="block uppercase tracking-wider font-extrabold text-[#1da187] mb-0.5">NNC Reporting Compliance</span>
+                                                    <span className="block uppercase tracking-wider font-extrabold text-[#1da187] mb-0.5 font-sans">NNC Reporting Compliance</span>
                                                     Submit audited headcounts for ages 0-59 months. Proportions will compute instantly to cross-verify stunting prevalence indices.
                                                 </div>
 
@@ -1750,7 +1706,7 @@
                                                         value={rawNormal} 
                                                         onChange={(e) => setRawNormal(e.target.value)} 
                                                         placeholder="e.g. 350" 
-                                                        className="w-full bg-white text-slate-800 text-xs px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none min-h-[44px]" 
+                                                        className="w-full bg-white text-slate-800 text-xs px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none min-h-[44px] font-sans" 
                                                         required 
                                                     />
                                                 </div>
@@ -1762,7 +1718,7 @@
                                                         value={rawUnderweight} 
                                                         onChange={(e) => setRawUnderweight(e.target.value)} 
                                                         placeholder="e.g. 25" 
-                                                        className="w-full bg-white text-slate-800 text-xs px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none min-h-[44px]" 
+                                                        className="w-full bg-white text-slate-800 text-xs px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none min-h-[44px] font-sans" 
                                                         required 
                                                     />
                                                 </div>
@@ -1774,7 +1730,7 @@
                                                         value={rawStunted} 
                                                         onChange={(e) => setRawStunted(e.target.value)} 
                                                         placeholder="e.g. 15" 
-                                                        className="w-full bg-white text-slate-800 text-xs px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none min-h-[44px]" 
+                                                        className="w-full bg-white text-slate-800 text-xs px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none min-h-[44px] font-sans" 
                                                         required 
                                                     />
                                                 </div>
@@ -1786,7 +1742,7 @@
                                                         value={rawOverweight} 
                                                         onChange={(e) => setRawOverweight(e.target.value)} 
                                                         placeholder="e.g. 5" 
-                                                        className="w-full bg-white text-slate-800 text-xs px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none min-h-[44px]" 
+                                                        className="w-full bg-white text-slate-800 text-xs px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none min-h-[44px] font-sans" 
                                                         required 
                                                     />
                                                 </div>
@@ -1822,7 +1778,7 @@
                                     <div className="lg:col-span-2 space-y-6">
                                         
                                         <div className="bg-white rounded-2xl border border-emerald-100 p-4 sm:p-5 shadow-sm">
-                                            <h4 className="font-bold text-slate-800 text-sm sm:text-base mb-4 flex items-center gap-1.5 border-b border-slate-100 pb-2">
+                                            <h4 className="font-bold text-slate-800 text-sm sm:text-base mb-4 flex items-center gap-1.5 border-b border-slate-100 pb-2 font-sans">
                                                 <i className="fa-solid fa-cloud-arrow-up text-[#1da187]"></i> Secure Registry File Uploads
                                             </h4>
 
@@ -1869,13 +1825,13 @@
                                                     <i className="fa-solid fa-list-check text-[#1da187]"></i> Document Registry Status
                                                 </h4>
                                                 <span className="bg-slate-100 text-slate-600 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full font-sans">
-                                                    {uploadedFiles.filter(doc => currentUser.role === "BNS" ? doc.uploadedBy === currentUser.name : true).length} Records
+                                                    {uploadedFiles.filter(doc => currentUser.role !== "BNS" || doc.uploadedBy === currentUser.name).length} Records
                                                 </span>
                                             </div>
 
                                             <div className="space-y-4 max-h-[360px] lg:max-h-[480px] overflow-y-auto pr-2">
                                                 {uploadedFiles
-                                                    .filter(doc => currentUser.role === "BNS" ? doc.uploadedBy === currentUser.name : true)
+                                                    .filter(doc => currentUser.role !== "BNS" || doc.uploadedBy === currentUser.name)
                                                     .map((doc) => (
                                                     <div key={doc.id} className="p-3 sm:p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 transition-all">
                                                         <div className="space-y-1 w-full font-sans">
@@ -1905,13 +1861,13 @@
                                                                 <div className="flex gap-1.5 w-full sm:w-auto justify-end">
                                                                     <button 
                                                                         onClick={() => handleApproveDocument(doc.id, "Validated under PPAN standards.")}
-                                                                        className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] sm:text-xs py-1.5 px-3 rounded-lg transition-colors flex items-center gap-1 min-h-[36px]"
+                                                                        className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] sm:text-xs py-1.5 px-3 rounded-lg transition-colors flex items-center gap-1 min-h-[36px] font-sans"
                                                                     >
                                                                         <i className="fa-solid fa-check"></i> Approve
                                                                     </button>
                                                                     <button 
                                                                         onClick={() => handleRejectDocument(doc.id, "Requires revision to meet NNC formats.")}
-                                                                        className="bg-rose-700 hover:bg-rose-800 text-white font-bold text-[10px] sm:text-xs py-1.5 px-3 rounded-lg transition-colors flex items-center gap-1 min-h-[36px]"
+                                                                        className="bg-rose-700 hover:bg-rose-800 text-white font-bold text-[10px] sm:text-xs py-1.5 px-3 rounded-lg transition-colors flex items-center gap-1 min-h-[36px] font-sans"
                                                                     >
                                                                         <i className="fa-solid fa-xmark"></i> Decline
                                                                     </button>
@@ -1932,7 +1888,7 @@
 
                                         {currentUser.role === "Officer" && (
                                             <div className="bg-gradient-to-br from-[#1da187]/5 to-[#1da187]/10 rounded-2xl border border-emerald-100 p-4 sm:p-5 shadow-sm">
-                                                <h4 className="font-bold text-emerald-900 text-xs sm:text-sm md:text-base mb-3 flex items-center gap-1.5">
+                                                <h4 className="font-bold text-emerald-900 text-xs sm:text-sm md:text-base mb-3 flex items-center gap-1.5 font-sans">
                                                     <i className="fa-solid fa-kitchen-set text-[#1da187]"></i> Localized Menu Planner (NNC RA 8976 & RA 8172 Compliance)
                                                 </h4>
                                                 
@@ -1950,14 +1906,14 @@
                                                         </select>
                                                     </div>
                                                     <div className="md:col-span-2 space-y-2">
-                                                        <label className="block text-xs font-bold text-slate-600 font-sans font-sans">Formulation Parameters</label>
+                                                        <label className="block text-xs font-bold text-slate-600 font-sans">Formulation Parameters</label>
                                                         <form onSubmit={handleUpdateMenu} className="flex gap-2">
                                                             <input 
                                                                 type="text" 
                                                                 value={editMenuInput}
                                                                 onChange={(e) => setEditMenuInput(e.target.value)}
                                                                 placeholder={menuPlan[selectedDay]}
-                                                                className="flex-grow bg-white text-slate-800 text-xs px-3 py-2 rounded-xl border border-slate-200 min-h-[44px]"
+                                                                className="flex-grow bg-white text-slate-800 text-xs px-3 py-2 rounded-xl border border-slate-200 min-h-[44px] font-sans"
                                                                 required
                                                             />
                                                             <button type="submit" className="bg-[#1da187] hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2 rounded-xl min-h-[44px] font-sans">
@@ -1968,8 +1924,8 @@
                                                 </div>
 
                                                 <div className="mt-4 p-3.5 bg-white rounded-xl border border-[#1da187]/10 text-[11px] sm:text-xs font-semibold text-slate-700 font-sans">
-                                                    <span className="block text-[8px] sm:text-[9px] uppercase font-black text-slate-400 tracking-wider">Scheduled Dish for {selectedDay}:</span>
-                                                    <p className="text-emerald-900 mt-1">"{menuPlan[selectedDay]}"</p>
+                                                    <span className="block text-[8px] sm:text-[9px] uppercase font-black text-slate-400 tracking-wider font-sans">Scheduled Dish for {selectedDay}:</span>
+                                                    <p className="text-emerald-900 mt-1 font-sans">"{menuPlan[selectedDay]}"</p>
                                                 </div>
                                             </div>
                                         )}
@@ -1983,13 +1939,11 @@
                                                     {staffList.map((staff) => (
                                                         <div key={staff.id} className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between gap-2 font-sans">
                                                             <div>
-                                                                <span className="text-[8px] sm:text-[9px] uppercase font-bold text-slate-400">{staff.role} {staff.barangay ? `• ${staff.barangay}` : ''}</span>
-                                                                <h5 className="font-bold text-slate-800 text-xs">{staff.name}</h5>
+                                                                <span className="text-[8px] sm:text-[9px] uppercase font-bold text-slate-400 font-sans">{staff.role} {staff.barangay ? `• ${staff.barangay}` : ''}</span>
+                                                                <h5 className="font-bold text-slate-800 text-xs font-sans">{staff.name}</h5>
                                                                 <span className="block text-[9px] sm:text-[10px] font-mono text-[#1da187] mt-0.5 break-all">{staff.email}</span>
                                                             </div>
-                                                            <span className={`text-[9px] sm:text-[10px] font-bold px-2.5 py-1 rounded-full border shrink-0 ${
-                                                                staff.status === "Vacant" ? "text-amber-700 bg-amber-50 border-amber-200" : "text-emerald-700 bg-emerald-50 border-[#1da187]/20"
-                                                            }`}>
+                                                            <span className="text-[9px] sm:text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-[#1da187]/20 shrink-0 font-sans">
                                                                 {staff.status}
                                                             </span>
                                                         </div>
@@ -2005,7 +1959,7 @@
 
                     </main>
 
-                    {/* Government standard footer */}
+                    {/* Footer Row and Bagong Pilipinas Seal Integration */}
                     <footer id="footer" className="bg-[#1da187] text-white mt-12 border-t-4 border-[#3ce6c3] scroll-mt-24 relative">
                         <div className="max-w-[1700px] mx-auto px-4 xl:px-12 2xl:px-16 py-8 md:py-12">
                             
@@ -2020,23 +1974,23 @@
 
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                                 <div className="space-y-3 font-sans">
-                                    <h4 className="font-extrabold text-xs sm:text-base text-white uppercase tracking-widest">Mandate Compliance</h4>
+                                    <h4 className="font-extrabold text-xs sm:text-base text-white uppercase tracking-widest font-sans">TCNC Mandate Compliance</h4>
                                     <p className="text-xs text-white/95 leading-relaxed font-medium">
                                         The Tanjay City Nutrition Council operates under directives of **PD 491** and the national **PPAN 2023-2028** framework to curb malnutrition, manage stunting indices, and foster multi-sectoral health safeguards.
                                     </p>
                                 </div>
 
                                 <div className="space-y-3 font-sans">
-                                    <h4 className="font-extrabold text-xs sm:text-sm text-white uppercase tracking-wide">Government Portals</h4>
+                                    <h4 className="font-extrabold text-xs sm:text-sm text-white uppercase tracking-wide font-sans">Government Portals</h4>
                                     <ul className="text-xs text-white/90 space-y-2 font-semibold">
-                                        <li><a href="https://www.gov.ph" target="_blank" className="hover:underline text-white hover:text-[#3ce6c3]"><i className="fa-solid fa-angle-right mr-1"></i> GOV.PH Portal</a></li>
-                                        <li><a href="https://nnc.gov.ph" target="_blank" className="hover:underline text-white hover:text-[#3ce6c3]"><i className="fa-solid fa-angle-right mr-1"></i> National Nutrition Council Website</a></li>
+                                        <li><a href="https://www.gov.ph" target="_blank" className="hover:underline text-white hover:text-[#3ce6c3] font-sans"><i className="fa-solid fa-angle-right mr-1"></i> GOV.PH Portal</a></li>
+                                        <li><a href="https://nnc.gov.ph" target="_blank" className="hover:underline text-white hover:text-[#3ce6c3] font-sans"><i className="fa-solid fa-angle-right mr-1"></i> National Nutrition Council Website</a></li>
                                     </ul>
                                 </div>
 
                                 <div className="space-y-3 font-sans">
-                                    <h4 className="font-extrabold text-xs sm:text-sm text-white uppercase tracking-wide">Contact Desk</h4>
-                                    <div className="text-xs text-white/90 space-y-3 font-semibold">
+                                    <h4 className="font-extrabold text-xs sm:text-sm text-white uppercase tracking-wide font-sans">Contact Desk</h4>
+                                    <div className="text-xs text-white/90 space-y-3 font-semibold font-sans">
                                         <p className="flex items-center gap-2"><i className="fa-solid fa-phone text-white"></i> Hotline: (035) 415-3119</p>
                                         <p className="flex items-center gap-2"><i className="fa-solid fa-envelope text-white"></i> nutrition@tanjay.gov.ph</p>
                                         <p className="flex items-center gap-2">
@@ -2049,7 +2003,7 @@
                             </div>
                         </div>
 
-                        <div className="bg-emerald-900 py-4 text-[10px] sm:text-xs text-center text-white/85 border-t border-white/10 px-4">
+                        <div className="bg-emerald-850 py-4 text-[10px] sm:text-xs text-center text-white/85 border-t border-white/10 px-4">
                             <div className="max-w-[1700px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 font-sans">
                                 <p className="text-white font-medium text-center sm:text-left">© 2026 Tanjay City Nutrition Council. Built in accordance with Philippine National Nutrition Policies.</p>
                                 <p className="text-[9px] sm:text-[10px] text-white/75 font-semibold text-center sm:text-right shrink-0">PPAN 2023-2028 Local LGU Integration Standard | RA 10173 DPA Compliant.</p>
@@ -2057,7 +2011,7 @@
                         </div>
                     </footer>
 
-                    {/* Quick Accessibility Widget Button */}
+                    {/* Floating Accessibility Panel */}
                     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col gap-2">
                         {showBackToTop && (
                             <button 
@@ -2083,7 +2037,7 @@
                                 <div className="space-y-2.5 text-xs font-sans">
                                     <button 
                                         onClick={() => setShowAccessStatementModal(true)} 
-                                        className="w-full text-left font-bold text-slate-800 hover:text-emerald-800 flex items-center gap-2 py-1 min-h-[32px]"
+                                        className="w-full text-left font-bold text-slate-800 hover:text-emerald-800 flex items-center gap-2 py-1 min-h-[32px] font-sans"
                                         title="Read Web Accessibility Statement Guidelines"
                                     >
                                         <i className="fa-regular fa-file-lines text-sm"></i>
@@ -2092,7 +2046,7 @@
 
                                     <button 
                                         onClick={() => setHighContrastMode(!highContrastMode)} 
-                                        className="w-full text-left font-bold text-slate-800 hover:text-emerald-800 flex items-center gap-2 py-1 min-h-[32px]"
+                                        className="w-full text-left font-bold text-slate-800 hover:text-emerald-800 flex items-center gap-2 py-1 min-h-[32px] font-sans"
                                         title="Toggle Contrast Level"
                                     >
                                         <i className="fa-solid fa-eye-slash text-xs"></i>
@@ -2101,7 +2055,7 @@
 
                                     <button 
                                         onClick={() => document.getElementById("main-content")?.scrollIntoView({ behavior: 'smooth' })} 
-                                        className="w-full text-left font-bold text-slate-800 hover:text-emerald-800 flex items-center gap-2 py-1 min-h-[32px]"
+                                        className="w-full text-left font-bold text-slate-800 hover:text-emerald-800 flex items-center gap-2 py-1 min-h-[32px] font-sans"
                                         title="Skip to analytical graphs and records"
                                     >
                                         <i className="fa-solid fa-circle-down text-xs"></i>
@@ -2110,7 +2064,7 @@
 
                                     <button 
                                         onClick={() => document.getElementById("footer")?.scrollIntoView({ behavior: 'smooth' })} 
-                                        className="w-full text-left font-bold text-slate-800 hover:text-emerald-800 flex items-center gap-2 py-1 min-h-[32px]"
+                                        className="w-full text-left font-bold text-slate-800 hover:text-emerald-800 flex items-center gap-2 py-1 min-h-[32px] font-sans"
                                         title="Skip to local support and hotlines"
                                     >
                                         <i className="fa-solid fa-chevron-down text-xs"></i>
@@ -2120,8 +2074,8 @@
                                     <hr className="border-slate-200" />
 
                                     <div className="flex items-center justify-between pt-1">
-                                        <span className="font-bold text-slate-500 text-[10px] uppercase">Text Size</span>
-                                        <div className="flex gap-1">
+                                        <span className="font-bold text-slate-500 text-[10px] uppercase font-sans">Text Size</span>
+                                        <div className="flex gap-1 font-sans">
                                             <button 
                                                 onClick={() => setFontSizeScale(prev => Math.min(prev + 0.05, 1.2))} 
                                                 className="w-6 h-6 bg-slate-100 font-bold rounded hover:bg-slate-200 text-xs flex items-center justify-center min-h-[24px]"
