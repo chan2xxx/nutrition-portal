@@ -78,58 +78,85 @@
 </head>
 <body class="bg-emerald-50/20 text-slate-800 flex flex-col min-h-screen overflow-x-hidden">
 
+    <!-- React App Container -->
     <div id="root" class="flex flex-col min-h-screen"></div>
 
     <!-- React and Babel CDNs -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.22.5/babel.min.js"></script>
 
     <!-- React App Script -->
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
         const defaultBarangayNutritionData = {
-            "Poblacion I": { normal: 85, underweight: 8, stunted: 5, overweight: 2, totalWeighed: 450 },
-            "Poblacion II": { normal: 88, underweight: 6, stunted: 4, overweight: 2, totalWeighed: 380 },
-            "Poblacion III": { normal: 81, underweight: 11, stunted: 6, overweight: 2, totalWeighed: 520 },
-            "Poblacion IV": { normal: 83, underweight: 9, stunted: 5, overweight: 3, totalWeighed: 490 },
-            "Poblacion V": { normal: 87, underweight: 7, stunted: 4, overweight: 2, totalWeighed: 410 },
-            "Poblacion VI": { normal: 84, underweight: 10, stunted: 5, overweight: 1, totalWeighed: 360 },
-            "Poblacion VII": { normal: 86, underweight: 8, stunted: 4, overweight: 2, totalWeighed: 430 },
-            "Poblacion VIII": { normal: 82, underweight: 11, stunted: 5, overweight: 2, totalWeighed: 400 },
+            "Barangay I": { normal: 85, underweight: 8, stunted: 5, overweight: 2, totalWeighed: 450 },
+            "Barangay II": { normal: 88, underweight: 6, stunted: 4, overweight: 2, totalWeighed: 380 },
+            "Barangay III": { normal: 81, underweight: 11, stunted: 6, overweight: 2, totalWeighed: 520 },
+            "Barangay IV": { normal: 83, underweight: 9, stunted: 5, overweight: 3, totalWeighed: 490 },
+            "Barangay V": { normal: 87, underweight: 7, stunted: 4, overweight: 2, totalWeighed: 410 },
+            "Barangay VI": { normal: 84, underweight: 10, stunted: 5, overweight: 1, totalWeighed: 360 },
+            "Barangay VII": { normal: 86, underweight: 8, stunted: 4, overweight: 2, totalWeighed: 430 },
+            "Barangay VIII": { normal: 82, underweight: 11, stunted: 5, overweight: 2, totalWeighed: 400 },
+            "Barangay IX": { normal: 80, underweight: 13, stunted: 5, overweight: 2, totalWeighed: 390 },
+            "Obogon": { normal: 77, underweight: 14, stunted: 7, overweight: 2, totalWeighed: 480 },
+            "Tugas": { normal: 78, underweight: 12, stunted: 8, overweight: 2, totalWeighed: 610 },
+            "Polo": { normal: 81, underweight: 10, stunted: 6, overweight: 3, totalWeighed: 550 },
             "Azagra": { normal: 75, underweight: 15, stunted: 8, overweight: 2, totalWeighed: 590 },
-            "Bahi-an": { normal: 79, underweight: 13, stunted: 6, overweight: 2, totalWeighed: 310 },
+            "San Miguel": { normal: 80, underweight: 12, stunted: 6, overweight: 2, totalWeighed: 470 },
+            "Sta.Cruz Nuevo": { normal: 82, underweight: 10, stunted: 6, overweight: 2, totalWeighed: 550 },
+            "Sta.Cruz Viejo": { normal: 84, underweight: 8, stunted: 5, overweight: 3, totalWeighed: 480 },
+            "San Jose": { normal: 83, underweight: 9, stunted: 5, overweight: 3, totalWeighed: 410 },
+            "San Isidro": { normal: 73, underweight: 17, stunted: 8, overweight: 2, totalWeighed: 620 },
+            "Manipis": { normal: 79, underweight: 13, stunted: 6, overweight: 2, totalWeighed: 340 },
             "Luca": { normal: 74, underweight: 16, stunted: 9, overweight: 1, totalWeighed: 510 },
             "Novallas": { normal: 80, underweight: 12, stunted: 6, overweight: 2, totalWeighed: 460 },
-            "Obogon": { normal: 77, underweight: 14, stunted: 7, overweight: 2, totalWeighed: 480 },
-            "Pal-pinas": { normal: 78, underweight: 13, stunted: 7, overweight: 2, totalWeighed: 390 },
-            "Polo": { normal: 81, underweight: 10, stunted: 6, overweight: 3, totalWeighed: 550 },
-            "San Isidro": { normal: 73, underweight: 17, stunted: 8, overweight: 2, totalWeighed: 620 },
-            "San Jose": { normal: 83, underweight: 9, stunted: 5, overweight: 3, totalWeighed: 410 },
-            "San Miguel": { normal: 80, underweight: 12, stunted: 6, overweight: 2, totalWeighed: 470 },
-            "Santa Cruz Nuevo": { normal: 82, underweight: 10, stunted: 6, overweight: 2, totalWeighed: 550 },
-            "Santa Cruz Viejo": { normal: 84, underweight: 8, stunted: 5, overweight: 3, totalWeighed: 480 },
-            "Santo Niño": { normal: 76, underweight: 14, stunted: 7, overweight: 3, totalWeighed: 670 },
-            "Tugas": { normal: 78, underweight: 12, stunted: 8, overweight: 2, totalWeighed: 610 },
-            "Mandem": { normal: 79, underweight: 13, stunted: 6, overweight: 2, totalWeighed: 340 },
-            "Sycip": { normal: 82, underweight: 11, stunted: 5, overweight: 2, totalWeighed: 320 }
+            "Bahi-an": { normal: 79, underweight: 13, stunted: 6, overweight: 2, totalWeighed: 310 },
+            "Pal-ew": { normal: 82, underweight: 11, stunted: 5, overweight: 2, totalWeighed: 320 },
+            "Sto. Niño 1": { normal: 76, underweight: 14, stunted: 7, overweight: 3, totalWeighed: 330 },
+            "Sto. Niño 2": { normal: 76, underweight: 14, stunted: 7, overweight: 3, totalWeighed: 340 }
         };
 
         const initialMockDocuments = [
-            { id: "eOPT-9082", fileName: "eOPT_Poblacion_IV_Consolidated.xlsx", size: "1.4 MB", type: "e-OPT Spreadsheet (.xlsx)", uploadedBy: "Imelda R. Marcos", date: "2026-05-12", status: "Approved", feedback: "Matches database totals." },
-            { id: "eOPT-8821", fileName: "Supplementary_Feeding_Polo_June.xlsx", size: "820 KB", type: "Feeding Logs", uploadedBy: "Paz Marquez-Benitez", date: "2026-06-01", status: "Approved", feedback: "Approved for fund release." },
-            { id: "eOPT-7751", fileName: "Stunting_Correction_Survey_Luca.pdf", size: "2.1 MB", type: "Census Document", uploadedBy: "Patrocinio L. Gamboa", date: "2026-06-04", status: "Pending", feedback: "" }
+            { id: "eOPT-9082", fileName: "eOPT_Barangay_IV_Consolidated.xlsx", size: "1.4 MB", type: "e-OPT Spreadsheet (.xlsx)", uploadedBy: "Portia V. Catacutan", date: "2026-05-12", status: "Approved", feedback: "Matches database totals." },
+            { id: "eOPT-8821", fileName: "Supplementary_Feeding_Polo_June.xlsx", size: "820 KB", type: "Feeding Logs", uploadedBy: "Rosabelle G. Vendiola", date: "2026-06-01", status: "Approved", feedback: "Approved for fund release." },
+            { id: "eOPT-7751", fileName: "Stunting_Correction_Survey_Luca.pdf", size: "2.1 MB", type: "Census Document", uploadedBy: "Janice V. Soriño", date: "2026-06-04", status: "Pending", feedback: "" }
         ];
 
         const initialStaffDirectory = [
             { id: "TNJ-OFF-10", name: "Stephy Detty", role: "Officer", title: "Tanjay City Nutrition Action Officer (CNAO)", email: "stephydetty14@gmail.com", mobile: "0917-415-3119", status: "Active" },
-            { id: "TNJ-BNS-30", name: "Christian Labe", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Poblacion IV", email: "christian.labe@caremin.com", mobile: "0995-102-3490", status: "Active" }
+            { id: "TNJ-ENC-01", name: "Micah C. Aba", role: "Encoder", title: "City Nutrition Encoder", email: "micahaba199x@gmail.com", mobile: "0967-724-1320", status: "Active" },
+            { id: "TNJ-BNS-01", name: "Renita T. Abarca", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Barangay I", email: "renita.abarca@tcnc.gov.ph", mobile: "0967-693-9036", status: "Active" },
+            { id: "TNJ-BNS-02", name: "Girlie B. Guma", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Barangay II", email: "girlie.guma@tcnc.gov.ph", mobile: "0935-252-1458", status: "Active" },
+            { id: "TNJ-BNS-03", name: "Richell A. Bao", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Barangay III", email: "richell.bao@tcnc.gov.ph", mobile: "0955-789-0115", status: "Active" },
+            { id: "TNJ-BNS-04", name: "Portia V. Catacutan", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Barangay IV", email: "portia.catacutan@tcnc.gov.ph", mobile: "0951-056-2709", status: "Active" },
+            { id: "TNJ-BNS-05", name: "Charlene Y. Katipunan", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Barangay V", email: "charlene.katipunan@tcnc.gov.ph", mobile: "0956-521-2512", status: "Active" },
+            { id: "TNJ-BNS-06", name: "Alma M. Zerna", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Barangay VI", email: "alma.zerna@tcnc.gov.ph", mobile: "0930-466-6970", status: "Active" },
+            { id: "TNJ-BNS-07", name: "Emmalyn C. Villaflores", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Barangay VII", email: "emmalyn.villaflores@tcnc.gov.ph", mobile: "0999-415-5751", status: "Active" },
+            { id: "TNJ-BNS-08", name: "Leslie V. Escuadro", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Barangay VIII", email: "leslie.escuadro@tcnc.gov.ph", mobile: "0997-166-2544", status: "Active" },
+            { id: "TNJ-BNS-09", name: "Maharani S. Barot", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Barangay IX", email: "maharani.barot@tcnc.gov.ph", mobile: "0926-450-3547", status: "Active" },
+            { id: "TNJ-BNS-10", name: "Vacant Desk", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Obogon", email: "obogon@tcnc.gov.ph", mobile: "N/A", status: "Vacant" },
+            { id: "TNJ-BNS-11", name: "Vacant Desk", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Tugas", email: "tugas@tcnc.gov.ph", mobile: "N/A", status: "Vacant" },
+            { id: "TNJ-BNS-12", name: "Rosabelle G. Vendiola", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Polo", email: "rosabelle.vendiola@tcnc.gov.ph", mobile: "0912-805-6180", status: "Active" },
+            { id: "TNJ-BNS-13", name: "Rossalyn L. Colina", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Azagra", email: "rossalyn.colina@tcnc.gov.ph", mobile: "0953-430-7947", status: "Active" },
+            { id: "TNJ-BNS-14", name: "Rudelyn S. Quiñanola", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "San Miguel", email: "rudelyn.quinanola@tcnc.gov.ph", mobile: "0993-896-4337", status: "Active" },
+            { id: "TNJ-BNS-15", name: "Mylene G. Macay", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Sta.Cruz Nuevo", email: "mylene.macay@tcnc.gov.ph", mobile: "0950-649-2544", status: "Active" },
+            { id: "TNJ-BNS-16", name: "Adelaida A. Sotes", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Sta.Cruz Viejo", email: "adelaida.sotes@tcnc.gov.ph", mobile: "0964-903-6162", status: "Active" },
+            { id: "TNJ-BNS-17", name: "Elena T. Tablo", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "San Jose", email: "elena.tablo@tcnc.gov.ph", mobile: "0926-482-8355", status: "Active" },
+            { id: "TNJ-BNS-18", name: "Mary Ann J. Guzarem", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "San Isidro", email: "maryann.guzarem@tcnc.gov.ph", mobile: "0948-586-5582", status: "Active" },
+            { id: "TNJ-BNS-19", name: "Gerlie M. Cang", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Manipis", email: "gerlie.cang@tcnc.gov.ph", mobile: "0927-471-8428", status: "Active" },
+            { id: "TNJ-BNS-20", name: "Janice V. Soriño", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Luca", email: "janice.sorino@tcnc.gov.ph", mobile: "0999-948-6524", status: "Active" },
+            { id: "TNJ-BNS-21", name: "Celsa R. Torres", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Novallas", email: "celsa.torres@tcnc.gov.ph", mobile: "0918-657-0749", status: "Active" },
+            { id: "TNJ-BNS-22", name: "Maedy C. Aureliano", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Bahi-an", email: "maedy.aureliano@tcnc.gov.ph", mobile: "0997-062-6252", status: "Active" },
+            { id: "TNJ-BNS-23", name: "Catherine M. Robete", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Pal-ew", email: "catherine.robete@tcnc.gov.ph", mobile: "0935-859-2019", status: "Active" },
+            { id: "TNJ-BNS-24", name: "Marifel S. Carbajosa", role: "BNS", title: "Barangay Nutrition Scholar (Sto. Niño 1)", barangay: "Sto. Niño 1", email: "marifel.carbajosa@tcnc.gov.ph", mobile: "0964-900-6945", status: "Active" },
+            { id: "TNJ-BNS-25", name: "Rezlen A. Alegarbes", role: "BNS", title: "Barangay Nutrition Scholar (Sto. Niño 2)", barangay: "Sto. Niño 2", email: "rezlen.alegarbes@tcnc.gov.ph", mobile: "0907-004-5118", status: "Active" }
         ];
 
         function App() {
             const [barangayNutritionData, setBarangayNutritionData] = useState(defaultBarangayNutritionData);
-            const [selectedBarangay, setSelectedBarangay] = useState("Poblacion IV");
+            const [selectedBarangay, setSelectedBarangay] = useState("Barangay IV");
             const [calculatorHeight, setCalculatorHeight] = useState("");
             const [calculatorWeight, setCalculatorWeight] = useState("");
             const [calculatorAge, setCalculatorAge] = useState("");
@@ -144,8 +171,8 @@
             // Access Statement Modal State
             const [showAccessStatementModal, setShowAccessStatementModal] = useState(false);
 
-            // UI Enhancement States
-            const [fontSizeScale, setFontSizeScale] = useState(1); // 1 = 100%, 1.1 = 110%, etc.
+            // UI Accessibility Customization States
+            const [fontSizeScale, setFontSizeScale] = useState(1);
             const [highContrastMode, setHighContrastMode] = useState(false);
             const [showBackToTop, setShowBackToTop] = useState(false);
 
@@ -154,7 +181,7 @@
             const [privacyConsented, setPrivacyConsented] = useState(false);
 
             // Digital Input Form States
-            const [formBarangay, setFormBarangay] = useState("Poblacion IV");
+            const [formBarangay, setFormBarangay] = useState("Barangay IV");
             const [rawNormal, setRawNormal] = useState("");
             const [rawUnderweight, setRawUnderweight] = useState("");
             const [rawStunted, setRawStunted] = useState("");
@@ -237,7 +264,7 @@
 
             const [sysLogs, setSysLogs] = useState([
                 { time: "10:14 AM", user: "Stephy Detty (CNAO)", action: "Accessed City Dashboard" },
-                { time: "09:30 AM", user: "Christian Labe (BNS)", action: "Logged in via Poblacion IV portal" }
+                { time: "09:30 AM", user: "Micah C. Aba (Encoder)", action: "Logged in via Encoder console" }
             ]);
 
             const showNotification = (message, type = 'success') => {
@@ -264,7 +291,6 @@
                 }
             }, [activeTab]);
 
-            // Scroll listener for back-to-top button visibility
             useEffect(() => {
                 const handleScroll = () => {
                     if (window.scrollY > 400) {
@@ -277,7 +303,6 @@
                 return () => window.removeEventListener("scroll", handleScroll);
             }, []);
 
-            // Synchronize weighing metrics on boot
             useEffect(() => {
                 if (typeof google !== 'undefined' && google.script && google.script.run) {
                     try {
@@ -341,7 +366,6 @@
                         })
                         .authenticateUser(loginEmail, loginPassword);
                 } else {
-                    // Sandbox local verification fallback
                     setTimeout(() => {
                         setIsSubmittingAuth(false);
                         const cleanEmail = loginEmail.toLowerCase().trim();
@@ -349,11 +373,15 @@
                         const sandboxDatabase = {
                             "stephydetty14@gmail.com": {
                                 password: "officer123",
-                                profile: { id: "TNJ-OFF-10", name: "Stephy Detty", role: "Officer", title: "Tanjay City Nutrition Action Officer (CNAO)" }
+                                profile: { id: "TNJ-OFF-10", name: "Stephy Detty", role: "Officer", title: "Tanjay City Nutrition Action Officer (CNAO)", email: "stephydetty14@gmail.com" }
                             },
-                            "christian.labe@caremin.com": {
+                            "micahaba199x@gmail.com": {
+                                password: "encoder123",
+                                profile: { id: "TNJ-ENC-01", name: "Micah C. Aba", role: "Encoder", title: "City Nutrition Encoder", email: "micahaba199x@gmail.com", mobile: "0967-724-1320" }
+                            },
+                            "portia.catacutan@tcnc.gov.ph": {
                                 password: "bns123",
-                                profile: { id: "TNJ-BNS-30", name: "Christian Labe", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Poblacion IV" }
+                                profile: { id: "TNJ-BNS-04", name: "Portia V. Catacutan", role: "BNS", title: "Barangay Nutrition Scholar", barangay: "Barangay IV", email: "portia.catacutan@tcnc.gov.ph" }
                             }
                         };
 
@@ -408,7 +436,6 @@
                                 setRawStunted("");
                                 setRawOverweight("");
                                 
-                                // Refresh current dataset
                                 google.script.run.withSuccessHandler((dbMetrics) => {
                                     if (dbMetrics) setBarangayNutritionData(dbMetrics);
                                 }).fetchBarangayMetrics();
@@ -422,7 +449,6 @@
                         })
                         .saveBarangayMetrics(formBarangay, pctNormal, pctUnderweight, pctStunted, pctOverweight, total, uploader);
                 } else {
-                    // Sandbox fallback
                     setTimeout(() => {
                         setIsSubmittingMetrics(false);
                         const updatedMetrics = {
@@ -642,7 +668,7 @@
                         </div>
                     )}
 
-                    {}
+                    {/* DPA Compliance Overlay Modal */}
                     {showPrivacyModal && (
                         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
                             <div className="bg-white rounded-3xl max-w-2xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
@@ -693,7 +719,7 @@
                         </div>
                     )}
 
-                    {}
+                    {/* WCAG Accessibility Policy Modal */}
                     {showAccessStatementModal && (
                         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
                             <div className="bg-white rounded-3xl max-w-2xl w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
@@ -705,7 +731,7 @@
                                 </div>
                                 <div className="p-5 overflow-y-auto space-y-4 text-xs text-slate-600 leading-relaxed">
                                     <p>
-                                        The <strong>Tanjay City Nutrition Council Action Portal</strong> is committed to ensuring digital accessibility for individuals with disabilities. We continually improve the user experience for everyone, applying relevant accessibility guidelines under DICT directives and international WCAG principles.
+                                        The <strong>Tanjay City Nutrition Council Portal</strong> is committed to ensuring digital accessibility for individuals with disabilities. We continually improve the user experience for everyone, applying relevant accessibility guidelines under DICT directives and international WCAG principles.
                                     </p>
                                     <div className="bg-emerald-50/40 p-4 rounded-xl border border-[#1da187]/20 space-y-2">
                                         <h4 className="font-bold text-[#1da187] uppercase">Accessibility Features Active</h4>
@@ -731,11 +757,26 @@
                         </div>
                     )}
 
-                    {}
+                    {/* Navigation System */}
                     <nav className="bg-[#1da187] text-white py-3 shadow-md z-40 relative">
                         <div className="max-w-[1700px] mx-auto px-4 xl:px-12 2xl:px-16 flex items-center justify-between font-medium text-sm">
-                            {/* Desktop navigation (hidden on mobile, flex on desktop) */}
                             <div className="hidden md:flex flex-wrap items-center justify-center gap-6 md:gap-8 w-full">
+                                
+                                <a 
+                                    href="https://www.gov.ph" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="flex items-center gap-2 text-white hover:text-[#3ce6c3] transition-all select-none font-sans font-medium"
+                                >
+                                    <img 
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Coat_of_arms_of_the_Philippines.svg/120px-Coat_of_arms_of_the_Philippines.svg.png" 
+                                        alt="GOV.PH Logo" 
+                                        className="w-5 h-5 object-contain shrink-0 filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]" 
+                                        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "https://placehold.co/20x20/064e3b/ffffff?text=PH"; }}
+                                    />
+                                    <span>GOV.PH</span>
+                                </a>
+
                                 <button 
                                     onClick={() => { setActiveTab("home"); setAboutDropdownOpen(false); }} 
                                     className={`pb-1 transition-all hover:text-[#3ce6c3] border-b-2 ${activeTab === 'home' ? 'border-[#3ce6c3] text-[#3ce6c3]' : 'border-transparent text-white'}`}
@@ -751,19 +792,13 @@
                                         }}
                                         className="hover:text-[#3ce6c3] pb-1 flex items-center gap-1 focus:outline-none text-white"
                                     >
-                                        About CNC <i className="fa-solid fa-chevron-down text-[10px]"></i>
+                                        About us <i className="fa-solid fa-chevron-down text-[10px]"></i>
                                     </button>
                                     {aboutDropdownOpen && (
                                         <div 
                                             className="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 py-2 text-slate-800 text-xs z-50 animate-fadeIn"
                                             onClick={(e) => e.stopPropagation()}
                                         >
-                                            <button 
-                                                onClick={() => { setActiveTab("home"); setAboutDropdownOpen(false); setTimeout(() => document.getElementById("nnc-mandates")?.scrollIntoView({ behavior: 'smooth' }), 100); }} 
-                                                className="w-full text-left px-4 py-2 hover:bg-emerald-50 font-semibold text-emerald-800"
-                                            >
-                                                National Statutes & RAs
-                                            </button>
                                             <button 
                                                 onClick={() => { setActiveTab("home"); setAboutDropdownOpen(false); setTimeout(() => document.getElementById("vision-mission-section")?.scrollIntoView({ behavior: 'smooth' }), 100); }} 
                                                 className="w-full text-left px-4 py-2 hover:bg-emerald-50 font-semibold text-emerald-800"
@@ -818,9 +853,9 @@
                                 )}
                             </div>
 
-                            {/* Mobile Hamburger Header (Visible only on mobile/tablet) */}
-                            <div className="flex md:hidden items-center justify-between w-full">
-                                <span className="font-extrabold text-xs tracking-wider uppercase flex items-center gap-2">
+                            {/* Mobile Navigation controls */}
+                            <div className="flex md:hidden items-center justify-between w-full font-sans">
+                                <span className="font-extrabold text-[10px] tracking-wider uppercase flex items-center gap-2">
                                     <img src="https://i.imgur.com/Paf57TV.png" className="w-5 h-5 object-contain" alt="" />
                                     TCNC Portal
                                 </span>
@@ -834,9 +869,24 @@
                             </div>
                         </div>
 
-                        {/* Collapsible Mobile Menu Drawer */}
                         {mobileMenuOpen && (
                             <div className="md:hidden bg-emerald-800 border-t border-emerald-900 animate-fadeIn mt-2 flex flex-col divide-y divide-emerald-900/40 text-sm font-semibold">
+                                
+                                <a 
+                                    href="https://www.gov.ph" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="w-full text-left px-5 py-3.5 bg-emerald-900/40 hover:bg-emerald-900 text-white flex items-center gap-2.5 transition-colors font-sans"
+                                >
+                                    <img 
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Coat_of_arms_of_the_Philippines.svg/120px-Coat_of_arms_of_the_Philippines.svg.png" 
+                                        alt="GOV.PH Logo" 
+                                        className="w-5 h-5 object-contain shrink-0" 
+                                        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "https://placehold.co/20x20/064e3b/ffffff?text=PH"; }}
+                                    />
+                                    <span>GOV.PH</span>
+                                </a>
+
                                 <button 
                                     onClick={() => { setActiveTab("home"); setMobileMenuOpen(false); }}
                                     className="w-full text-left px-5 py-3.5 hover:bg-emerald-900 transition-colors"
@@ -880,7 +930,7 @@
                         )}
                     </nav>
 
-                    {}
+                    {/* Branding Banner Header representing State of Government Entity */}
                     <div 
                         className="relative border-b border-slate-200 py-8 md:py-16 overflow-hidden bg-cover bg-center md:bg-right bg-no-repeat shadow-inner z-10"
                         style={{ backgroundImage: "url('https://i.imgur.com/Yk63RAR.png')" }}
@@ -889,32 +939,30 @@
 
                         <div className="max-w-[1700px] mx-auto px-4 xl:px-12 2xl:px-16 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
                             <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-5 text-center sm:text-left max-w-4xl w-full">
-                                {/* Logos Side-by-Side as seen in image_fee1c0.jpg */}
                                 <div className="flex items-center justify-center gap-4 shrink-0">
                                     <img 
                                         src="https://i.imgur.com/VRnnRFC.png" 
                                         alt="Tanjay City Logo" 
                                         className="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-md" 
-                                        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/64x64/064e3b/ffffff?text=LGU"; }}
+                                        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "https://placehold.co/64x64/064e3b/ffffff?text=LGU"; }}
                                     />
                                     <img 
                                         src="https://i.imgur.com/Paf57TV.png" 
-                                        alt="Nutrition Council Logo" 
+                                        alt="Tanjay City Nutrition Council Logo" 
                                         className="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-md" 
-                                        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/64x64/064e3b/ffffff?text=CNC"; }}
+                                        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "https://placehold.co/64x64/064e3b/ffffff?text=CNC"; }}
                                     />
                                 </div>
                                 <div className="text-center sm:text-left">
-                                    {/* Black title with crisp white backdrop shadow exactly matching image_fee1c0.jpg */}
                                     <h1 
                                         className="text-lg sm:text-2xl md:text-3xl font-bold tracking-tight text-slate-900 gov-title leading-tight"
-                                        style={{ textShadow: '2px 2px 8px rgba(255,255,255,0.95), -2px -2px 8px rgba(255,255,255,0.95), 2px -2px 8px rgba(255,255,255,0.95), -2px 2px 8px rgba(255,255,255,0.95)' }}
+                                        style={{ textShadow: '2px 2px 8px rgba(255,255,255,0.95), -2px -2px 8px rgba(255,255,255,0.95)' }}
                                     >
                                         Tanjay City Nutrition Council
                                     </h1>
                                     <p 
                                         className="text-[11px] sm:text-xs md:text-sm text-slate-800 font-semibold tracking-wide mt-1"
-                                        style={{ textShadow: '1px 1px 6px rgba(255,255,255,0.95), -1px -1px 6px rgba(255,255,255,0.95)' }}
+                                        style={{ textShadow: '1px 1px 6px rgba(255,255,255,0.95)' }}
                                     >
                                         Negros Island Region • National Nutrition Council Compliance Portal
                                     </p>
@@ -923,19 +971,18 @@
                         </div>
                     </div>
 
-                    {}
+                    {/* Main Interactive Screen */}
                     <main id="main-content" className="flex-grow max-w-[1700px] w-full mx-auto px-4 xl:px-12 2xl:px-16 py-6 relative">
 
                         {activeTab === "home" && (
                             <div className="space-y-6 md:space-y-8 animate-fadeIn">
                                 
-                                {/* DYNAMIC ANNOUNCEMENT BAR (Strictly styled after image_fee1c0.jpg) */}
                                 <div className="bg-[#1da187] text-white px-4 md:px-5 py-3 rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[11px] sm:text-xs font-semibold">
                                     <div className="flex items-start sm:items-center gap-3">
                                         <span className="bg-[#8cd824] text-[#115e59] px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-black uppercase tracking-wide shrink-0">
                                             Advisory
                                         </span>
-                                        <span className="leading-relaxed">
+                                        <span className="leading-relaxed font-sans">
                                             PPAN 2023-2028 Data Cycle: e-Operation Timbang Plus (e-OPT) registers are open. Ensure compliance with PD 1569 Barangay Scholar structures.
                                         </span>
                                     </div>
@@ -947,7 +994,7 @@
                                     </button>
                                 </div>
 
-                                {/* AUTOMATIC PICTURE SLIDE SHOW (CAROUSEL) */}
+                                {/* News Slide Carousel */}
                                 <div className="relative w-full h-[240px] sm:h-[320px] md:h-[480px] rounded-3xl overflow-hidden shadow-md border border-emerald-100 bg-slate-900 group">
                                     {carouselSlides.map((slide, idx) => (
                                         <div 
@@ -961,9 +1008,8 @@
                                                 alt={slide.title} 
                                                 className="w-full h-full object-cover brightness-[0.75]"
                                                 style={{ objectPosition: slide.objectPosition || "center" }}
-                                                onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/1600x480/064e3b/ffffff?text=" + encodeURIComponent(slide.title); }}
+                                                onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "https://placehold.co/1600x480/064e3b/ffffff?text=" + encodeURIComponent(slide.title); }}
                                             />
-                                            {/* Transparent black gradient background bar */}
                                             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/85 to-transparent pt-10 pb-3 px-4 md:px-8 z-20 flex items-center gap-3 md:gap-4">
                                                 
                                                 <div className="hidden sm:flex items-center gap-2 md:gap-3 shrink-0">
@@ -1017,104 +1063,13 @@
                                     </div>
                                 </div>
 
-                                {}
-                                <div id="nnc-mandates" className="bg-white rounded-3xl p-5 md:p-8 border-2 border-[#1da187] shadow-lg space-y-6 scroll-mt-24">
-                                    <div className="border-b border-slate-200 pb-4">
-                                        <span className="text-[9px] sm:text-[10px] font-black uppercase text-[#1da187] tracking-widest block">Statutory Alignment Center</span>
-                                        <h2 className="text-lg md:text-2xl font-black text-slate-900 gov-title mt-1">National Nutrition Council Regulatory Framework</h2>
-                                        <p className="text-xs text-slate-500 mt-1">
-                                            Tanjay City coordinates programs in strict compliance with Philippine Presidential Decrees and Republic Acts under NNC directives and the **Philippine Plan of Action for Nutrition (PPAN) 2023-2028**.
-                                        </p>
-                                    </div>
-
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                                        <div className="p-4 sm:p-5 bg-emerald-50/10 rounded-2xl border border-emerald-100 space-y-2 flex flex-col justify-between">
-                                            <div>
-                                                <div className="flex items-center gap-2 text-[#1da187] mb-2">
-                                                    <i className="fa-solid fa-scale-balanced text-lg"></i>
-                                                    <h3 className="font-extrabold text-xs sm:text-sm text-slate-800">Presidential Decree No. 491</h3>
-                                                </div>
-                                                <p className="text-xs text-slate-600 leading-relaxed">
-                                                    <strong>The Nutrition Act of the Philippines</strong>. Establishes the NNC as the highest policy-making body, mandating integration of municipal and barangay-level feeding networks under LGU jurisdiction.
-                                                </p>
-                                            </div>
-                                            <span className="block text-[9px] sm:text-[10px] text-emerald-800 font-bold mt-2">Status: Fully Implemented</span>
-                                        </div>
-
-                                        <div className="p-4 sm:p-5 bg-emerald-50/10 rounded-2xl border border-emerald-100 space-y-2 flex flex-col justify-between">
-                                            <div>
-                                                <div className="flex items-center gap-2 text-[#1da187] mb-2">
-                                                    <i className="fa-solid fa-people-carry-box text-lg"></i>
-                                                    <h3 className="font-extrabold text-xs sm:text-sm text-slate-800">Presidential Decree No. 1569</h3>
-                                                </div>
-                                                <p className="text-xs text-slate-600 leading-relaxed">
-                                                    <strong>Barangay Nutrition Scholar Program</strong>. Institutionalizes a trained community leader (BNS) in every barangay to monitor growth (e-OPT) and deliver vital nutrition counseling.
-                                                </p>
-                                            </div>
-                                            <span className="block text-[9px] sm:text-[10px] text-emerald-800 font-bold mt-2">Status: 24 active scholars registered</span>
-                                        </div>
-
-                                        <div className="p-4 sm:p-5 bg-emerald-50/10 rounded-2xl border border-emerald-100 space-y-2 flex flex-col justify-between">
-                                            <div>
-                                                <div className="flex items-center gap-2 text-[#1da187] mb-2">
-                                                    <i className="fa-solid fa-baby-carriage text-lg"></i>
-                                                    <h3 className="font-extrabold text-xs sm:text-sm text-slate-800">Republic Act No. 11148</h3>
-                                                </div>
-                                                <p className="text-xs text-slate-600 leading-relaxed">
-                                                    <strong>First 1000 Days Law</strong>. Mandates localized medical and nutritional intervention during a child's critical developmental window from conception up to age two (0-23 months).
-                                                </p>
-                                            </div>
-                                            <span className="block text-[9px] sm:text-[10px] text-emerald-800 font-bold mt-2">Status: Core stunting priority indicators</span>
-                                        </div>
-
-                                        <div className="p-4 sm:p-5 bg-emerald-50/10 rounded-2xl border border-emerald-100 space-y-2 flex flex-col justify-between">
-                                            <div>
-                                                <div className="flex items-center gap-2 text-[#1da187] mb-2">
-                                                    <i className="fa-solid fa-utensils text-lg"></i>
-                                                    <h3 className="font-extrabold text-xs sm:text-sm text-slate-800">Republic Act No. 11037</h3>
-                                                </div>
-                                                <p className="text-xs text-slate-600 leading-relaxed">
-                                                    <strong>Masustansyang Pagkain Act</strong>. Establishes national feeding mechanisms using local produce to address physical undernutrition and micronutrient deficiency in public centers.
-                                                </p>
-                                            </div>
-                                            <span className="block text-[9px] sm:text-[10px] text-emerald-800 font-bold mt-2">Status: Aligned localized meal formulations</span>
-                                        </div>
-
-                                        <div className="p-4 sm:p-5 bg-emerald-50/10 rounded-2xl border border-emerald-100 space-y-2 flex flex-col justify-between">
-                                            <div>
-                                                <div className="flex items-center gap-2 text-[#1da187] mb-2">
-                                                    <i className="fa-solid fa-shield-halved text-lg"></i>
-                                                    <h3 className="font-extrabold text-xs sm:text-sm text-slate-800">Republic Act No. 8976</h3>
-                                                </div>
-                                                <p className="text-xs text-slate-600 leading-relaxed">
-                                                    <strong>Philippine Food Fortification Act</strong>. Mandates the usage and promotion of staple grains and items fortified with Iron and Vitamin A to eliminate hidden hungers.
-                                                </p>
-                                            </div>
-                                            <span className="block text-[9px] sm:text-[10px] text-emerald-800 font-bold mt-2">Status: Compulsory in school feedings</span>
-                                        </div>
-
-                                        <div className="p-4 sm:p-5 bg-emerald-50/10 rounded-2xl border border-emerald-100 space-y-2 flex flex-col justify-between">
-                                            <div>
-                                                <div className="flex items-center gap-2 text-[#1da187] mb-2">
-                                                    <i className="fa-solid fa-vial-virus text-lg"></i>
-                                                    <h3 className="font-extrabold text-xs sm:text-sm text-slate-800">Republic Act No. 8172</h3>
-                                                </div>
-                                                <p className="text-xs text-slate-600 leading-relaxed">
-                                                    <strong>ASIN Law (Salt Iodization)</strong>. Promotes elimination of iodine deficiency disorders by ensuring local diets exclusively leverage iodized salt for cooking.
-                                                </p>
-                                            </div>
-                                            <span className="block text-[9px] sm:text-[10px] text-emerald-800 font-bold mt-2">Status: Integrated in dietary training</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {}
+                                {/* Congratulations Banner for LGU Admin */}
                                 <div className="bg-gradient-to-br from-emerald-900 via-[#1da187] to-emerald-950 text-white rounded-3xl p-5 md:p-8 shadow-xl space-y-6 relative overflow-hidden">
                                     <div className="text-center space-y-2 max-w-4xl mx-auto relative z-10">
                                         <h3 className="text-xl md:text-3xl font-black gov-title tracking-tight text-white leading-tight">
                                             Congratulations, Mayor Jose T. Orlino!
                                         </h3>
-                                        <p className="text-xs md:text-sm text-emerald-50 font-semibold leading-relaxed max-w-2xl mx-auto">
+                                        <p className="text-xs md:text-sm text-emerald-50 font-semibold leading-relaxed max-w-2xl mx-auto font-sans">
                                             On behalf of the Tanjay City Nutrition Council, we celebrate your State of the City Address 2026 and your strong policy prioritization of municipal nutritional development.
                                         </p>
                                     </div>
@@ -1142,25 +1097,25 @@
 
                                         <div className="hidden lg:flex flex-col items-center justify-center col-span-1">
                                             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-full border border-white/20 shadow-lg">
-                                                <img src="https://i.imgur.com/Paf57TV.png" alt="TCNC Seal" className="w-20 h-20 object-contain" />
+                                                <img src="https://i.imgur.com/Paf57TV.png" alt="Tanjay City Nutrition Council Seal" className="w-20 h-20 object-contain" />
                                             </div>
                                             <span className="text-[9px] font-bold text-emerald-200 mt-2 tracking-wider uppercase">Nutrition Council</span>
                                         </div>
                                     </div>
 
-                                    <div className="text-center pt-1 relative z-10">
+                                    <div className="text-center pt-1 relative z-10 font-sans">
                                         <a 
                                             href="https://www.facebook.com/tanjaycitynutrition" 
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             className="inline-flex w-full justify-center items-center gap-2 bg-white hover:bg-emerald-50 text-emerald-950 font-black text-xs md:text-sm uppercase tracking-wider py-3 px-4 rounded-xl shadow-lg transition-all min-h-[44px]"
                                         >
-                                            <i className="fa-brands fa-facebook text-base"></i> Visit Our Official Facebook Page
+                                            <i className="fa-brands fa-facebook text-base text-[#1da187]"></i> Visit Our Official Facebook Page
                                         </a>
                                     </div>
                                 </div>
 
-                                {}
+                                {/* Vision and Mission statements */}
                                 <div id="vision-mission-section" className="relative overflow-hidden bg-emerald-50/10 rounded-3xl p-6 md:p-10 border-2 border-[#1da187]/20 shadow-md scroll-mt-24">
                                     <div 
                                         className="absolute inset-0 opacity-[0.05] pointer-events-none bg-no-repeat bg-center bg-contain"
@@ -1188,7 +1143,7 @@
                                     </div>
                                 </div>
 
-                                {}
+                                {/* e-OPT quick status look card component */}
                                 <div className="bg-white rounded-2xl p-4 sm:p-6 border border-[#1da187]/20 shadow-sm space-y-6">
                                     <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 gap-3">
                                         <div>
@@ -1212,42 +1167,42 @@
                                         <div className="lg:col-span-3 space-y-4">
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                                 <div className="p-4 bg-emerald-50/20 rounded-xl border border-[#1da187]/20">
-                                                    <div className="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5">
+                                                    <div className="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5 font-sans">
                                                         <span>Normal Weight & Height</span>
-                                                        <span className="text-emerald-850 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].normal}%</span>
+                                                        <span className="text-emerald-850 font-extrabold text-sm">{barangayNutritionData[selectedBarangay]?.normal}%</span>
                                                     </div>
                                                     <div className="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
-                                                        <div className="bg-[#1da187] h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay].normal}%` }}></div>
+                                                        <div className="bg-[#1da187] h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay]?.normal}%` }}></div>
                                                     </div>
                                                 </div>
 
                                                 <div className="p-4 bg-emerald-50/20 rounded-xl border border-[#1da187]/20">
-                                                    <div className="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5">
+                                                    <div className="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5 font-sans">
                                                         <span>Underweight / Wasted</span>
-                                                        <span className="text-amber-800 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].underweight}%</span>
+                                                        <span className="text-amber-800 font-extrabold text-sm">{barangayNutritionData[selectedBarangay]?.underweight}%</span>
                                                     </div>
                                                     <div className="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
-                                                        <div className="bg-amber-550 h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay].underweight}%` }}></div>
+                                                        <div className="bg-amber-500 h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay]?.underweight}%` }}></div>
                                                     </div>
                                                 </div>
 
                                                 <div className="p-4 bg-emerald-50/20 rounded-xl border border-[#1da187]/20">
-                                                    <div className="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5">
+                                                    <div className="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5 font-sans">
                                                         <span>Stunted Growth (Chronic)</span>
-                                                        <span className="text-rose-800 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].stunted}%</span>
+                                                        <span className="text-rose-800 font-extrabold text-sm">{barangayNutritionData[selectedBarangay]?.stunted}%</span>
                                                     </div>
                                                     <div className="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
-                                                        <div className="bg-rose-500 h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay].stunted}%` }}></div>
+                                                        <div className="bg-rose-500 h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay]?.stunted}%` }}></div>
                                                     </div>
                                                 </div>
 
                                                 <div className="p-4 bg-emerald-50/20 rounded-xl border border-[#1da187]/20">
-                                                    <div className="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5">
+                                                    <div className="flex justify-between items-center text-xs text-slate-600 font-bold mb-1.5 font-sans">
                                                         <span>Overweight</span>
-                                                        <span className="text-teal-800 font-extrabold text-sm">{barangayNutritionData[selectedBarangay].overweight}%</span>
+                                                        <span className="text-teal-800 font-extrabold text-sm">{barangayNutritionData[selectedBarangay]?.overweight}%</span>
                                                     </div>
                                                     <div className="w-full bg-slate-200 rounded-full h-3.5 overflow-hidden">
-                                                        <div className="bg-teal-500 h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay].overweight}%` }}></div>
+                                                        <div className="bg-teal-500 h-full rounded-full" style={{ width: `${barangayNutritionData[selectedBarangay]?.overweight}%` }}></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1258,8 +1213,8 @@
                                                 <span className="text-lime-300 font-extrabold text-[10px] sm:text-xs tracking-wider uppercase block">Barangay Profile</span>
                                                 <h4 className="text-base sm:text-xl font-bold text-white mt-1 border-b border-emerald-800/30 pb-2 mb-3">{selectedBarangay}</h4>
                                                 <div>
-                                                    <span className="block text-[9px] sm:text-[10px] text-emerald-200 uppercase tracking-wide">Children Surveyed</span>
-                                                    <span className="block text-xl sm:text-2xl font-black text-white">{barangayNutritionData[selectedBarangay].totalWeighed}</span>
+                                                    <span className="block text-[9px] sm:text-[10px] text-emerald-200 uppercase tracking-wide font-sans">Children Surveyed</span>
+                                                    <span className="block text-xl sm:text-2xl font-black text-white">{barangayNutritionData[selectedBarangay]?.totalWeighed}</span>
                                                 </div>
                                             </div>
                                             <button onClick={() => setActiveTab("dashboard")} className="w-full text-center bg-white text-emerald-800 hover:bg-[#3ce6c3] hover:text-emerald-900 font-bold text-xs py-2.5 rounded-xl shadow min-h-[44px]">
@@ -1269,16 +1224,16 @@
                                     </div>
                                 </div>
 
-                                {}
+                                {/* SBFP Information block */}
                                 <div id="sbfp-info" className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 scroll-mt-24">
                                     <div className="bg-white p-5 sm:p-6 rounded-2xl border border-emerald-100 shadow-sm space-y-4">
                                         <h3 className="font-extrabold text-slate-800 text-sm sm:text-lg flex items-center gap-2">
                                             <i className="fa-solid fa-seedling text-[#1da187]"></i> PPAN 2023-2028 Strategic Framework
                                         </h3>
-                                        <p className="text-xs text-slate-605 leading-relaxed">
+                                        <p className="text-xs text-slate-600 leading-relaxed font-sans">
                                             The Philippine Plan of Action for Nutrition (PPAN) is our blueprint to reduce child stunting and wasting. The current PPAN cycle emphasizes nutrition-specific measures—including vitamin supplementation and exclusive breastfeeding mandates—and sensitive efforts linked to sustainable water, sanitation, and agricultural systems.
                                         </p>
-                                        <ul className="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
+                                        <ul className="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4 font-sans">
                                             <li className="flex items-start gap-2">
                                                 <i className="fa-solid fa-check text-[#1da187] mt-0.5"></i>
                                                 <span>Targeting zero micronutrient deficiencies through strict community vitamin distribution.</span>
@@ -1294,10 +1249,10 @@
                                         <h3 className="font-extrabold text-slate-800 text-sm sm:text-lg flex items-center gap-2">
                                             <i className="fa-solid fa-kitchen-set text-[#1da187]"></i> RA 11037 Integrated School Feedings
                                         </h3>
-                                        <p className="text-xs text-slate-605 leading-relaxed">
+                                        <p className="text-xs text-slate-600 leading-relaxed font-sans">
                                             Under the Masustansyang Pagkain para sa Batang Pilipino Act, we organize systematic feeding operations using fortified agricultural foods. Hot meals utilize iron-fortified rice and iodized salt to naturally suppress nutrient gaps.
                                         </p>
-                                        <div className="bg-[#1da187]/5 p-4 rounded-xl border border-[#1da187]/20">
+                                        <div className="bg-[#1da187]/5 p-4 rounded-xl border border-[#1da187]/20 font-sans">
                                             <span className="text-[9px] uppercase font-black text-[#1da187] block">Program Coverage</span>
                                             <span className="text-base sm:text-lg font-bold text-slate-800 block mt-1">2,400+ Under-Five Children Reached</span>
                                             <span className="text-[10px] text-slate-500 font-semibold">Active hot meals cooked in compliance with RA 8976 food fortification directives.</span>
@@ -1307,7 +1262,7 @@
                             </div>
                         )}
 
-                        {}
+                        {/* e-OPT Analytical Dashboard component */}
                         {activeTab === "dashboard" && (
                             <div className="space-y-6 md:space-y-8 animate-fadeIn">
                                 <div className="bg-white rounded-2xl shadow-md border border-emerald-100 p-4 sm:p-6">
@@ -1320,7 +1275,7 @@
 
                                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
                                         <div className="space-y-4">
-                                            <h3 className="font-bold text-slate-800 text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2">
+                                            <h3 className="font-bold text-slate-800 text-xs sm:text-sm uppercase tracking-wider flex items-center gap-2 font-sans">
                                                 <i className="fa-solid fa-map-location-dot text-[#1da187]"></i> Select Barangay
                                             </h3>
                                             <div className="grid grid-cols-2 gap-2 max-h-[240px] lg:max-h-[380px] overflow-y-auto pr-2">
@@ -1328,10 +1283,10 @@
                                                     <button 
                                                         key={bar}
                                                         onClick={() => setSelectedBarangay(bar)}
-                                                        className={`text-left p-2.5 sm:p-3 rounded-xl border text-[11px] sm:text-xs font-semibold transition-all duration-300 min-h-[44px] ${
+                                                        className={`text-left p-2.5 sm:p-3 rounded-xl border text-[11px] sm:text-xs font-bold font-sans transition-all duration-300 min-h-[44px] ${
                                                             selectedBarangay === bar 
                                                             ? 'bg-[#1da187] text-white border-transparent shadow-md' 
-                                                            : 'bg-white text-slate-705 border-slate-200 hover:bg-[#1da187]/5'
+                                                            : 'bg-white text-slate-700 border-slate-200 hover:bg-[#1da187]/5'
                                                         }`}
                                                     >
                                                         {bar}
@@ -1348,7 +1303,7 @@
                                                         <span className="text-[10px] sm:text-xs text-slate-500 font-semibold font-mono">BNS Surveillance Metrics</span>
                                                     </div>
                                                     <span className="bg-[#1da187]/15 text-[#1da187] text-xs font-bold px-3 py-1.5 rounded-full border border-[#1da187]/20 self-start sm:self-center">
-                                                        {barangayNutritionData[selectedBarangay].totalWeighed} Children Weighed
+                                                        {barangayNutritionData[selectedBarangay]?.totalWeighed} Children Weighed
                                                     </span>
                                                 </div>
 
@@ -1356,30 +1311,30 @@
                                                     <div>
                                                         <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-700 mb-2">
                                                             <span>Normal Status (Goal: &gt;90% under PPAN guidelines)</span>
-                                                            <span className="text-[#1da187] font-extrabold">{barangayNutritionData[selectedBarangay].normal}%</span>
+                                                            <span className="text-[#1da187] font-extrabold">{barangayNutritionData[selectedBarangay]?.normal}%</span>
                                                         </div>
                                                         <div className="h-6 w-full bg-slate-200 rounded-lg overflow-hidden flex shadow-inner">
-                                                            <div className="bg-[#1da187] h-full rounded-l" style={{ width: `${barangayNutritionData[selectedBarangay].normal}%` }}></div>
+                                                            <div className="bg-[#1da187] h-full rounded-l" style={{ width: `${barangayNutritionData[selectedBarangay]?.normal}%` }}></div>
                                                         </div>
                                                     </div>
 
                                                     <div>
                                                         <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-700 mb-2">
                                                             <span>Wasted / Underweight (PPAN reduction target: &lt;3%)</span>
-                                                            <span className="text-amber-805 font-extrabold">{barangayNutritionData[selectedBarangay].underweight}%</span>
+                                                            <span className="text-amber-800 font-extrabold">{barangayNutritionData[selectedBarangay]?.underweight}%</span>
                                                         </div>
                                                         <div className="h-6 w-full bg-slate-200 rounded-lg overflow-hidden flex shadow-inner">
-                                                            <div className="bg-amber-500 h-full rounded-l" style={{ width: `${barangayNutritionData[selectedBarangay].underweight}%` }}></div>
+                                                            <div className="bg-amber-500 h-full rounded-l" style={{ width: `${barangayNutritionData[selectedBarangay]?.underweight}%` }}></div>
                                                         </div>
                                                     </div>
 
                                                     <div>
                                                         <div className="flex justify-between text-[11px] sm:text-xs font-bold text-slate-700 mb-2">
                                                             <span>Stunting Prevalence (Chronic Underdevelopment Goal: &lt;10%)</span>
-                                                            <span className="text-rose-805 font-extrabold">{barangayNutritionData[selectedBarangay].stunted}%</span>
+                                                            <span className="text-rose-800 font-extrabold">{barangayNutritionData[selectedBarangay]?.stunted}%</span>
                                                         </div>
                                                         <div className="h-6 w-full bg-slate-200 rounded-lg overflow-hidden flex shadow-inner">
-                                                            <div className="bg-rose-500 h-full rounded-l" style={{ width: `${barangayNutritionData[selectedBarangay].stunted}%` }}></div>
+                                                            <div className="bg-rose-500 h-full rounded-l" style={{ width: `${barangayNutritionData[selectedBarangay]?.stunted}%` }}></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1390,15 +1345,14 @@
                             </div>
                         )}
 
-                        {}
+                        {/* BMI calculator widget */}
                         {activeTab === "calculator" && (
                             <div className="space-y-6 md:space-y-8 animate-fadeIn" id="bmi-tool">
                                 <div className="bg-white rounded-2xl shadow-md border border-emerald-100 p-4 sm:p-6">
                                     
-                                    {/* FIRST 1000 DAYS CAMPAIGN NOTICE (RA 11148) */}
                                     <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-xl mb-6 flex items-start gap-3">
                                         <i className="fa-solid fa-circle-exclamation text-lg sm:text-xl text-[#1da187] mt-0.5"></i>
-                                        <div className="text-xs leading-relaxed">
+                                        <div className="text-xs leading-relaxed font-sans">
                                             <span className="font-extrabold text-[#1da187] block uppercase tracking-wide">First 1000 Days Implementation Alert (RA 11148)</span>
                                             <p className="text-slate-600 mt-1">
                                                 For children under 2 years old (0-23 months), standard BMI indices are replaced by <strong>WHO Child Growth Standards (WCG)</strong>. Height-for-age and Weight-for-age parameters are compiled directly in the e-OPT sheets by the assigned Barangay Nutrition Scholar. This tool is optimized for children aged 2+ and adult health tracking.
@@ -1421,7 +1375,7 @@
                                             
                                             <form onSubmit={handleBmiCalculation} className="space-y-4">
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Age (Years)</label>
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5 font-sans">Age (Years)</label>
                                                     <input 
                                                         type="number" 
                                                         value={calculatorAge}
@@ -1432,13 +1386,13 @@
                                                 </div>
 
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Gender</label>
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5 font-sans">Gender</label>
                                                     <div className="grid grid-cols-2 gap-2">
                                                         <button 
                                                             type="button" 
                                                             onClick={() => setCalculatorGender("male")}
                                                             className={`py-2 px-4 rounded-xl border text-xs sm:text-sm font-bold transition-all min-h-[44px] ${
-                                                                calculatorGender === 'male' ? 'bg-[#1da187] text-white border-transparent shadow-sm' : 'bg-white text-slate-750 border-slate-200'
+                                                                calculatorGender === 'male' ? 'bg-[#1da187] text-white border-transparent shadow-sm' : 'bg-white text-slate-700 border-slate-200'
                                                             }`}
                                                         >
                                                             Male
@@ -1447,7 +1401,7 @@
                                                             type="button" 
                                                             onClick={() => setCalculatorGender("female")}
                                                             className={`py-2 px-4 rounded-xl border text-xs sm:text-sm font-bold transition-all min-h-[44px] ${
-                                                                calculatorGender === 'female' ? 'bg-[#1da187] text-white border-transparent shadow-sm' : 'bg-white text-slate-755 border-slate-200'
+                                                                calculatorGender === 'female' ? 'bg-[#1da187] text-white border-transparent shadow-sm' : 'bg-white text-slate-700 border-slate-200'
                                                             }`}
                                                         >
                                                             Female
@@ -1456,7 +1410,7 @@
                                                 </div>
 
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Height (cm)</label>
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5 font-sans">Height (cm)</label>
                                                     <input 
                                                         type="number" 
                                                         value={calculatorHeight}
@@ -1467,7 +1421,7 @@
                                                 </div>
 
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Weight (kg)</label>
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5 font-sans">Weight (kg)</label>
                                                     <input 
                                                         type="number" 
                                                         value={calculatorWeight}
@@ -1512,7 +1466,7 @@
                                                             <h5 className="font-bold text-emerald-900 text-xs sm:text-sm flex items-center gap-1.5">
                                                                 <i className="fa-solid fa-leaf text-[#1da187]"></i> Localized Dietary Advice:
                                                             </h5>
-                                                            <p className="text-[11px] sm:text-xs text-slate-705 mt-2 leading-relaxed font-medium">
+                                                            <p className="text-[11px] sm:text-xs text-slate-700 mt-2 leading-relaxed font-medium">
                                                                 {bmiResult.advice}
                                                             </p>
                                                         </div>
@@ -1535,7 +1489,7 @@
                             </div>
                         )}
 
-                        {}
+                        {/* Transparency Seal Document table component */}
                         {activeTab === "resources" && (
                             <div className="space-y-6 md:space-y-8 animate-fadeIn">
                                 <div className="bg-white rounded-2xl shadow-md border border-emerald-100 p-4 sm:p-6">
@@ -1564,19 +1518,18 @@
                                                 <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto bg-emerald-900 rounded-full p-1 border-4 border-[#3ce6c3] flex items-center justify-center relative">
                                                     <div className="text-white flex flex-col items-center">
                                                         <i className="fa-solid fa-fingerprint text-2xl sm:text-3xl text-[#3ce6c3]"></i>
-                                                        <span className="text-[7px] sm:text-[8px] font-black tracking-widest uppercase mt-1">Transparency</span>
+                                                        <span className="text-[7px] sm:text-[8px] font-black tracking-widest uppercase mt-1 font-sans">Transparency</span>
                                                     </div>
                                                 </div>
-                                                <h4 className="font-extrabold text-[10px] sm:text-xs text-emerald-900 uppercase tracking-wider">GAA Compliance</h4>
-                                                <p className="text-[9px] sm:text-[10px] text-slate-500 leading-relaxed">
+                                                <h4 className="font-extrabold text-[10px] sm:text-xs text-emerald-900 uppercase tracking-wider font-sans">GAA Compliance</h4>
+                                                <p className="text-[9px] sm:text-[10px] text-slate-500 leading-relaxed font-sans">
                                                     Symbol of institutionalized open government, showcasing budgets and Citizen charters to ensure transparency.
                                                 </p>
                                             </div>
 
-                                            {/* LEGAL STANDARD NOTICES */}
                                             <div className="p-3.5 bg-white/70 rounded-xl border border-slate-200 space-y-2 text-[10px] leading-relaxed">
-                                                <span className="block font-bold text-slate-700 uppercase tracking-wide">Legal Compliance Links</span>
-                                                <ul className="space-y-1 text-slate-500 font-semibold">
+                                                <span className="block font-bold text-slate-700 uppercase tracking-wide font-sans">Legal Compliance Links</span>
+                                                <ul className="space-y-1 text-slate-500 font-semibold font-sans">
                                                     <li><i className="fa-solid fa-check text-emerald-600 mr-1"></i> RA 11032 Citizen's Charter</li>
                                                     <li><i className="fa-solid fa-check text-emerald-600 mr-1"></i> RA 10173 DPA Shield Active</li>
                                                     <li><i className="fa-solid fa-check text-emerald-600 mr-1"></i> EO No. 2, s. 2016 FOI Manual</li>
@@ -1591,20 +1544,20 @@
                                                         <div key={index} className="bg-white p-4 sm:p-5 rounded-2xl border border-emerald-100 shadow-sm flex flex-col justify-between hover:border-[#1da187] transition-all">
                                                             <div>
                                                                 <div className="flex justify-between items-start gap-4">
-                                                                    <span className="inline-block bg-emerald-50 text-emerald-800 text-[8px] sm:text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-md">
+                                                                    <span className="inline-block bg-emerald-50 text-emerald-800 text-[8px] sm:text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-md font-sans">
                                                                         {res.category}
                                                                     </span>
-                                                                    <span className="text-[9px] sm:text-[10px] text-slate-400 font-bold">{res.type} ({res.size})</span>
+                                                                    <span className="text-[9px] sm:text-[10px] text-slate-400 font-bold font-sans">{res.type} ({res.size})</span>
                                                                 </div>
                                                                 <h4 className="font-bold text-slate-800 text-xs sm:text-sm mt-2">{res.title}</h4>
-                                                                <span className="block text-[9px] sm:text-[10px] text-slate-400 mt-1">Uploaded: {res.date}</span>
+                                                                <span className="block text-[9px] sm:text-[10px] text-slate-400 mt-1 font-sans">Uploaded: {res.date}</span>
                                                             </div>
 
                                                             <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
-                                                                <span className="text-[9px] sm:text-[10px] text-[#1da187] font-bold"><i className="fa-solid fa-circle-check"></i> Public Policy Ledger</span>
+                                                                <span className="text-[9px] sm:text-[10px] text-[#1da187] font-bold font-sans"><i className="fa-solid fa-circle-check"></i> Public Policy Ledger</span>
                                                                 <button 
                                                                     onClick={() => showNotification(`Downloading "${res.title}"...`)}
-                                                                    className="text-[#1da187] font-bold text-xs flex items-center gap-1 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg transition-colors min-h-[36px]"
+                                                                    className="text-[#1da187] font-bold text-xs flex items-center gap-1 bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg transition-colors min-h-[36px] font-sans"
                                                                 >
                                                                     <i className="fa-solid fa-download"></i> Get File
                                                                 </button>
@@ -1624,7 +1577,7 @@
                             </div>
                         )}
 
-                        {}
+                        {/* Login container panel */}
                         {activeTab === "login" && (
                             <div className="w-full flex flex-col items-center justify-center py-6 sm:py-10 animate-fadeIn bg-slate-100/40 rounded-3xl border border-slate-200/50">
                                 <div className="flex flex-col items-center text-center mb-6 max-w-sm px-4">
@@ -1632,21 +1585,21 @@
                                         <img src="https://i.imgur.com/VRnnRFC.png" alt="Tanjay LGU Seal" className="w-12 h-12 sm:w-14 sm:h-14 object-contain" />
                                         <div className="relative">
                                             <div className="absolute inset-0 bg-white rounded-full"></div>
-                                            <img src="https://i.imgur.com/Paf57TV.png" alt="TCNC Seal" className="w-12 h-12 sm:w-14 sm:h-14 object-contain relative z-10 p-0.5" />
+                                            <img src="https://i.imgur.com/Paf57TV.png" alt="Nutrition Council Seal" className="w-12 h-12 sm:w-14 sm:h-14 object-contain relative z-10 p-0.5" />
                                         </div>
                                     </div>
                                     <h2 className="text-base sm:text-lg font-black tracking-tight text-slate-800 gov-title uppercase leading-tight">
                                         Authorized Portal Console
                                     </h2>
-                                    <p className="text-[9px] sm:text-[10px] text-[#1da187] font-semibold tracking-wide mt-1">
-                                        Admin & BNS (PD 1569) Secure Database Access
+                                    <p className="text-[9px] sm:text-[10px] text-[#1da187] font-semibold tracking-wide mt-1 font-sans text-center">
+                                        Admin, Encoder, & BNS Secure Database Access
                                     </p>
                                 </div>
 
                                 <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl border border-slate-200 p-5 sm:p-6 space-y-5">
                                     <form onSubmit={handleFormLogin} className="space-y-4">
                                         <div>
-                                            <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">
+                                            <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide font-sans">
                                                 Username or Email
                                             </label>
                                             <input 
@@ -1660,7 +1613,7 @@
                                         </div>
 
                                         <div>
-                                            <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">
+                                            <label className="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide font-sans">
                                                 Password
                                             </label>
                                             <input 
@@ -1673,29 +1626,28 @@
                                             />
                                         </div>
 
-                                        {/* DATA PRIVACY CONSENT CHECKBOX (RA 10173 LEGAL REQUIREMENT) */}
                                         <div className="p-3 sm:p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                                            <label className="flex items-start text-[9px] sm:text-[10px] text-slate-600 font-semibold cursor-pointer select-none leading-relaxed">
+                                            <label className="flex items-start text-[9px] sm:text-[10px] text-slate-600 font-semibold cursor-pointer select-none leading-relaxed font-sans">
                                                 <input 
                                                     type="checkbox" 
                                                     checked={privacyConsented}
                                                     onChange={(e) => setPrivacyConsented(e.target.checked)}
-                                                    className="mt-0.5 mr-2 accent-emerald-750 rounded scale-105 shrink-0" 
+                                                    className="mt-0.5 mr-2 accent-emerald-755 rounded scale-105 shrink-0" 
                                                 />
                                                 <span>
-                                                    I acknowledge and consent to the secure collection & processing of my workspace credentials and e-OPT metric summaries in compliance with the <span className="text-[#1da187] font-bold">Data Privacy Act of 2012 (RA 10173)</span>.
+                                                    I acknowledge and consent to the secure collection & processing of my workspace credentials and e-OPT metric summaries in compliance with the <span className="text-[#1da187] font-bold font-sans">Data Privacy Act of 2012 (RA 10173)</span>.
                                                 </span>
                                             </label>
                                             <button 
                                                 type="button"
                                                 onClick={() => setShowPrivacyModal(true)}
-                                                className="text-[9px] text-[#1da187] font-bold underline hover:text-emerald-800 uppercase text-left block"
+                                                className="text-[9px] text-[#1da187] font-bold underline hover:text-emerald-800 uppercase text-left block font-sans"
                                             >
                                                 Read Privacy Notice Statement
                                             </button>
                                         </div>
 
-                                        <div className="flex items-center justify-between pt-1 gap-2 flex-wrap">
+                                        <div className="flex items-center justify-between pt-1 gap-2 flex-wrap font-sans">
                                             <label className="flex items-center text-xs text-slate-500 font-medium cursor-pointer">
                                                 <input type="checkbox" className="mr-1.5 accent-emerald-600 rounded" />
                                                 Keep Logged In
@@ -1714,11 +1666,19 @@
                                             </button>
                                         </div>
                                     </form>
+                                    
+                                    <div className="mt-4 p-4 bg-slate-100 border border-slate-200 rounded-xl text-left">
+                                        <p className="text-[11px] font-black text-slate-700 mb-2 font-sans">Sandbox Demonstration Accounts:</p>
+                                        <div className="space-y-1.5 text-[10px] text-slate-600 font-sans">
+                                            <p><strong>CNAO Admin:</strong> <span className="bg-white px-1 py-0.5 rounded border font-mono">stephydetty14@gmail.com</span> / <span className="bg-white px-1 py-0.5 rounded border font-semibold">officer123</span></p>
+                                            <p><strong>BNS Scholar:</strong> <span className="bg-white px-1 py-0.5 rounded border font-mono">portia.catacutan@tcnc.gov.ph</span> / <span className="bg-white px-1 py-0.5 rounded border font-semibold">bns123</span></p>
+                                            <p><strong>City Encoder:</strong> <span className="bg-white px-1 py-0.5 rounded border font-mono">micahaba199x@gmail.com</span> / <span className="bg-white px-1 py-0.5 rounded border font-semibold">encoder123</span></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         )}
 
-                        {}
                         {activeTab === "portal-home" && currentUser && (
                             <div className="space-y-6 md:space-y-8 animate-fadeIn">
                                 
@@ -1728,28 +1688,27 @@
                                             <i className="fa-solid fa-user-shield"></i>
                                         </div>
                                         <div>
-                                            <div className="flex flex-wrap items-center gap-2">
+                                            <div className="flex flex-wrap items-center gap-2 font-sans">
                                                 <span className="bg-[#3ce6c3] text-emerald-950 text-[9px] sm:text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md">
                                                     {currentUser.role} Account
                                                 </span>
                                                 <span className="text-emerald-300 text-[10px] sm:text-xs font-semibold">
-                                                    {currentUser.role === "BNS" ? "Scholar Authorized under PD 1569" : "CNAO Officer Console"}
+                                                    {currentUser.role === "BNS" ? "Scholar Authorized under PD 1569" : currentUser.role === "Encoder" ? "Authorized Municipal Data Encoder" : "CNAO Officer Console"}
                                                 </span>
                                             </div>
                                             <h3 className="font-extrabold text-base sm:text-xl mt-0.5">{currentUser.name}</h3>
-                                            <p className="text-[10px] sm:text-xs text-slate-300 mt-1">
+                                            <p className="text-[10px] sm:text-xs text-slate-300 mt-1 font-sans">
                                                 {currentUser.barangay ? `Coverage Barangay: ${currentUser.barangay}` : `${currentUser.title}`}
                                             </p>
                                         </div>
                                     </div>
-                                    <button onClick={handleLogout} className="bg-rose-900/60 hover:bg-rose-900 text-rose-200 border border-rose-800/40 font-bold text-xs px-4 py-2 rounded-xl transition-all self-stretch md:self-auto min-h-[44px]">
+                                    <button onClick={handleLogout} className="bg-rose-900/60 hover:bg-rose-900 text-rose-200 border border-rose-800/40 font-bold text-xs px-4 py-2 rounded-xl transition-all self-stretch md:self-auto min-h-[44px] font-sans">
                                         <i className="fa-solid fa-sign-out mr-1"></i> End Active Session
                                     </button>
                                 </div>
 
                                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
                                     
-                                    {/* Direct Weighing Input Form (For active scholars on the ground) */}
                                     <div className="space-y-6">
                                         <div className="bg-white rounded-2xl border border-emerald-100 p-4 sm:p-5 shadow-sm">
                                             <h4 className="font-bold text-slate-800 text-sm sm:text-base mb-4 flex items-center gap-1.5 border-b border-slate-100 pb-2">
@@ -1758,19 +1717,19 @@
 
                                             <form onSubmit={handleDigitalMetricsSubmit} className="space-y-4">
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Target Area</label>
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5 font-sans">Target Area</label>
                                                     {currentUser.role === "BNS" ? (
                                                         <input 
                                                             type="text" 
                                                             value={formBarangay} 
-                                                            className="w-full bg-slate-100 text-slate-600 text-xs font-bold px-3 py-3 rounded-xl border border-slate-200 cursor-not-allowed min-h-[44px]" 
+                                                            className="w-full bg-slate-100 text-slate-600 text-xs font-bold px-3 py-3 rounded-xl border border-slate-200 cursor-not-allowed min-h-[44px] font-sans" 
                                                             disabled 
                                                         />
                                                     ) : (
                                                         <select 
                                                             value={formBarangay} 
                                                             onChange={(e) => setFormBarangay(e.target.value)}
-                                                            className="w-full bg-slate-50 text-slate-800 text-xs font-bold px-3 py-3 rounded-xl border border-slate-200 focus:outline-none min-h-[44px]"
+                                                            className="w-full bg-slate-50 text-slate-800 text-xs font-bold px-3 py-3 rounded-xl border border-slate-200 focus:outline-none min-h-[44px] font-sans"
                                                         >
                                                             {Object.keys(barangayNutritionData).map(brgy => (
                                                                 <option key={brgy} value={brgy}>{brgy}</option>
@@ -1779,13 +1738,13 @@
                                                     )}
                                                 </div>
 
-                                                <div className="bg-emerald-50/20 p-3 rounded-xl border border-emerald-100/60 text-center text-slate-600 mb-2 text-[10px] leading-relaxed">
+                                                <div className="bg-emerald-50/20 p-3 rounded-xl border border-emerald-100/60 text-center text-slate-600 mb-2 text-[10px] leading-relaxed font-sans">
                                                     <span className="block uppercase tracking-wider font-extrabold text-[#1da187] mb-0.5">NNC Reporting Compliance</span>
                                                     Submit audited headcounts for ages 0-59 months. Proportions will compute instantly to cross-verify stunting prevalence indices.
                                                 </div>
 
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Normal Count</label>
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5 font-sans">Normal Count</label>
                                                     <input 
                                                         type="number" 
                                                         value={rawNormal} 
@@ -1797,7 +1756,7 @@
                                                 </div>
 
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Underweight Count</label>
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5 font-sans">Underweight Count</label>
                                                     <input 
                                                         type="number" 
                                                         value={rawUnderweight} 
@@ -1809,7 +1768,7 @@
                                                 </div>
 
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Stunted (Chronic)</label>
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5 font-sans">Stunted (Chronic)</label>
                                                     <input 
                                                         type="number" 
                                                         value={rawStunted} 
@@ -1821,7 +1780,7 @@
                                                 </div>
 
                                                 <div>
-                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Overweight</label>
+                                                    <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5 font-sans">Overweight</label>
                                                     <input 
                                                         type="number" 
                                                         value={rawOverweight} 
@@ -1835,17 +1794,16 @@
                                                 <button 
                                                     type="submit" 
                                                     disabled={isSubmittingMetrics}
-                                                    className="w-full bg-[#1da187] hover:bg-emerald-800 text-white font-bold text-xs py-3 rounded-xl transition-all flex items-center justify-center gap-1 min-h-[44px]"
+                                                    className="w-full bg-[#1da187] hover:bg-emerald-800 text-white font-bold text-xs py-3 rounded-xl transition-all flex items-center justify-center gap-1 min-h-[44px] font-sans"
                                                 >
                                                     {isSubmittingMetrics ? "Saving..." : "Upload Weighing Records"}
                                                 </button>
                                             </form>
                                         </div>
 
-                                        {}
                                         {currentUser.role !== "BNS" && (
                                             <div className="bg-white rounded-2xl border border-emerald-100 p-4 sm:p-5 shadow-sm animate-fadeIn">
-                                                <h4 className="font-bold text-slate-800 text-xs uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                                                <h4 className="font-bold text-slate-800 text-xs uppercase tracking-wider mb-3 flex items-center gap-1.5 font-sans">
                                                     <i className="fa-solid fa-fingerprint text-slate-400"></i> Audit logs & System Tracks
                                                 </h4>
                                                 <div className="space-y-3 font-mono text-[10px] max-h-[200px] overflow-y-auto pr-2">
@@ -1863,7 +1821,6 @@
 
                                     <div className="lg:col-span-2 space-y-6">
                                         
-                                        {/* Optional File Uploads */}
                                         <div className="bg-white rounded-2xl border border-emerald-100 p-4 sm:p-5 shadow-sm">
                                             <h4 className="font-bold text-slate-800 text-sm sm:text-base mb-4 flex items-center gap-1.5 border-b border-slate-100 pb-2">
                                                 <i className="fa-solid fa-cloud-arrow-up text-[#1da187]"></i> Secure Registry File Uploads
@@ -1872,11 +1829,11 @@
                                             <form onSubmit={handleFileUploadSubmit} className="space-y-4">
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                     <div>
-                                                        <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Category</label>
+                                                        <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5 font-sans">Category</label>
                                                         <select 
                                                             value={fileCategory} 
                                                             onChange={(e) => setFileCategory(e.target.value)}
-                                                            className="w-full bg-slate-50 text-slate-800 text-xs font-bold px-3 py-3 rounded-xl border border-slate-200 focus:outline-none min-h-[44px]"
+                                                            className="w-full bg-slate-50 text-slate-800 text-xs font-bold px-3 py-3 rounded-xl border border-slate-200 focus:outline-none min-h-[44px] font-sans"
                                                         >
                                                             <option value="Feeding Logs">RA 11037 School Feeding Logs</option>
                                                             <option value="Census Document">Community Census / Survey Update</option>
@@ -1885,7 +1842,7 @@
                                                         </select>
                                                     </div>
                                                     <div>
-                                                        <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5">Physical File</label>
+                                                        <label className="block text-xs font-bold text-slate-600 uppercase mb-1.5 font-sans">Physical File</label>
                                                         <div className="border-2 border-dashed border-[#1da187]/20 hover:border-[#1da187]/50 bg-emerald-50/10 hover:bg-emerald-50/40 rounded-xl p-3 text-center cursor-pointer relative transition-all min-h-[44px]">
                                                             <input 
                                                                 type="file" 
@@ -1894,35 +1851,34 @@
                                                                 className="absolute inset-0 opacity-0 cursor-pointer"
                                                             />
                                                             <i className="fa-solid fa-paperclip text-sm text-[#1da187] mr-1"></i>
-                                                            <span className="text-[11px] text-slate-700 font-bold">
+                                                            <span className="text-[11px] text-slate-700 font-bold font-sans">
                                                                 {selectedFileToUpload ? selectedFileToUpload.name.slice(0, 15) + '...' : "Choose File..."}
                                                             </span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button type="submit" className="w-full bg-[#1da187] hover:bg-emerald-600 text-white font-bold text-xs py-2.5 rounded-xl transition-all min-h-[44px]">
+                                                <button type="submit" className="w-full bg-[#1da187] hover:bg-emerald-600 text-white font-bold text-xs py-2.5 rounded-xl transition-all min-h-[44px] font-sans">
                                                     Transmit File Backup
                                                 </button>
                                             </form>
                                         </div>
 
-                                        {}
                                         <div className="bg-white rounded-2xl border border-emerald-100 p-4 sm:p-5 shadow-sm">
                                             <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
-                                                <h4 className="font-bold text-slate-800 text-sm sm:text-base flex items-center gap-1.5">
+                                                <h4 className="font-bold text-slate-800 text-sm sm:text-base flex items-center gap-1.5 font-sans">
                                                     <i className="fa-solid fa-list-check text-[#1da187]"></i> Document Registry Status
                                                 </h4>
-                                                <span className="bg-slate-100 text-slate-600 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full">
-                                                    {uploadedFiles.filter(doc => currentUser.role !== "BNS" || doc.uploadedBy === currentUser.name).length} Records
+                                                <span className="bg-slate-100 text-slate-600 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full font-sans">
+                                                    {uploadedFiles.filter(doc => currentUser.role === "BNS" ? doc.uploadedBy === currentUser.name : true).length} Records
                                                 </span>
                                             </div>
 
                                             <div className="space-y-4 max-h-[360px] lg:max-h-[480px] overflow-y-auto pr-2">
                                                 {uploadedFiles
-                                                    .filter(doc => currentUser.role !== "BNS" || doc.uploadedBy === currentUser.name)
+                                                    .filter(doc => currentUser.role === "BNS" ? doc.uploadedBy === currentUser.name : true)
                                                     .map((doc) => (
                                                     <div key={doc.id} className="p-3 sm:p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 transition-all">
-                                                        <div className="space-y-1 w-full">
+                                                        <div className="space-y-1 w-full font-sans">
                                                             <div className="flex items-center gap-2 flex-wrap">
                                                                 <span className="font-mono text-[10px] sm:text-xs font-bold text-[#1da187]">{doc.id}</span>
                                                                 <span className={`text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full ${
@@ -1963,7 +1919,7 @@
                                                             ) : (
                                                                 <button 
                                                                     onClick={() => showNotification(`Opening file...`)}
-                                                                    className="text-slate-750 bg-white border border-slate-200 hover:bg-slate-50 font-bold text-xs py-1.5 px-3 rounded-lg flex items-center gap-1 transition-all min-h-[36px]"
+                                                                    className="text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 font-bold text-xs py-1.5 px-3 rounded-lg flex items-center gap-1 transition-all min-h-[36px] font-sans"
                                                                 >
                                                                     <i className="fa-solid fa-download"></i> Download
                                                                 </button>
@@ -1974,7 +1930,6 @@
                                             </div>
                                         </div>
 
-                                        {/* Weekly Nutrition Plan Aligned with RA 8976 & RA 8172 */}
                                         {currentUser.role === "Officer" && (
                                             <div className="bg-gradient-to-br from-[#1da187]/5 to-[#1da187]/10 rounded-2xl border border-emerald-100 p-4 sm:p-5 shadow-sm">
                                                 <h4 className="font-bold text-emerald-900 text-xs sm:text-sm md:text-base mb-3 flex items-center gap-1.5">
@@ -1983,11 +1938,11 @@
                                                 
                                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                                     <div className="space-y-2">
-                                                        <label className="block text-xs font-bold text-slate-600 uppercase">Target Day</label>
+                                                        <label className="block text-xs font-bold text-slate-600 uppercase font-sans">Target Day</label>
                                                         <select 
                                                             value={selectedDay} 
                                                             onChange={(e) => setSelectedDay(e.target.value)}
-                                                            className="w-full bg-white text-slate-800 text-xs font-bold px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none min-h-[44px]"
+                                                            className="w-full bg-white text-slate-800 text-xs font-bold px-3 py-2.5 rounded-xl border border-slate-200 focus:outline-none min-h-[44px] font-sans"
                                                         >
                                                             {Object.keys(menuPlan).map(day => (
                                                                 <option key={day} value={day}>{day}</option>
@@ -1995,7 +1950,7 @@
                                                         </select>
                                                     </div>
                                                     <div className="md:col-span-2 space-y-2">
-                                                        <label className="block text-xs font-bold text-slate-600">Formulation Parameters</label>
+                                                        <label className="block text-xs font-bold text-slate-600 font-sans font-sans">Formulation Parameters</label>
                                                         <form onSubmit={handleUpdateMenu} className="flex gap-2">
                                                             <input 
                                                                 type="text" 
@@ -2005,35 +1960,36 @@
                                                                 className="flex-grow bg-white text-slate-800 text-xs px-3 py-2 rounded-xl border border-slate-200 min-h-[44px]"
                                                                 required
                                                             />
-                                                            <button type="submit" className="bg-[#1da187] hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2 rounded-xl min-h-[44px]">
+                                                            <button type="submit" className="bg-[#1da187] hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2 rounded-xl min-h-[44px] font-sans">
                                                                 Save
                                                             </button>
                                                         </form>
                                                     </div>
                                                 </div>
 
-                                                <div className="mt-4 p-3.5 bg-white rounded-xl border border-[#1da187]/10 text-[11px] sm:text-xs font-semibold text-slate-750">
+                                                <div className="mt-4 p-3.5 bg-white rounded-xl border border-[#1da187]/10 text-[11px] sm:text-xs font-semibold text-slate-700 font-sans">
                                                     <span className="block text-[8px] sm:text-[9px] uppercase font-black text-slate-400 tracking-wider">Scheduled Dish for {selectedDay}:</span>
                                                     <p className="text-emerald-900 mt-1">"{menuPlan[selectedDay]}"</p>
                                                 </div>
                                             </div>
                                         )}
 
-                                        {}
                                         {currentUser.role === "Officer" && (
                                             <div className="bg-white rounded-2xl border border-emerald-100 p-4 sm:p-5 shadow-sm animate-fadeIn">
-                                                <h4 className="font-bold text-slate-800 text-sm sm:text-base mb-4 flex items-center gap-1.5">
+                                                <h4 className="font-bold text-slate-800 text-sm sm:text-base mb-4 flex items-center gap-1.5 font-sans">
                                                     <i className="fa-solid fa-users text-[#1da187]"></i> Ground BNS Officers Registry (PD 1569 Compliance)
                                                 </h4>
                                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[300px] overflow-y-auto pr-2">
                                                     {staffList.map((staff) => (
-                                                        <div key={staff.id} className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between gap-2">
+                                                        <div key={staff.id} className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between gap-2 font-sans">
                                                             <div>
                                                                 <span className="text-[8px] sm:text-[9px] uppercase font-bold text-slate-400">{staff.role} {staff.barangay ? `• ${staff.barangay}` : ''}</span>
                                                                 <h5 className="font-bold text-slate-800 text-xs">{staff.name}</h5>
                                                                 <span className="block text-[9px] sm:text-[10px] font-mono text-[#1da187] mt-0.5 break-all">{staff.email}</span>
                                                             </div>
-                                                            <span className="text-[9px] sm:text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-[#1da187]/20 shrink-0">
+                                                            <span className={`text-[9px] sm:text-[10px] font-bold px-2.5 py-1 rounded-full border shrink-0 ${
+                                                                staff.status === "Vacant" ? "text-amber-700 bg-amber-50 border-amber-200" : "text-emerald-700 bg-emerald-50 border-[#1da187]/20"
+                                                            }`}>
                                                                 {staff.status}
                                                             </span>
                                                         </div>
@@ -2049,7 +2005,7 @@
 
                     </main>
 
-                    {}
+                    {/* Government standard footer */}
                     <footer id="footer" className="bg-[#1da187] text-white mt-12 border-t-4 border-[#3ce6c3] scroll-mt-24 relative">
                         <div className="max-w-[1700px] mx-auto px-4 xl:px-12 2xl:px-16 py-8 md:py-12">
                             
@@ -2063,14 +2019,14 @@
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                <div className="space-y-3">
-                                    <h4 className="font-extrabold text-xs sm:text-base text-white uppercase tracking-widest">TCNC Mandate Compliance</h4>
+                                <div className="space-y-3 font-sans">
+                                    <h4 className="font-extrabold text-xs sm:text-base text-white uppercase tracking-widest">Mandate Compliance</h4>
                                     <p className="text-xs text-white/95 leading-relaxed font-medium">
                                         The Tanjay City Nutrition Council operates under directives of **PD 491** and the national **PPAN 2023-2028** framework to curb malnutrition, manage stunting indices, and foster multi-sectoral health safeguards.
                                     </p>
                                 </div>
 
-                                <div className="space-y-3">
+                                <div className="space-y-3 font-sans">
                                     <h4 className="font-extrabold text-xs sm:text-sm text-white uppercase tracking-wide">Government Portals</h4>
                                     <ul className="text-xs text-white/90 space-y-2 font-semibold">
                                         <li><a href="https://www.gov.ph" target="_blank" className="hover:underline text-white hover:text-[#3ce6c3]"><i className="fa-solid fa-angle-right mr-1"></i> GOV.PH Portal</a></li>
@@ -2078,7 +2034,7 @@
                                     </ul>
                                 </div>
 
-                                <div className="space-y-3">
+                                <div className="space-y-3 font-sans">
                                     <h4 className="font-extrabold text-xs sm:text-sm text-white uppercase tracking-wide">Contact Desk</h4>
                                     <div className="text-xs text-white/90 space-y-3 font-semibold">
                                         <p className="flex items-center gap-2"><i className="fa-solid fa-phone text-white"></i> Hotline: (035) 415-3119</p>
@@ -2093,17 +2049,16 @@
                             </div>
                         </div>
 
-                        <div className="bg-emerald-850 py-4 text-[10px] sm:text-xs text-center text-white/85 border-t border-white/10 px-4">
-                            <div className="max-w-[1700px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+                        <div className="bg-emerald-900 py-4 text-[10px] sm:text-xs text-center text-white/85 border-t border-white/10 px-4">
+                            <div className="max-w-[1700px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 font-sans">
                                 <p className="text-white font-medium text-center sm:text-left">© 2026 Tanjay City Nutrition Council. Built in accordance with Philippine National Nutrition Policies.</p>
                                 <p className="text-[9px] sm:text-[10px] text-white/75 font-semibold text-center sm:text-right shrink-0">PPAN 2023-2028 Local LGU Integration Standard | RA 10173 DPA Compliant.</p>
                             </div>
                         </div>
                     </footer>
 
-                    {}
+                    {/* Quick Accessibility Widget Button */}
                     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col gap-2">
-                        {/* 1. AUTO UP SCROLL BUTTON (Always rendering first in standard column layout on scroll detection) */}
                         {showBackToTop && (
                             <button 
                                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -2115,7 +2070,6 @@
                             </button>
                         )}
 
-                        {/* 2. ACCESSIBILITY MENU DROPDOWN (Positioned directly under/below the auto-up scroll button) */}
                         <div className="relative group">
                             <button 
                                 className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-900 hover:bg-slate-800 text-white rounded-full shadow-2xl flex items-center justify-center border border-slate-700 transition-colors"
@@ -2124,11 +2078,9 @@
                                 <i className="fa-solid fa-universal-access text-lg sm:text-xl"></i>
                             </button>
                             
-                            {/* Consolidated Access Panel (Renders directly above/to-the-left of trigger block upon hover) */}
                             <div className="absolute bottom-12 right-0 bg-white border border-slate-200 p-3.5 rounded-2xl shadow-2xl space-y-3 w-48 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 scale-95 origin-bottom-right group-hover:scale-100 z-55">
                                 
-                                <div className="space-y-2.5 text-xs">
-                                    {/* Shortcut 1: Accessibility Statement Document Modal */}
+                                <div className="space-y-2.5 text-xs font-sans">
                                     <button 
                                         onClick={() => setShowAccessStatementModal(true)} 
                                         className="w-full text-left font-bold text-slate-800 hover:text-emerald-800 flex items-center gap-2 py-1 min-h-[32px]"
@@ -2138,7 +2090,6 @@
                                         <span>Accessibility Policy</span>
                                     </button>
 
-                                    {/* Shortcut 2: High Contrast Eye Switch */}
                                     <button 
                                         onClick={() => setHighContrastMode(!highContrastMode)} 
                                         className="w-full text-left font-bold text-slate-800 hover:text-emerald-800 flex items-center gap-2 py-1 min-h-[32px]"
@@ -2148,7 +2099,6 @@
                                         <span>Contrast Switch</span>
                                     </button>
 
-                                    {/* Shortcut 3: Skip straight to Dashboard data blocks */}
                                     <button 
                                         onClick={() => document.getElementById("main-content")?.scrollIntoView({ behavior: 'smooth' })} 
                                         className="w-full text-left font-bold text-slate-800 hover:text-emerald-800 flex items-center gap-2 py-1 min-h-[32px]"
@@ -2158,7 +2108,6 @@
                                         <span>Skip to Dashboard</span>
                                     </button>
 
-                                    {/* Shortcut 4: Skip directly to contact/footer details */}
                                     <button 
                                         onClick={() => document.getElementById("footer")?.scrollIntoView({ behavior: 'smooth' })} 
                                         className="w-full text-left font-bold text-slate-800 hover:text-emerald-800 flex items-center gap-2 py-1 min-h-[32px]"
@@ -2170,7 +2119,6 @@
 
                                     <hr className="border-slate-200" />
 
-                                    {/* Shortcut 5: Native relative Text Scaler */}
                                     <div className="flex items-center justify-between pt-1">
                                         <span className="font-bold text-slate-500 text-[10px] uppercase">Text Size</span>
                                         <div className="flex gap-1">
